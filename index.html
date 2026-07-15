@@ -425,7 +425,7 @@
         }
 
         /* ==============================================
-           PREMIUM FLOATING CARD - স্ক্রিনের মাঝখানে
+           PREMIUM FLOATING CARD (স্ক্রিনের মাঝখানে)
            ============================================== */
         .premium-float-overlay {
             display: none;
@@ -658,7 +658,7 @@
     </div>
 
     <!-- ==============================================
-         PREMIUM FLOATING CARD - স্ক্রিনের মাঝখানে
+         PREMIUM FLOATING CARD (স্ক্রিনের মাঝখানে)
          ============================================== -->
     <div class="premium-float-overlay" id="premiumFloat">
         <div class="premium-float-box">
@@ -957,7 +957,7 @@
                 showMsg("✅ Login Successful!", "#00ff44");
 
                 // ==============================================
-                // 🔥 PREMIUM FLOATING CARD - স্ক্রিনের মাঝখানে
+                // 🔥 PREMIUM FLOATING CARD শো করুন
                 // ==============================================
                 setTimeout(() => {
                     showPremiumFloat(inputKey, keyData);
@@ -1033,7 +1033,7 @@
                 window.AndroidFloating.open();
             } else {
                 // Web Fallback
-                console.log("🌐 Web fallback");
+                console.log("🌐 Web fallback - showing alert");
                 alert(
                     '👻 ANDROID FLOATING WINDOW\n\n' +
                     '🔑 Key: ' + (currentKey || '—') + '\n' +
@@ -1074,4 +1074,4 @@
         window.onload = initSystem;
     </script>
 </body>
-                        </html>
+</html>
