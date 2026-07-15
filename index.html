@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋 VIP</title>
+    <title>GHOST X PANEL VIP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -14,7 +14,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
         
         html, body {
             width: 100%;
@@ -23,9 +28,89 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: #0a0a0a;
+            background: #050505;
             font-family: 'Orbitron', sans-serif;
             touch-action: none;
+        }
+        
+        /* ==============================================
+           ANIMATED BACKGROUND - Cyber
+           ============================================== */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            background: #050505;
+        }
+        
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 245, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+        
+        .cyber-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.08;
+            animation: orbFloat 15s ease-in-out infinite alternate;
+        }
+        .cyber-orb.orb1 {
+            width: 500px;
+            height: 500px;
+            background: #00f5ff;
+            top: -150px;
+            right: -150px;
+            animation-delay: 0s;
+        }
+        .cyber-orb.orb2 {
+            width: 400px;
+            height: 400px;
+            background: #00f5ff;
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -5s;
+            opacity: 0.05;
+        }
+        
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(80px, -60px) scale(1.1); }
+            66% { transform: translate(-50px, 70px) scale(0.9); }
+            100% { transform: translate(60px, -30px) scale(1.05); }
+        }
+        
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.15), rgba(0, 245, 255, 0.3), rgba(0, 245, 255, 0.15), transparent);
+            animation: scanDown 6s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.05);
+        }
+        @keyframes scanDown {
+            0% { top: -2px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
         
         .particles {
@@ -42,15 +127,16 @@
             position: absolute;
             width: 2px;
             height: 2px;
-            background: rgba(155, 89, 182, 0.25);
+            background: rgba(0, 245, 255, 0.2);
             border-radius: 50%;
-            animation: float linear infinite;
+            animation: floatParticle linear infinite;
+            box-shadow: 0 0 8px rgba(0, 245, 255, 0.05);
         }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: translateY(90vh) rotate(90deg) scale(1); }
             90% { opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(0); opacity: 0; }
         }
         
         .app-container {
@@ -61,49 +147,32 @@
             align-items: center;
             padding: 16px;
             position: relative;
-            overflow: hidden;
+            z-index: 1;
         }
         
-        .app-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.05), transparent 70%);
-            animation: bgPulse 8s ease-in-out infinite;
-            z-index: 0;
-        }
-        
-        @keyframes bgPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-        
+        /* ==============================================
+           LOGIN CARD - Premium Cyber Security
+           ============================================== */
         .login-card {
             width: 100%;
             max-width: 400px;
             max-height: 92vh;
-            background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
-            border: 1px solid rgba(155, 89, 182, 0.15);
-            border-radius: 28px;
-            padding: 28px 24px 20px;
+            background: linear-gradient(145deg, rgba(8, 8, 8, 0.96), rgba(5, 5, 5, 0.98));
+            border: 1px solid rgba(0, 245, 255, 0.06);
+            border-radius: 24px;
+            padding: 32px 24px 20px;
             text-align: center;
             backdrop-filter: blur(20px);
-            box-shadow: 0 0 60px rgba(155, 89, 182, 0.05), inset 0 1px 0 rgba(155, 89, 182, 0.08);
+            box-shadow: 
+                0 0 80px rgba(0, 245, 255, 0.02),
+                0 0 40px rgba(0, 245, 255, 0.01),
+                inset 0 1px 0 rgba(0, 245, 255, 0.04);
             position: relative;
-            z-index: 1;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            animation: cardFadeIn 0.8s ease-out;
         }
         
         .login-card::before {
@@ -113,7 +182,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.03), transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.02), transparent 70%);
             animation: bgPulse 8s ease-in-out infinite;
             pointer-events: none;
         }
@@ -125,14 +194,27 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.12), transparent);
-            border-radius: 29px;
+            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.04), transparent, rgba(0, 245, 255, 0.02), transparent);
+            border-radius: 25px;
             z-index: -1;
-            animation: borderGlow 3s ease-in-out infinite;
+            animation: borderGlow 4s ease-in-out infinite;
+            background-size: 300% 300%;
         }
+        
         @keyframes borderGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+            0% { opacity: 0.2; background-position: 0% 50%; }
+            50% { opacity: 0.6; background-position: 100% 50%; }
+            100% { opacity: 0.2; background-position: 0% 50%; }
+        }
+        
+        @keyframes bgPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
         
         .brand-section {
@@ -140,32 +222,61 @@
             position: relative;
             z-index: 1;
         }
-        .brand-title {
-            font-size: 18px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #9b59b6, #c39bd3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2px;
+        .brand-icon {
+            font-size: 28px;
+            color: #00f5ff;
+            margin-bottom: 4px;
+            text-shadow: 0 0 40px rgba(0, 245, 255, 0.1);
         }
-        .brand-title .ghost-icon {
-            font-size: 22px;
-            -webkit-text-fill-color: initial;
-            color: #9b59b6;
+        .brand-title {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffffff;
+            margin-bottom: 2px;
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.05);
+        }
+        .brand-title .highlight {
+            color: #00f5ff;
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.15);
         }
         .brand-sub {
             font-size: 9px;
-            color: #666;
-            letter-spacing: 4px;
+            color: #444;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
         }
         .brand-sub span {
-            color: #9b59b6;
-            -webkit-text-fill-color: #9b59b6;
+            color: #00f5ff;
+            opacity: 0.6;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 9px;
+            color: #444;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00f5ff;
+            animation: dotPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.15);
+        }
+        @keyframes dotPulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
         
         .input-group {
@@ -179,14 +290,15 @@
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #9b59b6;
+            color: #00f5ff;
             font-size: 14px;
-            opacity: 0.6;
+            opacity: 0.3;
+            transition: 0.3s;
         }
         .input-group input {
             width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(155, 89, 182, 0.12);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 245, 255, 0.04);
             padding: 14px 16px 14px 46px;
             border-radius: 14px;
             color: #fff;
@@ -198,55 +310,66 @@
             height: 50px;
         }
         .input-group input:focus {
-            border-color: #9b59b6;
-            box-shadow: 0 0 30px rgba(155, 89, 182, 0.08);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 245, 255, 0.15);
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.03), inset 0 0 20px rgba(0, 245, 255, 0.01);
+            background: rgba(0, 245, 255, 0.02);
+        }
+        .input-group input:focus + i {
+            opacity: 0.8;
         }
         .input-group input::placeholder {
-            color: #444;
+            color: #2a2a2a;
             letter-spacing: 1px;
             font-size: 10px;
         }
         
-        .btn-auth {
+        /* ==============================================
+           LOGIN BUTTON - নাম পরিবর্তন করা হয়েছে
+           ============================================== */
+        .btn-login {
             width: 100%;
-            background: linear-gradient(135deg, #9b59b6, #7d3c98);
-            color: #fff;
-            border: none;
+            background: transparent;
+            color: #00f5ff;
+            border: 1px solid rgba(0, 245, 255, 0.08);
             padding: 14px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 900;
             border-radius: 14px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
+            letter-spacing: 3px;
+            transition: 0.4s;
             font-family: 'Orbitron', sans-serif;
             position: relative;
             z-index: 1;
-            box-shadow: 0 4px 30px rgba(155, 89, 182, 0.2);
             height: 50px;
+            overflow: hidden;
         }
-        .btn-auth:active { transform: scale(0.97); }
-        .btn-auth:disabled {
-            opacity: 0.5;
+        .btn-login:hover {
+            background: rgba(0, 245, 255, 0.03);
+            border-color: rgba(0, 245, 255, 0.15);
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.03);
+        }
+        .btn-login:active { transform: scale(0.97); }
+        .btn-login:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
         }
         
-        .btn-buy {
+        .btn-store {
             display: inline-block;
             width: 100%;
             background: transparent;
-            color: #9b59b6;
-            border: 1px solid rgba(155, 89, 182, 0.12);
+            color: #444;
+            border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 12px;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             border-radius: 14px;
             cursor: pointer;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             transition: 0.3s;
             text-align: center;
             font-family: 'Orbitron', sans-serif;
@@ -257,18 +380,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
         }
-        .btn-buy:active {
-            background: rgba(155, 89, 182, 0.05);
+        .btn-store:hover {
+            color: #00f5ff;
+            border-color: rgba(0, 245, 255, 0.05);
+        }
+        .btn-store:active {
+            transform: scale(0.97);
+        }
+        .btn-store i {
+            color: #00f5ff;
+            opacity: 0.3;
         }
         
         .device-info-box {
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid rgba(155, 89, 182, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
             text-align: left;
-            font-size: 9px;
-            color: #444;
+            font-size: 8px;
+            color: #2a2a2a;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
@@ -278,63 +410,88 @@
             justify-content: space-between;
             padding: 2px 0;
             font-family: 'Orbitron', sans-serif;
-            font-size: 8px;
+            font-size: 7px;
+            letter-spacing: 0.5px;
         }
         .device-info-box span {
-            color: #9b59b6;
+            color: #00f5ff;
             font-weight: 700;
-            font-size: 8px;
+            font-size: 7px;
+            opacity: 0.4;
         }
         .device-info-box span.key-text {
-            color: #c39bd3;
+            color: #00f5ff;
             font-family: monospace;
-            font-size: 9px;
+            font-size: 8px;
+            opacity: 0.6;
         }
         
-        /* Loading Screen */
+        .status-msg {
+            font-size: 9px;
+            color: #444;
+            margin-top: 8px;
+            min-height: 18px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+        .status-msg.show { display: block; }
+        .status-msg.success { color: #00f5ff; }
+        .status-msg.error { color: #ff4444; }
+        .status-msg.warning { color: #ffaa00; }
+        .status-msg.info { color: #00f5ff; opacity: 0.6; }
+        
+        /* ==============================================
+           LOADING SCREEN
+           ============================================== */
         .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #0a0a0a;
+            background: #050505;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
         }
-        .loading-screen .ghost-big {
-            font-size: 50px;
-            color: #9b59b6;
+        .loading-screen .loader-icon {
+            font-size: 32px;
+            color: #00f5ff;
             margin-bottom: 16px;
-            animation: ghostFloat 2s ease-in-out infinite;
+            text-shadow: 0 0 60px rgba(0, 245, 255, 0.05);
+            animation: iconPulse 2s ease-in-out infinite;
         }
-        @keyframes ghostFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-12px) scale(1.05); }
+        @keyframes iconPulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
         .loading-screen .loader-ring {
             width: 50px;
             height: 50px;
-            border: 3px solid rgba(155, 89, 182, 0.08);
-            border-top: 3px solid #9b59b6;
+            border: 2px solid rgba(0, 245, 255, 0.03);
+            border-top: 2px solid #00f5ff;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             margin-bottom: 16px;
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.02);
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .loading-screen .load-title {
-            color: #9b59b6;
+            color: #ffffff;
             font-size: 14px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
+            opacity: 0.8;
         }
         .loading-screen .load-sub {
-            color: #444;
+            color: #2a2a2a;
             font-size: 9px;
             margin-top: 6px;
             letter-spacing: 2px;
@@ -342,7 +499,7 @@
         }
         
         /* ==============================================
-           PREMIUM POPUP - শুধু ৪টি জায়গায়
+           PREMIUM POPUP
            ============================================== */
         .premium-popup {
             display: none;
@@ -351,22 +508,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.94);
+            backdrop-filter: blur(30px);
             z-index: 99999;
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease-out;
         }
         .premium-popup .popup-box {
-            background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
-            border: 1px solid rgba(155, 89, 182, 0.2);
+            background: linear-gradient(145deg, rgba(8, 8, 8, 0.98), rgba(5, 5, 5, 0.99));
+            border: 1px solid rgba(0, 245, 255, 0.04);
             border-radius: 24px;
             padding: 28px 24px 22px;
             max-width: 340px;
             width: 88%;
             text-align: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 80px rgba(0, 245, 255, 0.01);
             animation: floatPop 0.4s ease-out;
             position: relative;
             overflow: hidden;
@@ -378,7 +535,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.04), transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.02), transparent 70%);
             animation: bgPulse 8s ease-in-out infinite;
             pointer-events: none;
         }
@@ -389,38 +546,46 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.12), transparent);
+            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.04), transparent);
             border-radius: 25px;
             z-index: -1;
-            animation: borderGlow 3s ease-in-out infinite;
+            animation: borderGlow 4s ease-in-out infinite;
+            background-size: 300% 300%;
         }
         
         @keyframes floatPop {
             from { transform: scale(0.85) translateY(20px); opacity: 0; }
             to { transform: scale(1) translateY(0); opacity: 1; }
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         
         .premium-popup .popup-box .p-icon {
-            font-size: 42px;
-            margin-bottom: 2px;
+            font-size: 28px;
+            color: #00f5ff;
+            margin-bottom: 4px;
             position: relative;
             z-index: 1;
+            opacity: 0.8;
         }
         .premium-popup .popup-box .p-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
             font-weight: 900;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             position: relative;
             z-index: 1;
+            color: #ffffff;
         }
-        .premium-popup .popup-box .p-title.success { color: #2ecc71; }
-        .premium-popup .popup-box .p-title.error { color: #e74c3c; }
-        .premium-popup .popup-box .p-title.warning { color: #f39c12; }
-        .premium-popup .popup-box .p-title.info { color: #9b59b6; }
+        .premium-popup .popup-box .p-title.success { color: #00f5ff; }
+        .premium-popup .popup-box .p-title.error { color: #ff4444; }
+        .premium-popup .popup-box .p-title.warning { color: #ffaa00; }
+        .premium-popup .popup-box .p-title.info { color: #00f5ff; opacity: 0.7; }
         
         .premium-popup .popup-box .p-msg {
-            color: #888;
+            color: #444;
             font-family: 'Orbitron', sans-serif;
             font-size: 10px;
             margin: 4px 0 12px 0;
@@ -430,8 +595,8 @@
         }
         
         .premium-popup .popup-box .p-details {
-            background: rgba(155, 89, 182, 0.04);
-            border: 1px solid rgba(155, 89, 182, 0.06);
+            background: rgba(0, 245, 255, 0.01);
+            border: 1px solid rgba(0, 245, 255, 0.02);
             border-radius: 12px;
             padding: 10px 12px;
             margin-bottom: 14px;
@@ -446,15 +611,15 @@
             font-size: 9px;
             font-family: 'Orbitron', sans-serif;
         }
-        .premium-popup .popup-box .p-details .row .lbl { color: #666; }
-        .premium-popup .popup-box .p-details .row .val { color: #c39bd3; font-weight: 700; }
-        .premium-popup .popup-box .p-details .row .val.green { color: #2ecc71; }
-        .premium-popup .popup-box .p-details .row .val.red { color: #e74c3c; }
+        .premium-popup .popup-box .p-details .row .lbl { color: #333; }
+        .premium-popup .popup-box .p-details .row .val { color: #00f5ff; font-weight: 700; opacity: 0.7; }
+        .premium-popup .popup-box .p-details .row .val.green { color: #00f5ff; opacity: 1; }
+        .premium-popup .popup-box .p-details .row .val.red { color: #ff4444; }
         
         .premium-popup .popup-box .p-btn {
-            background: linear-gradient(135deg, #9b59b6, #7d3c98);
-            color: #fff;
-            border: none;
+            background: transparent;
+            color: #00f5ff;
+            border: 1px solid rgba(0, 245, 255, 0.04);
             padding: 11px;
             font-size: 11px;
             font-weight: 900;
@@ -462,32 +627,42 @@
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-family: 'Orbitron', sans-serif;
             position: relative;
             z-index: 1;
-            box-shadow: 0 4px 30px rgba(155, 89, 182, 0.15);
+            transition: 0.3s;
+        }
+        .premium-popup .popup-box .p-btn:hover {
+            background: rgba(0, 245, 255, 0.02);
+            border-color: rgba(0, 245, 255, 0.08);
         }
         .premium-popup .popup-box .p-btn:active { transform: scale(0.97); }
         .premium-popup .popup-box .p-btn.danger {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            box-shadow: 0 4px 30px rgba(231, 76, 60, 0.15);
+            color: #ff4444;
+            border-color: rgba(255, 68, 68, 0.04);
+        }
+        .premium-popup .popup-box .p-btn.danger:hover {
+            background: rgba(255, 68, 68, 0.02);
+            border-color: rgba(255, 68, 68, 0.08);
         }
         
         .premium-popup .popup-box .p-close {
             position: absolute;
             top: 10px;
             right: 14px;
-            color: #555;
+            color: #333;
             font-size: 16px;
             cursor: pointer;
             z-index: 2;
             background: none;
             border: none;
             font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
         }
-        .premium-popup .popup-box .p-close:hover { color: #e74c3c; }
+        .premium-popup .popup-box .p-close:hover { color: #ff4444; }
         
+        /* System Popup */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -495,20 +670,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(0, 0, 0, 0.94);
             z-index: 10000;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
         }
         .popup-box-system {
-            background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
-            border: 1px solid rgba(155, 89, 182, 0.15);
+            background: linear-gradient(145deg, rgba(8, 8, 8, 0.98), rgba(5, 5, 5, 0.99));
+            border: 1px solid rgba(255, 255, 255, 0.02);
             padding: 30px 24px;
             border-radius: 20px;
             max-width: 340px;
             width: 85%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
             text-align: center;
         }
         .popup-box-system h1 {
@@ -518,10 +693,10 @@
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 10px;
         }
-        .popup-box-system h1 .purple { color: #9b59b6; }
-        .popup-box-system h1 .red { color: #e74c3c; }
+        .popup-box-system h1 .cyan { color: #00f5ff; }
+        .popup-box-system h1 .red { color: #ff4444; }
         .popup-box-system p {
-            color: #888;
+            color: #444;
             font-size: 12px;
             margin-bottom: 18px;
             line-height: 1.6;
@@ -540,75 +715,71 @@
             font-family: 'Orbitron', sans-serif;
         }
         .exit-btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
+            background: transparent;
+            color: #ff4444;
+            border: 1px solid rgba(255, 68, 68, 0.04);
         }
         .dismiss-btn {
-            background: linear-gradient(135deg, #9b59b6, #7d3c98);
-            color: white;
+            background: transparent;
+            color: #00f5ff;
+            border: 1px solid rgba(0, 245, 255, 0.04);
         }
-        
-        /* Status Message - Normal (নিচে) */
-        .status-msg {
-            font-size: 10px;
-            color: #666;
-            margin-top: 8px;
-            min-height: 20px;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 0.5px;
-            display: none;
-            position: relative;
-            z-index: 1;
-        }
-        .status-msg.show {
-            display: block;
-        }
-        .status-msg.success { color: #2ecc71; }
-        .status-msg.error { color: #e74c3c; }
-        .status-msg.warning { color: #f39c12; }
-        .status-msg.info { color: #9b59b6; }
         
         @media (max-width: 380px) {
-            .login-card { padding: 20px 16px 16px; }
-            .brand-title { font-size: 15px; }
-            .brand-sub { font-size: 8px; margin-bottom: 12px; }
+            .login-card { padding: 24px 16px 16px; }
+            .brand-title { font-size: 17px; }
+            .brand-sub { font-size: 8px; margin-bottom: 14px; }
             .input-group input { font-size: 11px; height: 44px; padding: 12px 14px 12px 40px; }
-            .btn-auth { font-size: 11px; height: 44px; padding: 12px; }
-            .btn-buy { font-size: 9px; height: 38px; padding: 10px; }
-            .device-info-box p { font-size: 7px; }
+            .btn-login { font-size: 11px; height: 44px; padding: 12px; }
+            .btn-store { font-size: 8px; height: 38px; padding: 10px; }
+            .device-info-box p { font-size: 6px; }
             .premium-popup .popup-box { padding: 22px 18px 18px; }
+            .cyber-orb.orb1 { width: 300px; height: 300px; }
+            .cyber-orb.orb2 { width: 250px; height: 250px; }
         }
         
         @media (max-height: 650px) {
-            .login-card { padding: 16px 14px 12px; }
-            .brand-title { font-size: 14px; }
+            .login-card { padding: 18px 14px 12px; }
+            .brand-title { font-size: 16px; }
             .brand-sub { font-size: 7px; margin-bottom: 10px; }
+            .brand-icon { font-size: 22px; }
             .input-group { margin-bottom: 10px; }
             .input-group input { font-size: 11px; height: 38px; padding: 10px 12px 10px 36px; }
-            .btn-auth { font-size: 11px; height: 38px; padding: 10px; }
-            .btn-buy { font-size: 9px; height: 34px; padding: 8px; margin-top: 6px; }
+            .btn-login { font-size: 11px; height: 38px; padding: 10px; }
+            .btn-store { font-size: 8px; height: 34px; padding: 8px; margin-top: 6px; }
             .device-info-box { margin-top: 8px; padding-top: 8px; }
-            .device-info-box p { font-size: 7px; padding: 1px 0; }
+            .device-info-box p { font-size: 6px; padding: 1px 0; }
+            .status-indicator { font-size: 8px; margin-bottom: 10px; }
             .premium-popup .popup-box { padding: 18px 16px 14px; }
-            .premium-popup .popup-box .p-icon { font-size: 32px; }
+            .premium-popup .popup-box .p-icon { font-size: 22px; }
             .premium-popup .popup-box .p-title { font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ==============================================
+         ANIMATED BACKGROUND
+         ============================================== -->
+    <div class="bg-container">
+        <div class="grid-overlay"></div>
+        <div class="cyber-orb orb1"></div>
+        <div class="cyber-orb orb2"></div>
+        <div class="scan-line"></div>
+    </div>
+
     <!-- Particles -->
     <div class="particles" id="particles"></div>
 
     <!-- Loading Screen -->
     <div id="loadingView" class="loading-screen">
-        <div class="ghost-big">👻</div>
+        <div class="loader-icon">🔒</div>
         <div class="loader-ring"></div>
-        <div class="load-title">𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋</div>
+        <div class="load-title">GHOST X PANEL</div>
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
-    <!-- Block Popup (System) -->
+    <!-- Block Popup -->
     <div id="blockPopup" class="popup-overlay">
         <div class="popup-box-system">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
@@ -617,22 +788,20 @@
         </div>
     </div>
 
-    <!-- Notification Popup (System) -->
+    <!-- Notification Popup -->
     <div id="notifPopup" class="popup-overlay">
         <div class="popup-box-system">
-            <h1><span class="purple"><i class="fa-solid fa-circle-bell"></i> SYSTEM NOTICE</span></h1>
+            <h1><span class="cyan"><i class="fa-solid fa-circle-bell"></i> SYSTEM NOTICE</span></h1>
             <p id="notifMessageText">App temporary server maintenance state me hai.</p>
             <button class="dismiss-btn" onclick="closeNotification()">Acknowledge</button>
         </div>
     </div>
 
-    <!-- ==============================================
-         PREMIUM POPUP - শুধু ৪টি জায়গায়
-         ============================================== -->
+    <!-- Premium Popup -->
     <div class="premium-popup" id="premiumPopup">
         <div class="popup-box">
             <button class="p-close" onclick="closePremiumPopup()">✕</button>
-            <div class="p-icon" id="pIcon">👻</div>
+            <div class="p-icon" id="pIcon">🔒</div>
             <div class="p-title success" id="pTitle">✦ SUCCESS ✦</div>
             <div class="p-msg" id="pMsg">Premium access activated!</div>
             <div class="p-details" id="pDetails">
@@ -649,10 +818,14 @@
         <div class="login-card" id="loginCard">
             
             <div class="brand-section">
-                <div class="brand-title">
-                    <span class="ghost-icon">👻</span> 𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋
-                </div>
-                <div class="brand-sub">Premium <span>VIP</span> Security</div>
+                <div class="brand-icon">🔒</div>
+                <div class="brand-title">GHOST <span class="highlight">X</span> PANEL</div>
+                <div class="brand-sub">Premium <span>Security</span> System</div>
+            </div>
+
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span>SYSTEM READY</span>
             </div>
 
             <div id="loginForm" style="flex-shrink:0;">
@@ -661,8 +834,13 @@
                     <input type="text" id="accessKey" placeholder="ENTER LICENSE KEY" autocomplete="off">
                 </div>
                 <div class="status-msg" id="statusMsg"></div>
-                <button type="button" class="btn-auth" id="authBtn" onclick="verifyKey()">✦ AUTHENTICATE ✦</button>
-                <a href="https://panelstorexcore.netlify.app" target="_blank" class="btn-buy">🛒 PANEL STORE</a>
+                
+                <!-- LOGIN BUTTON - নাম পরিবর্তন করা হয়েছে -->
+                <button type="button" class="btn-login" id="authBtn" onclick="verifyKey()">✦ LOGIN ✦</button>
+                
+                <a href="https://ghostxstore.netlify.app/" target="_blank" class="btn-store">
+                    <i class="fa-solid fa-store"></i> PANEL STORE 🛍
+                </a>
             </div>
 
             <div class="device-info-box">
@@ -694,16 +872,16 @@
         // ==============================================
         (function createParticles() {
             const container = document.getElementById('particles');
-            const count = window.innerWidth < 400 ? 20 : 30;
+            const count = window.innerWidth < 400 ? 30 : 60;
             for (let i = 0; i < count; i++) {
                 const p = document.createElement('div');
                 p.className = 'particle';
                 p.style.left = Math.random() * 100 + '%';
-                p.style.width = (Math.random() * 2 + 1) + 'px';
+                p.style.width = (Math.random() * 2 + 0.5) + 'px';
                 p.style.height = p.style.width;
-                p.style.animationDuration = (Math.random() * 12 + 8) + 's';
-                p.style.animationDelay = (Math.random() * 8) + 's';
-                p.style.opacity = Math.random() * 0.3 + 0.05;
+                p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                p.style.animationDelay = (Math.random() * 12) + 's';
+                p.style.opacity = Math.random() * 0.3 + 0.02;
                 container.appendChild(p);
             }
         })();
@@ -720,18 +898,17 @@
             const btn = document.getElementById('pBtn');
             
             const icons = {
-                success: '✅',
-                error: '❌',
+                success: '🔓',
+                error: '🔒',
                 warning: '⚠️',
-                info: '👻'
+                info: 'ℹ️'
             };
             
-            icon.textContent = icons[type] || '👻';
+            icon.textContent = icons[type] || '🔒';
             titleEl.textContent = title;
             titleEl.className = 'p-title ' + type;
             msgEl.textContent = msg || '';
             
-            // Details
             if (details) {
                 let html = '';
                 for (const key in details) {
@@ -751,7 +928,6 @@
             btn.className = 'p-btn';
             if (type === 'error') btn.classList.add('danger');
             
-            // Remove old listeners
             const newBtn = btn.cloneNode(true);
             btn.parentNode.replaceChild(newBtn, btn);
             newBtn.addEventListener('click', function() {
@@ -769,7 +945,7 @@
         }
 
         // ==============================================
-        // STATUS MESSAGE (Normal - নিচে দেখাবে)
+        // STATUS MESSAGE
         // ==============================================
         function showStatus(msg, type) {
             const el = document.getElementById('statusMsg');
@@ -879,7 +1055,6 @@
                     document.getElementById('loginCard').style.display = 'none';
                     document.getElementById('notifPopup').style.display = 'flex';
                     
-                    // 📢 অ্যাডমিন নোটিফিকেশন - প্রিমিয়াম পপআপ
                     showPremiumPopup('info', '📢 ADMIN NOTICE', data.message, null, '✦ OK ✦');
                 }
             });
@@ -898,7 +1073,7 @@
         }
 
         // ==============================================
-        // 🚀 VERIFY KEY
+        // 🚀 VERIFY KEY - LOGIN FUNCTION
         // ==============================================
         function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
@@ -911,11 +1086,11 @@
 
             showStatus('🔄 Verifying...', 'info');
             authBtn.disabled = true;
-            authBtn.textContent = '⏳ VERIFYING...';
+            authBtn.textContent = '⏳ LOGGING IN...';
 
             database.ref('keys/' + inputKey).once('value').then((snapshot) => {
                 authBtn.disabled = false;
-                authBtn.textContent = '✦ AUTHENTICATE ✦';
+                authBtn.textContent = '✦ LOGIN ✦';
 
                 if (!snapshot.exists()) {
                     showStatus('❌ Invalid License Key!', 'error');
@@ -925,7 +1100,7 @@
                 const keyData = snapshot.val();
                 const now = Date.now();
 
-                // ❌ ডিঅ্যাক্টিভেটেড চেক
+                // ❌ Deactivated Check
                 if (keyData.status === 'deactive') {
                     showPremiumPopup('error', '⛔ KEY DEACTIVATED', 'This key has been deactivated by admin!', {
                         '🔑 KEY': inputKey,
@@ -935,7 +1110,7 @@
                     return;
                 }
 
-                // ⏰ এক্সপায়ার চেক
+                // ⏰ Expiry Check
                 if (keyData.isUsed && keyData.duration !== 'lifetime') {
                     if (now > keyData.expiryTimestamp) {
                         const exp = new Date(keyData.expiryTimestamp);
@@ -973,7 +1148,7 @@
                 currentKey = inputKey;
                 currentKeyData = keyData;
 
-                // ✅ লগইন সফল - প্রিমিয়াম পপআপ
+                // ✅ Login Success
                 let expiryText = '—';
                 let statusText = '✅ ACTIVE';
                 
@@ -1002,7 +1177,7 @@
 
             }).catch((error) => {
                 authBtn.disabled = false;
-                authBtn.textContent = '✦ AUTHENTICATE ✦';
+                authBtn.textContent = '✦ LOGIN ✦';
                 showStatus('❌ Database error: ' + error.message, 'error');
             });
         }
@@ -1020,7 +1195,7 @@
             } else if (window.AndroidFloating && window.AndroidFloating.open) {
                 window.AndroidFloating.open();
             } else {
-                alert('👻 FLOATING WINDOW\n\n✅ Click OK to close');
+                alert('🔒 FLOATING WINDOW\n\n✅ Click OK to close');
             }
         }
 
