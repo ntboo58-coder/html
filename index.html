@@ -14,12 +14,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         html, body {
             width: 100%;
@@ -33,7 +28,6 @@
             touch-action: none;
         }
         
-        /* Particles - Purple */
         .particles {
             position: fixed;
             top: 0;
@@ -87,7 +81,6 @@
             50% { transform: scale(1.2); opacity: 1; }
         }
         
-        /* Login Card - Midnight Blue + Neon Purple */
         .login-card {
             width: 100%;
             max-width: 400px;
@@ -349,36 +342,36 @@
         }
         
         /* ==============================================
-           PREMIUM CENTER POPUP - স্ক্রিনের মাঝখানে
+           PREMIUM POPUP - শুধু ৪টি জায়গায়
            ============================================== */
-        .center-popup-overlay {
+        .premium-popup {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(0, 0, 0, 0.88);
             backdrop-filter: blur(20px);
             z-index: 99999;
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease-out;
         }
-        .center-popup-box {
+        .premium-popup .popup-box {
             background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
             border: 1px solid rgba(155, 89, 182, 0.2);
-            border-radius: 28px;
-            padding: 30px 25px 25px;
-            max-width: 380px;
-            width: 90%;
+            border-radius: 24px;
+            padding: 28px 24px 22px;
+            max-width: 340px;
+            width: 88%;
             text-align: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(155, 89, 182, 0.05);
-            animation: floatPop 0.5s ease-out;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+            animation: floatPop 0.4s ease-out;
             position: relative;
             overflow: hidden;
         }
-        .center-popup-box::before {
+        .premium-popup .popup-box::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -389,7 +382,7 @@
             animation: bgPulse 8s ease-in-out infinite;
             pointer-events: none;
         }
-        .center-popup-box::after {
+        .premium-popup .popup-box::after {
             content: '';
             position: absolute;
             top: -2px;
@@ -397,7 +390,7 @@
             right: -2px;
             bottom: -2px;
             background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.12), transparent);
-            border-radius: 29px;
+            border-radius: 25px;
             z-index: -1;
             animation: borderGlow 3s ease-in-out infinite;
         }
@@ -407,114 +400,94 @@
             to { transform: scale(1) translateY(0); opacity: 1; }
         }
         
-        .center-popup-box .popup-icon {
-            font-size: 50px;
-            margin-bottom: 4px;
-            position: relative;
-            z-index: 1;
-        }
-        .center-popup-box .popup-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
-            font-weight: 900;
-            letter-spacing: 2px;
+        .premium-popup .popup-box .p-icon {
+            font-size: 42px;
             margin-bottom: 2px;
             position: relative;
             z-index: 1;
         }
-        .center-popup-box .popup-title.success { color: #2ecc71; }
-        .center-popup-box .popup-title.error { color: #e74c3c; }
-        .center-popup-box .popup-title.warning { color: #f39c12; }
-        .center-popup-box .popup-title.info { color: #9b59b6; }
-        
-        .center-popup-box .popup-sub {
-            color: #666;
+        .premium-popup .popup-box .p-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 9px;
-            letter-spacing: 2px;
-            margin-bottom: 14px;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-popup .popup-box .p-title.success { color: #2ecc71; }
+        .premium-popup .popup-box .p-title.error { color: #e74c3c; }
+        .premium-popup .popup-box .p-title.warning { color: #f39c12; }
+        .premium-popup .popup-box .p-title.info { color: #9b59b6; }
+        
+        .premium-popup .popup-box .p-msg {
+            color: #888;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            margin: 4px 0 12px 0;
+            letter-spacing: 0.5px;
             position: relative;
             z-index: 1;
         }
         
-        .center-popup-box .popup-details {
+        .premium-popup .popup-box .p-details {
             background: rgba(155, 89, 182, 0.04);
             border: 1px solid rgba(155, 89, 182, 0.06);
-            border-radius: 14px;
-            padding: 12px 14px;
-            margin-bottom: 16px;
+            border-radius: 12px;
+            padding: 10px 12px;
+            margin-bottom: 14px;
             text-align: left;
             position: relative;
             z-index: 1;
         }
-        .center-popup-box .popup-details .row {
+        .premium-popup .popup-box .p-details .row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 3px 0;
-            border-bottom: 1px solid rgba(155, 89, 182, 0.04);
-        }
-        .center-popup-box .popup-details .row:last-child {
-            border-bottom: none;
-        }
-        .center-popup-box .popup-details .row .lbl {
-            color: #666;
-            font-family: 'Orbitron', sans-serif;
+            padding: 2px 0;
             font-size: 9px;
-            letter-spacing: 0.5px;
-        }
-        .center-popup-box .popup-details .row .val {
-            color: #c39bd3;
             font-family: 'Orbitron', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
         }
-        .center-popup-box .popup-details .row .val.green { color: #2ecc71; }
-        .center-popup-box .popup-details .row .val.red { color: #e74c3c; }
-        .center-popup-box .popup-details .row .val.mono {
-            font-family: monospace;
-            font-size: 11px;
-            color: #c39bd3;
-        }
+        .premium-popup .popup-box .p-details .row .lbl { color: #666; }
+        .premium-popup .popup-box .p-details .row .val { color: #c39bd3; font-weight: 700; }
+        .premium-popup .popup-box .p-details .row .val.green { color: #2ecc71; }
+        .premium-popup .popup-box .p-details .row .val.red { color: #e74c3c; }
         
-        .center-popup-box .popup-btn {
+        .premium-popup .popup-box .p-btn {
             background: linear-gradient(135deg, #9b59b6, #7d3c98);
             color: #fff;
             border: none;
-            padding: 13px;
-            font-size: 13px;
+            padding: 11px;
+            font-size: 11px;
             font-weight: 900;
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-family: 'Orbitron', sans-serif;
             position: relative;
             z-index: 1;
-            transition: 0.3s;
-            box-shadow: 0 4px 30px rgba(155, 89, 182, 0.2);
+            box-shadow: 0 4px 30px rgba(155, 89, 182, 0.15);
         }
-        .center-popup-box .popup-btn:active { transform: scale(0.97); }
-        .center-popup-box .popup-btn.danger { background: linear-gradient(135deg, #e74c3c, #c0392b); box-shadow: 0 4px 30px rgba(231, 76, 60, 0.2); }
-        .center-popup-box .popup-btn.success-btn { background: linear-gradient(135deg, #2ecc71, #27ae60); box-shadow: 0 4px 30px rgba(46, 204, 113, 0.2); }
+        .premium-popup .popup-box .p-btn:active { transform: scale(0.97); }
+        .premium-popup .popup-box .p-btn.danger {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            box-shadow: 0 4px 30px rgba(231, 76, 60, 0.15);
+        }
         
-        .center-popup-box .popup-close {
+        .premium-popup .popup-box .p-close {
             position: absolute;
-            top: 12px;
-            right: 16px;
+            top: 10px;
+            right: 14px;
             color: #555;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
             z-index: 2;
-            transition: 0.3s;
             background: none;
             border: none;
             font-family: 'Orbitron', sans-serif;
         }
-        .center-popup-box .popup-close:hover { color: #e74c3c; }
+        .premium-popup .popup-box .p-close:hover { color: #e74c3c; }
         
-        /* Block Popup */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -528,7 +501,7 @@
             align-items: center;
             backdrop-filter: blur(10px);
         }
-        .popup-box {
+        .popup-box-system {
             background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
             border: 1px solid rgba(155, 89, 182, 0.15);
             padding: 30px 24px;
@@ -538,16 +511,16 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.9);
             text-align: center;
         }
-        .popup-box h1 {
+        .popup-box-system h1 {
             font-size: 18px;
             font-weight: 900;
             letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 10px;
         }
-        .popup-box h1 .purple { color: #9b59b6; }
-        .popup-box h1 .red { color: #e74c3c; }
-        .popup-box p {
+        .popup-box-system h1 .purple { color: #9b59b6; }
+        .popup-box-system h1 .red { color: #e74c3c; }
+        .popup-box-system p {
             color: #888;
             font-size: 12px;
             margin-bottom: 18px;
@@ -575,6 +548,26 @@
             color: white;
         }
         
+        /* Status Message - Normal (নিচে) */
+        .status-msg {
+            font-size: 10px;
+            color: #666;
+            margin-top: 8px;
+            min-height: 20px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+        .status-msg.show {
+            display: block;
+        }
+        .status-msg.success { color: #2ecc71; }
+        .status-msg.error { color: #e74c3c; }
+        .status-msg.warning { color: #f39c12; }
+        .status-msg.info { color: #9b59b6; }
+        
         @media (max-width: 380px) {
             .login-card { padding: 20px 16px 16px; }
             .brand-title { font-size: 15px; }
@@ -583,10 +576,7 @@
             .btn-auth { font-size: 11px; height: 44px; padding: 12px; }
             .btn-buy { font-size: 9px; height: 38px; padding: 10px; }
             .device-info-box p { font-size: 7px; }
-            .center-popup-box { padding: 24px 18px 20px; }
-            .center-popup-box .popup-details .row .lbl { font-size: 8px; }
-            .center-popup-box .popup-details .row .val { font-size: 9px; }
-            .center-popup-box .popup-title { font-size: 14px; }
+            .premium-popup .popup-box { padding: 22px 18px 18px; }
         }
         
         @media (max-height: 650px) {
@@ -599,11 +589,9 @@
             .btn-buy { font-size: 9px; height: 34px; padding: 8px; margin-top: 6px; }
             .device-info-box { margin-top: 8px; padding-top: 8px; }
             .device-info-box p { font-size: 7px; padding: 1px 0; }
-            .center-popup-box { padding: 20px 16px 16px; }
-            .center-popup-box .popup-details { padding: 8px 10px; }
-            .center-popup-box .popup-details .row { padding: 2px 0; }
-            .center-popup-box .popup-icon { font-size: 36px; }
-            .center-popup-box .popup-title { font-size: 13px; }
+            .premium-popup .popup-box { padding: 18px 16px 14px; }
+            .premium-popup .popup-box .p-icon { font-size: 32px; }
+            .premium-popup .popup-box .p-title { font-size: 12px; }
         }
     </style>
 </head>
@@ -620,18 +608,18 @@
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
-    <!-- Block Popup (System Level) -->
+    <!-- Block Popup (System) -->
     <div id="blockPopup" class="popup-overlay">
-        <div class="popup-box">
+        <div class="popup-box-system">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
             <p>Your hardware ID has been blacklisted from our servers.</p>
             <button class="exit-btn" onclick="exitApp()">EXIT APP</button>
         </div>
     </div>
 
-    <!-- Notification Popup -->
+    <!-- Notification Popup (System) -->
     <div id="notifPopup" class="popup-overlay">
-        <div class="popup-box">
+        <div class="popup-box-system">
             <h1><span class="purple"><i class="fa-solid fa-circle-bell"></i> SYSTEM NOTICE</span></h1>
             <p id="notifMessageText">App temporary server maintenance state me hai.</p>
             <button class="dismiss-btn" onclick="closeNotification()">Acknowledge</button>
@@ -639,40 +627,20 @@
     </div>
 
     <!-- ==============================================
-         PREMIUM CENTER POPUP - সব মেসেজ এখানে দেখাবে
+         PREMIUM POPUP - শুধু ৪টি জায়গায়
          ============================================== -->
-    <div class="center-popup-overlay" id="centerPopup">
-        <div class="center-popup-box">
-            <button class="popup-close" onclick="closeCenterPopup()">✕</button>
-            
-            <div class="popup-icon" id="popupIcon">👻</div>
-            <div class="popup-title success" id="popupTitle">✦ SUCCESS ✦</div>
-            <div class="popup-sub" id="popupSub">Premium Access Activated</div>
-            
-            <div class="popup-details" id="popupDetails">
-                <div class="row">
-                    <span class="lbl">🔑 LICENSE KEY</span>
-                    <span class="val mono" id="popupKey">—</span>
-                </div>
-                <div class="row">
-                    <span class="lbl">📅 REGISTERED</span>
-                    <span class="val" id="popupRegister">—</span>
-                </div>
-                <div class="row">
-                    <span class="lbl">⏳ EXPIRY DATE</span>
-                    <span class="val" id="popupExpiry">—</span>
-                </div>
-                <div class="row">
-                    <span class="lbl">📊 STATUS</span>
-                    <span class="val green" id="popupStatus">ACTIVE</span>
-                </div>
-                <div class="row">
-                    <span class="lbl">⚡ DEVICE</span>
-                    <span class="val" id="popupDevice" style="font-size:9px;color:#888;">—</span>
-                </div>
+    <div class="premium-popup" id="premiumPopup">
+        <div class="popup-box">
+            <button class="p-close" onclick="closePremiumPopup()">✕</button>
+            <div class="p-icon" id="pIcon">👻</div>
+            <div class="p-title success" id="pTitle">✦ SUCCESS ✦</div>
+            <div class="p-msg" id="pMsg">Premium access activated!</div>
+            <div class="p-details" id="pDetails">
+                <div class="row"><span class="lbl">🔑 KEY</span><span class="val" id="pKey">—</span></div>
+                <div class="row"><span class="lbl">📅 EXPIRY</span><span class="val" id="pExpiry">—</span></div>
+                <div class="row"><span class="lbl">📊 STATUS</span><span class="val green" id="pStatus">ACTIVE</span></div>
             </div>
-            
-            <button class="popup-btn" id="popupBtn" onclick="closeCenterPopup()">✦ CLOSE ✦</button>
+            <button class="p-btn" id="pBtn" onclick="closePremiumPopup()">✦ CLOSE ✦</button>
         </div>
     </div>
 
@@ -692,6 +660,7 @@
                     <i class="fa-solid fa-key"></i>
                     <input type="text" id="accessKey" placeholder="ENTER LICENSE KEY" autocomplete="off">
                 </div>
+                <div class="status-msg" id="statusMsg"></div>
                 <button type="button" class="btn-auth" id="authBtn" onclick="verifyKey()">✦ AUTHENTICATE ✦</button>
                 <a href="https://panelstorexcore.netlify.app" target="_blank" class="btn-buy">🛒 PANEL STORE</a>
             </div>
@@ -740,15 +709,15 @@
         })();
 
         // ==============================================
-        // PREMIUM CENTER POPUP SYSTEM
+        // PREMIUM POPUP
         // ==============================================
-        function showCenterPopup(type, title, sub, details, btnText, btnAction) {
-            const overlay = document.getElementById('centerPopup');
-            const icon = document.getElementById('popupIcon');
-            const titleEl = document.getElementById('popupTitle');
-            const subEl = document.getElementById('popupSub');
-            const detailsEl = document.getElementById('popupDetails');
-            const btn = document.getElementById('popupBtn');
+        function showPremiumPopup(type, title, msg, details, btnText, btnAction) {
+            const popup = document.getElementById('premiumPopup');
+            const icon = document.getElementById('pIcon');
+            const titleEl = document.getElementById('pTitle');
+            const msgEl = document.getElementById('pMsg');
+            const detailsEl = document.getElementById('pDetails');
+            const btn = document.getElementById('pBtn');
             
             const icons = {
                 success: '✅',
@@ -759,28 +728,18 @@
             
             icon.textContent = icons[type] || '👻';
             titleEl.textContent = title;
-            titleEl.className = 'popup-title ' + type;
-            subEl.textContent = sub || '';
+            titleEl.className = 'p-title ' + type;
+            msgEl.textContent = msg || '';
             
             // Details
             if (details) {
                 let html = '';
                 for (const key in details) {
                     const val = details[key];
-                    const isKey = key === 'KEY';
-                    const isStatus = key === 'STATUS';
-                    const isExpiry = key === 'EXPIRY';
                     let valClass = 'val';
-                    if (isStatus && val === 'ACTIVE') valClass += ' green';
-                    if (isStatus && val === 'EXPIRED') valClass += ' red';
-                    if (isKey) valClass += ' mono';
-                    if (isExpiry && val.includes('EXPIRED')) valClass += ' red';
-                    html += `
-                        <div class="row">
-                            <span class="lbl">${key}</span>
-                            <span class="${valClass}">${val}</span>
-                        </div>
-                    `;
+                    if (val === 'ACTIVE' || val === 'LIFETIME') valClass += ' green';
+                    if (val.includes('EXPIRED') || val === 'DEACTIVATED') valClass += ' red';
+                    html += `<div class="row"><span class="lbl">${key}</span><span class="${valClass}">${val}</span></div>`;
                 }
                 detailsEl.innerHTML = html;
                 detailsEl.style.display = 'block';
@@ -788,27 +747,38 @@
                 detailsEl.style.display = 'none';
             }
             
-            // Button
             btn.textContent = btnText || '✦ CLOSE ✦';
-            btn.className = 'popup-btn';
+            btn.className = 'p-btn';
             if (type === 'error') btn.classList.add('danger');
-            if (type === 'success') btn.classList.add('success-btn');
             
-            // Remove old click listeners
+            // Remove old listeners
             const newBtn = btn.cloneNode(true);
             btn.parentNode.replaceChild(newBtn, btn);
             newBtn.addEventListener('click', function() {
                 if (btnAction && typeof btnAction === 'function') {
                     btnAction();
                 }
-                closeCenterPopup();
+                closePremiumPopup();
             });
             
-            overlay.style.display = 'flex';
+            popup.style.display = 'flex';
         }
         
-        function closeCenterPopup() {
-            document.getElementById('centerPopup').style.display = 'none';
+        function closePremiumPopup() {
+            document.getElementById('premiumPopup').style.display = 'none';
+        }
+
+        // ==============================================
+        // STATUS MESSAGE (Normal - নিচে দেখাবে)
+        // ==============================================
+        function showStatus(msg, type) {
+            const el = document.getElementById('statusMsg');
+            el.textContent = msg;
+            el.className = 'status-msg show ' + type;
+        }
+        
+        function hideStatus() {
+            document.getElementById('statusMsg').className = 'status-msg';
         }
 
         // ==============================================
@@ -909,7 +879,8 @@
                     document.getElementById('loginCard').style.display = 'none';
                     document.getElementById('notifPopup').style.display = 'flex';
                     
-                    showCenterPopup('info', '📢 SYSTEM NOTICE', data.message, null, '✦ ACKNOWLEDGE ✦');
+                    // 📢 অ্যাডমিন নোটিফিকেশন - প্রিমিয়াম পপআপ
+                    showPremiumPopup('info', '📢 ADMIN NOTICE', data.message, null, '✦ OK ✦');
                 }
             });
         }
@@ -923,11 +894,7 @@
             isInitialized = true;
             document.getElementById('loadingView').style.display = 'none';
             document.getElementById('loginCard').style.display = 'flex';
-            
-            showCenterPopup('success', '✦ CONNECTION ESTABLISHED ✦', 'Welcome to Ghost X Panel VIP', {
-                '🔑 STATUS': '✅ READY',
-                '⚡ DEVICE': deviceId.substring(0, 10) + '...'
-            }, '✦ CONTINUE ✦');
+            showStatus('✅ System ready', 'success');
         }
 
         // ==============================================
@@ -938,57 +905,51 @@
             const authBtn = document.getElementById('authBtn');
 
             if (!inputKey) {
-                showCenterPopup('warning', '⚠️ EMPTY FIELD', 'Please enter your License Key!', null, '✦ OK ✦');
+                showStatus('⚠️ Please enter your License Key!', 'warning');
                 return;
             }
 
-            showCenterPopup('info', '🔄 VERIFYING', 'Checking license key validity...', {
-                '🔑 KEY': inputKey,
-                '⏳ STATUS': 'Verifying...'
-            }, '⏳ WAIT...');
-
+            showStatus('🔄 Verifying...', 'info');
             authBtn.disabled = true;
             authBtn.textContent = '⏳ VERIFYING...';
 
             database.ref('keys/' + inputKey).once('value').then((snapshot) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ AUTHENTICATE ✦';
-                closeCenterPopup();
 
                 if (!snapshot.exists()) {
-                    showCenterPopup('error', '❌ INVALID KEY', 'License key not found in database!', {
-                        '🔑 KEY': inputKey,
-                        '📊 STATUS': '❌ NOT FOUND'
-                    }, '✦ CLOSE ✦');
+                    showStatus('❌ Invalid License Key!', 'error');
                     return;
                 }
 
                 const keyData = snapshot.val();
                 const now = Date.now();
 
-                // Check Deactivated
+                // ❌ ডিঅ্যাক্টিভেটেড চেক
                 if (keyData.status === 'deactive') {
-                    showCenterPopup('error', '⛔ DEACTIVATED', 'This key has been deactivated by admin!', {
+                    showPremiumPopup('error', '⛔ KEY DEACTIVATED', 'This key has been deactivated by admin!', {
                         '🔑 KEY': inputKey,
-                        '📊 STATUS': '⛔ DEACTIVATED'
+                        '📊 STATUS': 'DEACTIVATED'
                     }, '✦ CLOSE ✦');
+                    showStatus('⛔ Key deactivated by admin', 'error');
                     return;
                 }
 
-                // Check Expired
+                // ⏰ এক্সপায়ার চেক
                 if (keyData.isUsed && keyData.duration !== 'lifetime') {
                     if (now > keyData.expiryTimestamp) {
                         const exp = new Date(keyData.expiryTimestamp);
-                        showCenterPopup('error', '⏰ KEY EXPIRED', 'Your license key has expired!', {
+                        showPremiumPopup('error', '⏰ KEY EXPIRED', 'Your license key has expired!', {
                             '🔑 KEY': inputKey,
                             '📅 EXPIRY': exp.toLocaleDateString(),
-                            '📊 STATUS': '❌ EXPIRED'
+                            '📊 STATUS': 'EXPIRED'
                         }, '✦ CLOSE ✦');
+                        showStatus('⏰ Key expired on ' + exp.toLocaleDateString(), 'error');
                         return;
                     }
                 }
 
-                // Update key if not used
+                // Update key
                 if (!keyData.isUsed) {
                     let updateData = { isUsed: true };
                     if (keyData.duration === '1min') {
@@ -1012,10 +973,9 @@
                 currentKey = inputKey;
                 currentKeyData = keyData;
 
-                // Show Success Popup
+                // ✅ লগইন সফল - প্রিমিয়াম পপআপ
                 let expiryText = '—';
                 let statusText = '✅ ACTIVE';
-                let statusClass = 'green';
                 
                 if (keyData.duration === 'lifetime') {
                     expiryText = '♾️ LIFETIME';
@@ -1023,53 +983,44 @@
                     const exp = new Date(keyData.expiryTimestamp);
                     const now = Date.now();
                     if (now > keyData.expiryTimestamp) {
-                        expiryText = exp.toLocaleDateString() + ' ⚠️ EXPIRED';
+                        expiryText = exp.toLocaleDateString() + ' EXPIRED';
                         statusText = '❌ EXPIRED';
-                        statusClass = 'red';
                     } else {
                         expiryText = exp.toLocaleDateString();
                     }
                 }
 
-                showCenterPopup('success', '✅ LOGIN SUCCESSFUL', 'Premium access activated successfully!', {
+                showPremiumPopup('success', '✅ LOGIN SUCCESSFUL', 'Premium access activated!', {
                     '🔑 KEY': inputKey,
-                    '📅 REGISTERED': keyData.registerDate || new Date().toLocaleString(),
-                    '⏳ EXPIRY': expiryText,
-                    '📊 STATUS': statusText,
-                    '⚡ DEVICE': deviceId.substring(0, 10) + '...'
+                    '📅 EXPIRY': expiryText,
+                    '📊 STATUS': statusText
                 }, '✦ OPEN FLOATING ✦', function() {
                     openAndroidFloating();
                 });
 
+                showStatus('✅ Login successful!', 'success');
+
             }).catch((error) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ AUTHENTICATE ✦';
-                showCenterPopup('error', '❌ DATABASE ERROR', error.message, null, '✦ CLOSE ✦');
+                showStatus('❌ Database error: ' + error.message, 'error');
             });
         }
 
         // ==============================================
-        // 🚀 OPEN ANDROID FLOATING WINDOW
+        // 🚀 OPEN ANDROID FLOATING
         // ==============================================
         function openAndroidFloating() {
-            closeCenterPopup();
+            closePremiumPopup();
 
             if (window.AndroidBridge && window.AndroidBridge.openFloating) {
-                console.log("📱 Opening Floating Window via AndroidBridge");
                 window.AndroidBridge.openFloating();
             } else if (window.Android && window.Android.showCustomView) {
-                console.log("📱 Opening Floating Window via Android");
                 window.Android.showCustomView("success");
             } else if (window.AndroidFloating && window.AndroidFloating.open) {
-                console.log("📱 Opening Floating Window via AndroidFloating");
                 window.AndroidFloating.open();
             } else {
-                showCenterPopup('info', '🌐 WEB MODE', 'Android bridge not found. Using web fallback.', {
-                    '🔑 KEY': currentKey || '—',
-                    '📅 REGISTERED': currentKeyData?.registerDate || '—',
-                    '📊 STATUS': '✅ ACTIVE',
-                    '⚡ DEVICE': deviceId.substring(0, 10) + '...'
-                }, '✦ CLOSE ✦');
+                alert('👻 FLOATING WINDOW\n\n✅ Click OK to close');
             }
         }
 
@@ -1101,4 +1052,4 @@
         window.onload = initSystem;
     </script>
 </body>
-                                                                     </html>
+    </html>
