@@ -151,7 +151,7 @@
         }
         
         /* ==============================================
-           LOGIN CARD
+           LOGIN CARD - বড়, ক্লিয়ার, ফ্যাট বাটন
            ============================================== */
         .login-card {
             width: 100%;
@@ -172,7 +172,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            animation: cardFadeIn 0.8s ease-out;
+            animation: cardFadeIn 0.4s ease-out;
+        }
+        
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
         }
         
         .login-card::before {
@@ -212,11 +217,7 @@
             50% { transform: scale(1.2); opacity: 1; }
         }
         
-        @keyframes cardFadeIn {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        
+        /* Brand Section */
         .brand-section {
             flex-shrink: 0;
             position: relative;
@@ -279,35 +280,38 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
         
+        /* ==============================================
+           ইনপুট ফিল্ড - বড় এবং ক্লিয়ার
+           ============================================== */
         .input-group {
             position: relative;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             z-index: 1;
             flex-shrink: 0;
         }
         .input-group i {
             position: absolute;
-            left: 16px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
             color: #00f5ff;
-            font-size: 14px;
-            opacity: 0.3;
+            font-size: 16px;
+            opacity: 0.4;
             transition: 0.3s;
         }
         .input-group input {
             width: 100%;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(0, 245, 255, 0.04);
-            padding: 14px 16px 14px 46px;
+            padding: 16px 18px 16px 50px;
             border-radius: 14px;
             color: #fff;
-            font-size: 13px;
+            font-size: 15px;
             outline: none;
             transition: 0.4s;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
-            height: 50px;
+            height: 56px;
         }
         .input-group input:focus {
             border-color: rgba(0, 245, 255, 0.15);
@@ -320,32 +324,38 @@
         .input-group input::placeholder {
             color: #2a2a2a;
             letter-spacing: 1px;
-            font-size: 10px;
+            font-size: 11px;
         }
         
+        /* ==============================================
+           লগইন বাটন - ফ্যাট / মোটা এবং ক্লিয়ার
+           ============================================== */
         .btn-login {
             width: 100%;
             background: transparent;
             color: #00f5ff;
-            border: 1px solid rgba(0, 245, 255, 0.08);
-            padding: 14px;
-            font-size: 12px;
+            border: 2px solid rgba(0, 245, 255, 0.12);
+            padding: 18px;
+            font-size: 15px;
             font-weight: 900;
             border-radius: 14px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             transition: 0.4s;
             font-family: 'Orbitron', sans-serif;
             position: relative;
             z-index: 1;
-            height: 50px;
+            height: 60px;
             overflow: hidden;
+            /* 🔥 বাটন ফ্যাট এবং স্পষ্ট */
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(0, 245, 255, 0.05);
         }
         .btn-login:hover {
             background: rgba(0, 245, 255, 0.03);
-            border-color: rgba(0, 245, 255, 0.15);
-            box-shadow: 0 0 40px rgba(0, 245, 255, 0.03);
+            border-color: rgba(0, 245, 255, 0.2);
+            box-shadow: 0 0 50px rgba(0, 245, 255, 0.05);
         }
         .btn-login:active { transform: scale(0.97); }
         .btn-login:disabled {
@@ -353,14 +363,17 @@
             cursor: not-allowed;
         }
         
+        /* ==============================================
+           প্যানেল স্টোর বাটন - ফ্যাট
+           ============================================== */
         .btn-store {
             display: inline-block;
             width: 100%;
             background: transparent;
             color: #444;
             border: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 12px;
-            font-size: 9px;
+            padding: 14px;
+            font-size: 11px;
             font-weight: 700;
             border-radius: 14px;
             cursor: pointer;
@@ -370,14 +383,14 @@
             transition: 0.3s;
             text-align: center;
             font-family: 'Orbitron', sans-serif;
-            margin-top: 8px;
+            margin-top: 10px;
             position: relative;
             z-index: 1;
-            height: 44px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
         .btn-store:hover {
             color: #00f5ff;
@@ -392,8 +405,8 @@
         }
         
         .device-info-box {
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: 14px;
+            padding-top: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.02);
             text-align: left;
             font-size: 8px;
@@ -424,15 +437,18 @@
         }
         
         .status-msg {
-            font-size: 9px;
+            font-size: 10px;
             color: #444;
             margin-top: 8px;
-            min-height: 18px;
+            min-height: 20px;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 0.5px;
             display: none;
             position: relative;
             z-index: 1;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.2);
         }
         .status-msg.show { display: block; }
         .status-msg.success { color: #00f5ff; }
@@ -441,7 +457,7 @@
         .status-msg.info { color: #00f5ff; opacity: 0.6; }
         
         /* ==============================================
-           LOADING SCREEN
+           লোডিং স্ক্রিন - দ্রুত ফেড আউট
            ============================================== */
         .loading-screen {
             position: fixed;
@@ -455,6 +471,12 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            animation: loadingFadeOut 0.3s ease-in forwards;
+            animation-delay: 1.5s;
+        }
+        @keyframes loadingFadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
         }
         .loading-screen .loader-icon {
             font-size: 32px;
@@ -496,7 +518,7 @@
         }
         
         /* ==============================================
-           PREMIUM POPUP - শুধু এই ১টা থাকবে
+           PREMIUM POPUP
            ============================================== */
         .premium-popup {
             display: none;
@@ -659,7 +681,6 @@
         }
         .premium-popup .popup-box .p-close:hover { color: #ff4444; }
         
-        /* Block Popup (System) */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -726,9 +747,9 @@
             .login-card { padding: 24px 16px 16px; }
             .brand-title { font-size: 17px; }
             .brand-sub { font-size: 8px; margin-bottom: 14px; }
-            .input-group input { font-size: 11px; height: 44px; padding: 12px 14px 12px 40px; }
-            .btn-login { font-size: 11px; height: 44px; padding: 12px; }
-            .btn-store { font-size: 8px; height: 38px; padding: 10px; }
+            .input-group input { font-size: 13px; height: 50px; padding: 14px 16px 14px 44px; }
+            .btn-login { font-size: 13px; height: 54px; padding: 16px; }
+            .btn-store { font-size: 10px; height: 44px; padding: 12px; }
             .device-info-box p { font-size: 6px; }
             .premium-popup .popup-box { padding: 22px 18px 18px; }
             .cyber-orb.orb1 { width: 300px; height: 300px; }
@@ -741,9 +762,9 @@
             .brand-sub { font-size: 7px; margin-bottom: 10px; }
             .brand-icon { font-size: 22px; }
             .input-group { margin-bottom: 10px; }
-            .input-group input { font-size: 11px; height: 38px; padding: 10px 12px 10px 36px; }
-            .btn-login { font-size: 11px; height: 38px; padding: 10px; }
-            .btn-store { font-size: 8px; height: 34px; padding: 8px; margin-top: 6px; }
+            .input-group input { font-size: 13px; height: 44px; padding: 12px 14px 12px 40px; }
+            .btn-login { font-size: 13px; height: 48px; padding: 14px; }
+            .btn-store { font-size: 10px; height: 40px; padding: 10px; margin-top: 6px; }
             .device-info-box { margin-top: 8px; padding-top: 8px; }
             .device-info-box p { font-size: 6px; padding: 1px 0; }
             .status-indicator { font-size: 8px; margin-bottom: 10px; }
@@ -755,9 +776,6 @@
 </head>
 <body>
 
-    <!-- ==============================================
-         ANIMATED BACKGROUND
-         ============================================== -->
     <div class="bg-container">
         <div class="grid-overlay"></div>
         <div class="cyber-orb orb1"></div>
@@ -765,10 +783,9 @@
         <div class="scan-line"></div>
     </div>
 
-    <!-- Particles -->
     <div class="particles" id="particles"></div>
 
-    <!-- Loading Screen -->
+    <!-- Loading Screen - দ্রুত ফেড আউট -->
     <div id="loadingView" class="loading-screen">
         <div class="loader-icon">🔒</div>
         <div class="loader-ring"></div>
@@ -776,7 +793,7 @@
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
-    <!-- Block Popup (System) - ব্লক ডিভাইসের জন্য -->
+    <!-- Block Popup -->
     <div id="blockPopup" class="popup-overlay">
         <div class="popup-box-system">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
@@ -785,9 +802,7 @@
         </div>
     </div>
 
-    <!-- ==============================================
-         PREMIUM POPUP - শুধু এডমিন মেসেজের জন্য
-         ============================================== -->
+    <!-- Premium Popup -->
     <div class="premium-popup" id="premiumPopup">
         <div class="popup-box">
             <button class="p-close" onclick="closePremiumPopup()">✕</button>
@@ -821,6 +836,7 @@
                 </div>
                 <div class="status-msg" id="statusMsg"></div>
                 
+                <!-- 🔥 ফ্যাট লগইন বাটন -->
                 <button type="button" class="btn-login" id="authBtn" onclick="verifyKey()">✦ LOGIN ✦</button>
                 
                 <a href="https://ghostxstore.netlify.app/" target="_blank" class="btn-store">
@@ -872,7 +888,7 @@
         })();
 
         // ==============================================
-        // PREMIUM POPUP - শুধু এডমিন মেসেজের জন্য
+        // PREMIUM POPUP
         // ==============================================
         function showAdminPopup(msg) {
             const popup = document.getElementById('premiumPopup');
@@ -891,10 +907,11 @@
         // ==============================================
         // STATUS MESSAGE
         // ==============================================
-        function showStatus(msg, type) {
-            const el = document.getElementById('statusMsg');
-            el.textContent = msg;
-            el.className = 'status-msg show ' + type;
+        function showMsg(msg, color) {
+            const statusText = document.getElementById('statusMsg');
+            statusText.style.display = 'block';
+            statusText.style.color = color;
+            statusText.innerText = msg;
         }
 
         // ==============================================
@@ -905,11 +922,9 @@
         const rawSpecs = (result.device.vendor || "") + (result.device.model || "") + result.os.name + result.os.version + window.screen.width;
         const deviceId = btoa(rawSpecs).replace(/[/+=]/g, "").substring(0, 24);
         let isInitialized = false;
-        let currentKeyData = null;
-        let currentKey = null;
 
         // ==============================================
-        // SYSTEM INIT
+        // SYSTEM INIT - লোডিং দ্রুত ফেড আউট
         // ==============================================
         function initSystem() {
             let modelName = (result.device.vendor ? result.device.vendor + " " : "") + (result.device.model || "Web Emulator");
@@ -925,11 +940,14 @@
                 document.getElementById('accessKey').value = savedKey;
             }
 
-            // Check blocked
+            // লোডিং ১.৫ সেকেন্ড পর অটো লুকাবে (CSS এনিমেশনে)
+            setTimeout(() => {
+                document.getElementById('loadingView').style.display = 'none';
+            }, 1500);
+
             database.ref('blockedDevices/' + deviceId).once('value')
                 .then((snapshot) => {
                     if (snapshot.exists() && snapshot.val().isBlocked === true) {
-                        document.getElementById('loadingView').style.display = 'none';
                         document.getElementById('blockPopup').style.display = 'flex';
                     } else {
                         trackDeviceAndRegion(modelName);
@@ -941,12 +959,11 @@
                     listenForAdminMessages();
                 });
 
+            // লগইন কার্ড দেখান (লোডিং শেষ হলে)
             setTimeout(() => {
-                if (!isInitialized) {
-                    document.querySelector('#loadingView .load-sub').textContent = 'Connection timeout...';
-                    setTimeout(() => showLoginScreen(), 800);
-                }
-            }, 5000);
+                document.getElementById('loginCard').style.display = 'flex';
+                showMsg('✅ System ready', '#00f5ff');
+            }, 1600);
         }
 
         // ==============================================
@@ -979,49 +996,37 @@
 
             database.ref('notifications/' + deviceId).once('value', (snapshot) => {
                 if (!snapshot.exists()) {
-                    showLoginScreen();
+                    // লগইন কার্ড ইতিমধ্যেই দেখানো হয়েছে
                 }
             });
         }
 
         // ==============================================
-        // 🚀 LISTEN ADMIN MESSAGES - শুধু এডমিন পপআপ
+        // LISTEN ADMIN MESSAGES
         // ==============================================
         function listenForAdminMessages() {
             database.ref('notifications/' + deviceId).on('value', (snapshot) => {
                 if (snapshot.exists()) {
                     let data = snapshot.val();
-                    
-                    // লোডিং ও লগইন কার্ড লুকান
-                    document.getElementById('loadingView').style.display = 'none';
                     document.getElementById('loginCard').style.display = 'none';
-                    
-                    // শুধু এডমিন পপআপ দেখান
                     showAdminPopup(data.message);
                 }
             });
         }
 
-        function showLoginScreen() {
-            isInitialized = true;
-            document.getElementById('loadingView').style.display = 'none';
-            document.getElementById('loginCard').style.display = 'flex';
-            showStatus('✅ System ready', 'success');
-        }
-
         // ==============================================
-        // 🚀 VERIFY KEY
+        // 🚀 VERIFY KEY - 1 Second Support
         // ==============================================
         function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
             const authBtn = document.getElementById('authBtn');
 
             if (!inputKey) {
-                showStatus('⚠️ Please enter your License Key!', 'warning');
+                showMsg("⚠️ Please enter your License Key!", "#ffd700");
                 return;
             }
 
-            showStatus('🔄 Verifying...', 'info');
+            showMsg("🔄 Verifying License Key...", "#888");
             authBtn.disabled = true;
             authBtn.textContent = '⏳ LOGGING IN...';
 
@@ -1030,52 +1035,65 @@
                 authBtn.textContent = '✦ LOGIN ✦';
 
                 if (!snapshot.exists()) {
-                    showStatus('❌ Invalid License Key!', 'error');
+                    showMsg("❌ Invalid License Key!", "#ff3333");
                     return;
                 }
 
                 const keyData = snapshot.val();
                 const now = Date.now();
 
+                // ✅ এক্সপায়ার চেক (সবার আগে)
+                if (keyData.durationRaw === '1sec' || keyData.duration === '1 Second (Test)') {
+                    if (keyData.isUsed && keyData.expiryTimestamp) {
+                        if (now > keyData.expiryTimestamp) {
+                            showMsg("⏰ Test Key Expired! (1 Second)", "#ff3333");
+                            database.ref('keys/' + inputKey).update({ status: 'deactive' });
+                            return;
+                        }
+                    }
+                }
+                
+                if (keyData.duration !== 'lifetime') {
+                    if (keyData.isUsed && keyData.expiryTimestamp) {
+                        if (now > keyData.expiryTimestamp) {
+                            showMsg("⏰ Key Expired! Validity Time Ended.", "#ff3333");
+                            database.ref('keys/' + inputKey).update({ status: 'deactive' });
+                            return;
+                        }
+                    }
+                }
+
+                // ✅ স্ট্যাটাস চেক
                 if (keyData.status === 'deactive') {
-                    showStatus('⛔ Key deactivated by admin', 'error');
+                    showMsg("⛔ This Key is Deactivated!", "#ff3333");
                     return;
                 }
 
-                if (keyData.isUsed && keyData.duration !== 'lifetime') {
-                    if (now > keyData.expiryTimestamp) {
-                        const exp = new Date(keyData.expiryTimestamp);
-                        showStatus('⏰ Key expired on ' + exp.toLocaleDateString(), 'error');
-                        return;
-                    }
-                }
-
+                // ✅ কী ইউজড আপডেট
                 if (!keyData.isUsed) {
                     let updateData = { isUsed: true };
+
                     if (keyData.duration === '1min') {
                         updateData.expiryTimestamp = now + (1 * 60 * 1000);
+                    } else if (keyData.durationRaw === '1sec' || keyData.duration === '1 Second (Test)') {
+                        updateData.expiryTimestamp = now + (1 * 1000);
                     } else if (keyData.duration !== 'lifetime') {
                         const days = parseInt(keyData.duration);
-                        updateData.expiryTimestamp = now + (days * 24 * 60 * 60 * 1000);
+                        if (!isNaN(days)) {
+                            updateData.expiryTimestamp = now + (days * 24 * 60 * 60 * 1000);
+                        }
                     }
-                    if (!keyData.registerDate) {
-                        updateData.registerDate = new Date().toLocaleString();
-                    }
+
                     database.ref('keys/' + inputKey).update(updateData);
-                    keyData.registerDate = updateData.registerDate || keyData.registerDate;
-                    keyData.expiryTimestamp = updateData.expiryTimestamp || keyData.expiryTimestamp;
                 }
 
+                // ✅ লগইন সফল
                 localStorage.setItem('x_core_logged_key', inputKey);
                 document.getElementById('uiLoggedKey').innerText = inputKey;
                 database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
 
-                currentKey = inputKey;
-                currentKeyData = keyData;
+                showMsg("✅ Login successful! Redirecting...", "#00ff44");
 
-                showStatus('✅ Login successful!', 'success');
-
-                // Android Floating Window
                 setTimeout(() => {
                     if (window.AndroidBridge && window.AndroidBridge.openFloating) {
                         window.AndroidBridge.openFloating();
@@ -1084,14 +1102,14 @@
                     } else if (window.AndroidFloating && window.AndroidFloating.open) {
                         window.AndroidFloating.open();
                     } else {
-                        alert('🔒 FLOATING WINDOW\n\n✅ Click OK to close');
+                        alert("✅ Floating Window Activated (Web Triggered) ✔️");
                     }
-                }, 1000);
+                }, 1200);
 
             }).catch((error) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ LOGIN ✦';
-                showStatus('❌ Database error: ' + error.message, 'error');
+                showMsg("❌ Database Error: " + error.message, "#ff3333");
             });
         }
 
@@ -1111,11 +1129,10 @@
         // ==============================================
         setTimeout(() => {
             if (document.getElementById('loadingView').style.display !== 'none') {
-                document.querySelector('#loadingView .load-sub').textContent = 'Emergency load...';
                 document.getElementById('loadingView').style.display = 'none';
                 document.getElementById('loginCard').style.display = 'flex';
             }
-        }, 8000);
+        }, 3000);
 
         // ==============================================
         // START
