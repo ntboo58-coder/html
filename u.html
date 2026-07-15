@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋 VIP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/1.0.35/ua-parser.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #0a0a0a;
+            font-family: 'Orbitron', sans-serif;
+            touch-action: none;
+        }
+        
+        .app-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.04) 0%, transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        @keyframes bgPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            max-height: 92vh;
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.97), rgba(5, 5, 10, 0.99));
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            border-radius: 28px;
+            padding: 28px 24px 20px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.04), inset 0 1px 0 rgba(255, 215, 0, 0.08);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.02), transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .login-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.08), transparent);
+            border-radius: 29px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .brand-section {
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .brand-title {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2px;
+        }
+        .brand-title .ghost-icon {
+            font-size: 22px;
+            -webkit-text-fill-color: initial;
+            color: #ffd700;
+        }
+        .brand-sub {
+            font-size: 9px;
+            color: #555;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .brand-sub span {
+            color: #ffd700;
+            -webkit-text-fill-color: #ffd700;
+        }
+        
+        .status-bar {
+            background: rgba(255, 215, 0, 0.04);
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 14px;
+            display: none;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        .status-bar .status-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #666;
+            padding: 2px 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .status-bar .status-row .label {
+            color: #555;
+            font-size: 8px;
+            letter-spacing: 0.5px;
+        }
+        .status-bar .status-row .value {
+            color: #ffd700;
+            font-weight: 700;
+            font-size: 9px;
+        }
+        .status-bar .status-row .value.expired {
+            color: #ff3333;
+        }
+        .status-bar .status-row .value.active {
+            color: #00ff44;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 14px;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        .input-group i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffd700;
+            font-size: 14px;
+            opacity: 0.5;
+        }
+        .input-group input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 14px 16px 14px 46px;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+            transition: 0.4s;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            height: 50px;
+        }
+        .input-group input:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .input-group input::placeholder {
+            color: #444;
+            letter-spacing: 1px;
+            font-size: 10px;
+        }
+        
+        .btn-auth {
+            width: 100%;
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0a0a;
+            border: none;
+            padding: 14px;
+            font-size: 13px;
+            font-weight: 900;
+            border-radius: 14px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.12);
+            height: 50px;
+        }
+        .btn-auth:active { transform: scale(0.97); }
+        .btn-auth:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-buy {
+            display: inline-block;
+            width: 100%;
+            background: transparent;
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            padding: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-buy:active {
+            background: rgba(255, 215, 0, 0.05);
+        }
+        
+        .status-msg {
+            font-size: 11px;
+            margin-bottom: 12px;
+            display: none;
+            font-weight: 700;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            min-height: 36px;
+            align-items: center;
+            justify-content: center;
+        }
+        .status-msg.show {
+            display: flex;
+        }
+        
+        .device-info-box {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 215, 0, 0.05);
+            text-align: left;
+            font-size: 9px;
+            color: #444;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        .device-info-box p {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 8px;
+        }
+        .device-info-box span {
+            color: #ffd700;
+            font-weight: 700;
+            font-size: 8px;
+        }
+        .device-info-box span.key-text {
+            color: #00ff44;
+            font-family: monospace;
+            font-size: 9px;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loading-screen .ghost-big {
+            font-size: 50px;
+            color: #ffd700;
+            margin-bottom: 16px;
+            animation: ghostFloat 2s ease-in-out infinite;
+        }
+        @keyframes ghostFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.05); }
+        }
+        .loading-screen .loader-ring {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 215, 0, 0.08);
+            border-top: 3px solid #ffd700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .loading-screen .load-title {
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .loading-screen .load-sub {
+            color: #444;
+            font-size: 9px;
+            margin-top: 6px;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        .popup-box {
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            padding: 30px 24px;
+            border-radius: 20px;
+            max-width: 340px;
+            width: 85%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+            text-align: center;
+        }
+        .popup-box h1 {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 10px;
+        }
+        .popup-box h1 .gold { color: #ffd700; }
+        .popup-box h1 .red { color: #ff3333; }
+        .popup-box p {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .exit-btn, .dismiss-btn {
+            border: none;
+            padding: 13px 30px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .exit-btn {
+            background: linear-gradient(135deg, #ff3333, #cc0000);
+            color: white;
+        }
+        .dismiss-btn {
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0a0a;
+        }
+
+        /* ==============================================
+           FLOATING WINDOW - শুধু CLOSE বাটন
+           ============================================== */
+        .floating-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(20px);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .floating-box {
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 24px;
+            padding: 30px 25px;
+            max-width: 360px;
+            width: 88%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+            animation: floatPop 0.5s ease-out;
+        }
+        @keyframes floatPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .floating-box .float-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .floating-box .float-title {
+            color: #ffd700;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .floating-box .float-sub {
+            color: #666;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+        }
+        .floating-box .float-details {
+            background: rgba(255, 215, 0, 0.04);
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .floating-box .float-details .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #666;
+            font-family: 'Orbitron', sans-serif;
+            padding: 3px 0;
+        }
+        .floating-box .float-details .row .lbl {
+            color: #555;
+            font-size: 9px;
+        }
+        .floating-box .float-details .row .val {
+            color: #ffd700;
+            font-weight: 700;
+            font-size: 10px;
+        }
+        .floating-box .float-details .row .val.green {
+            color: #00ff44;
+        }
+        .floating-box .float-details .row .val.red {
+            color: #ff3333;
+        }
+        .floating-box .float-close {
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0a0a;
+            border: none;
+            padding: 13px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .floating-box .float-close:active {
+            transform: scale(0.97);
+        }
+        
+        @media (max-width: 380px) {
+            .login-card { padding: 20px 16px 16px; }
+            .brand-title { font-size: 15px; }
+            .brand-sub { font-size: 8px; margin-bottom: 12px; }
+            .input-group input { font-size: 11px; height: 44px; padding: 12px 14px 12px 40px; }
+            .btn-auth { font-size: 11px; height: 44px; padding: 12px; }
+            .btn-buy { font-size: 9px; height: 38px; padding: 10px; }
+            .status-bar .status-row { font-size: 8px; }
+            .device-info-box p { font-size: 7px; }
+            .status-msg { font-size: 10px; min-height: 30px; }
+            .floating-box { padding: 24px 18px; }
+            .floating-box .float-details .row { font-size: 9px; }
+        }
+        
+        @media (max-height: 650px) {
+            .login-card { padding: 16px 14px 12px; }
+            .brand-title { font-size: 14px; }
+            .brand-sub { font-size: 7px; margin-bottom: 10px; }
+            .status-bar { padding: 6px 10px; margin-bottom: 10px; }
+            .status-bar .status-row { font-size: 7px; padding: 1px 0; }
+            .input-group { margin-bottom: 10px; }
+            .input-group input { font-size: 11px; height: 38px; padding: 10px 12px 10px 36px; }
+            .btn-auth { font-size: 11px; height: 38px; padding: 10px; }
+            .btn-buy { font-size: 9px; height: 34px; padding: 8px; margin-top: 6px; }
+            .device-info-box { margin-top: 8px; padding-top: 8px; }
+            .device-info-box p { font-size: 7px; padding: 1px 0; }
+            .status-msg { font-size: 9px; min-height: 26px; margin-bottom: 8px; padding: 4px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Loading Screen -->
+    <div id="loadingView" class="loading-screen">
+        <div class="ghost-big">👻</div>
+        <div class="loader-ring"></div>
+        <div class="load-title">𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋</div>
+        <div class="load-sub">Initializing Secure Connection...</div>
+    </div>
+
+    <!-- Block Popup -->
+    <div id="blockPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
+            <p>Your hardware ID has been blacklisted from our servers.</p>
+            <button class="exit-btn" onclick="exitApp()">EXIT APP</button>
+        </div>
+    </div>
+
+    <!-- Notification Popup -->
+    <div id="notifPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h1><span class="gold"><i class="fa-solid fa-circle-bell"></i> SYSTEM NOTICE</span></h1>
+            <p id="notifMessageText">App temporary server maintenance state me hai.</p>
+            <button class="dismiss-btn" onclick="closeNotification()">Acknowledge</button>
+        </div>
+    </div>
+
+    <!-- ==============================================
+         FLOATING WINDOW - শুধু CLOSE বাটন
+         ============================================== -->
+    <div class="floating-overlay" id="floatingOverlay">
+        <div class="floating-box">
+            <div class="float-icon">👻</div>
+            <div class="float-title">✦ FLOATING WINDOW ✦</div>
+            <div class="float-sub">Premium access activated successfully!</div>
+            <div class="float-details" id="floatDetails">
+                <div class="row"><span class="lbl">🔑 License Key</span><span class="val" id="floatKey">—</span></div>
+                <div class="row"><span class="lbl">📅 Login Date</span><span class="val" id="floatLoginDate">—</span></div>
+                <div class="row"><span class="lbl">⏳ Expiry Date</span><span class="val" id="floatExpiry">—</span></div>
+                <div class="row"><span class="lbl">📊 Status</span><span class="val green" id="floatStatus">ACTIVE</span></div>
+                <div class="row"><span class="lbl">⚡ Device</span><span class="val" id="floatDevice" style="font-size:9px;color:#888;">—</span></div>
+            </div>
+            <!-- শুধু CLOSE বাটন -->
+            <button class="float-close" onclick="closeFloating()">✕ CLOSE</button>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="app-container">
+        <div class="login-card" id="loginCard">
+            
+            <!-- Brand -->
+            <div class="brand-section">
+                <div class="brand-title">
+                    <span class="ghost-icon">👻</span> 𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋
+                </div>
+                <div class="brand-sub">Premium <span>VIP</span> Security</div>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="status-bar" id="statusBar">
+                <div class="status-row">
+                    <span class="label">📅 LOGIN DATE</span>
+                    <span class="value" id="loginDate">—</span>
+                </div>
+                <div class="status-row">
+                    <span class="label">⏳ EXPIRY DATE</span>
+                    <span class="value" id="expiryDate">—</span>
+                </div>
+                <div class="status-row">
+                    <span class="label">📊 STATUS</span>
+                    <span class="value" id="licenseStatus">—</span>
+                </div>
+                <div class="status-row">
+                    <span class="label">⚡ DEVICE</span>
+                    <span class="value" id="deviceStatus" style="font-size:8px;color:#666;">—</span>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" style="flex-shrink:0;">
+                <div class="input-group">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="text" id="accessKey" placeholder="ENTER LICENSE KEY" autocomplete="off">
+                </div>
+                <div class="status-msg" id="statusText"></div>
+                <button type="button" class="btn-auth" id="authBtn" onclick="verifyKey()">✦ AUTHENTICATE ✦</button>
+                <a href="https://panelstorexcore.netlify.app" target="_blank" class="btn-buy">🛒 PANEL STORE</a>
+            </div>
+
+            <!-- Device Info -->
+            <div class="device-info-box">
+                <p>Device: <span id="uiDeviceModel">Detecting...</span></p>
+                <p>OS: <span id="uiDeviceOS">Detecting...</span></p>
+                <p>HWID: <span id="uiDeviceHWID">Detecting...</span></p>
+                <p>Key: <span id="uiLoggedKey" class="key-text">Not Logged In</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==============================================
+        // 🔥 FIREBASE CONFIGURATION
+        // ==============================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyDn5WWbhTfrNPtrwQDvZQfKTdFtY0WGumc",
+            databaseURL: "https://html-tournament-e30b2-default-rtdb.asia-southeast1.firebasedatabase.app/",
+            projectId: "html-tournament-e30b2",
+            storageBucket: "html-tournament-e30b2.firebasestorage.app",
+            appId: "1:373738633415:android:c9642b4024fd646b0566e2"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // ==============================================
+        // PARTICLES
+        // ==============================================
+        (function createParticles() {
+            const container = document.getElementById('particles');
+            const count = window.innerWidth < 400 ? 20 : 30;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.width = (Math.random() * 2 + 1) + 'px';
+                p.style.height = p.style.width;
+                p.style.animationDuration = (Math.random() * 12 + 8) + 's';
+                p.style.animationDelay = (Math.random() * 8) + 's';
+                p.style.opacity = Math.random() * 0.3 + 0.05;
+                container.appendChild(p);
+            }
+        })();
+
+        // ==============================================
+        // DEVICE INFO
+        // ==============================================
+        let parser = new UAParser();
+        let result = parser.getResult();
+        const rawSpecs = (result.device.vendor || "") + (result.device.model || "") + result.os.name + result.os.version + window.screen.width;
+        const deviceId = btoa(rawSpecs).replace(/[/+=]/g, "").substring(0, 24);
+        let isInitialized = false;
+        let currentKeyData = null;
+
+        // ==============================================
+        // SYSTEM INIT
+        // ==============================================
+        function initSystem() {
+            let modelName = (result.device.vendor ? result.device.vendor + " " : "") + (result.device.model || "Web Emulator");
+            let osName = (result.os.name || "Unknown") + " " + (result.os.version || "");
+            
+            document.getElementById('uiDeviceModel').innerText = modelName;
+            document.getElementById('uiDeviceOS').innerText = osName;
+            document.getElementById('uiDeviceHWID').innerText = deviceId.substring(0, 10) + "...";
+
+            const savedKey = localStorage.getItem('x_core_logged_key');
+            if (savedKey) {
+                document.getElementById('uiLoggedKey').innerText = savedKey;
+                document.getElementById('accessKey').value = savedKey;
+                fetchKeyStatus(savedKey);
+            }
+
+            database.ref('blockedDevices/' + deviceId).once('value')
+                .then((snapshot) => {
+                    if (snapshot.exists() && snapshot.val().isBlocked === true) {
+                        document.getElementById('loadingView').style.display = 'none';
+                        document.getElementById('blockPopup').style.display = 'flex';
+                    } else {
+                        trackDeviceAndRegion(modelName);
+                        listenForAdminMessages();
+                    }
+                })
+                .catch((error) => {
+                    trackDeviceAndRegion(modelName);
+                    listenForAdminMessages();
+                });
+
+            setTimeout(() => {
+                if (!isInitialized) {
+                    document.querySelector('#loadingView .load-sub').textContent = 'Connection timeout...';
+                    setTimeout(() => showLoginScreen(), 800);
+                }
+            }, 5000);
+        }
+
+        // ==============================================
+        // FETCH KEY STATUS
+        // ==============================================
+        function fetchKeyStatus(key) {
+            database.ref('keys/' + key).once('value').then((snapshot) => {
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    currentKeyData = data;
+                    const statusBar = document.getElementById('statusBar');
+                    statusBar.style.display = 'block';
+                    
+                    document.getElementById('loginDate').textContent = data.registerDate || '—';
+                    
+                    if (data.duration === 'lifetime') {
+                        document.getElementById('expiryDate').textContent = '♾️ LIFETIME';
+                        document.getElementById('expiryDate').className = 'value active';
+                    } else if (data.expiryTimestamp) {
+                        const exp = new Date(data.expiryTimestamp);
+                        const now = Date.now();
+                        if (now > data.expiryTimestamp) {
+                            document.getElementById('expiryDate').textContent = exp.toLocaleDateString() + ' ⚠️';
+                            document.getElementById('expiryDate').className = 'value expired';
+                        } else {
+                            document.getElementById('expiryDate').textContent = exp.toLocaleDateString();
+                            document.getElementById('expiryDate').className = 'value';
+                        }
+                    } else {
+                        document.getElementById('expiryDate').textContent = '—';
+                    }
+                    
+                    const status = data.status === 'active' ? '✅ ACTIVE' : '⛔ DEACTIVATED';
+                    document.getElementById('licenseStatus').textContent = status;
+                    document.getElementById('licenseStatus').className = data.status === 'active' ? 'value active' : 'value expired';
+                    
+                    document.getElementById('deviceStatus').textContent = deviceId.substring(0, 10) + '...';
+                }
+            });
+        }
+
+        // ==============================================
+        // TRACK DEVICE
+        // ==============================================
+        async function trackDeviceAndRegion(deviceName) {
+            let regionName = "Unknown";
+            try {
+                let response = await fetch('https://www.cloudflare.com/cdn-cgi/trace');
+                let data = await response.text();
+                let locLine = data.split('\n').find(line => line.startsWith('loc='));
+                if (locLine) regionName = locLine.split('=')[1].toUpperCase();
+            } catch (e) {}
+
+            const savedKey = localStorage.getItem('x_core_logged_key') || "None";
+            let info = {
+                id: deviceId,
+                deviceName: deviceName,
+                region: regionName,
+                screenResolution: `${window.screen.width}x${window.screen.height}`,
+                time: new Date().toLocaleString(),
+                deviceType: /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
+                usedKey: savedKey,
+                lastSeen: firebase.database.ServerValue.TIMESTAMP
+            };
+            
+            try {
+                await database.ref('visitors/' + deviceId).set(info);
+            } catch(e) {}
+
+            database.ref('notifications/' + deviceId).once('value', (snapshot) => {
+                if (!snapshot.exists()) {
+                    showLoginScreen();
+                }
+            });
+        }
+
+        // ==============================================
+        // LISTEN NOTIFICATIONS
+        // ==============================================
+        function listenForAdminMessages() {
+            database.ref('notifications/' + deviceId).on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val();
+                    document.getElementById('notifMessageText').innerText = data.message;
+                    document.getElementById('loadingView').style.display = 'none';
+                    document.getElementById('loginCard').style.display = 'none';
+                    document.getElementById('notifPopup').style.display = 'flex';
+                }
+            });
+        }
+
+        function closeNotification() {
+            document.getElementById('notifPopup').style.display = 'none';
+            showLoginScreen();
+        }
+
+        function showLoginScreen() {
+            isInitialized = true;
+            document.getElementById('loadingView').style.display = 'none';
+            document.getElementById('loginCard').style.display = 'flex';
+        }
+
+        // ==============================================
+        // SHOW MESSAGE
+        // ==============================================
+        function showMsg(msg, color, isError = false) {
+            const el = document.getElementById('statusText');
+            el.innerText = msg;
+            el.style.color = color;
+            el.className = 'status-msg show';
+            if (isError) {
+                el.style.borderLeft = '3px solid ' + color;
+            } else {
+                el.style.borderLeft = 'none';
+            }
+        }
+
+        // ==============================================
+        // 🚀 VERIFY KEY - FLOATING WINDOW AUTO OPEN
+        // ==============================================
+        function verifyKey() {
+            const inputKey = document.getElementById('accessKey').value.trim();
+            const authBtn = document.getElementById('authBtn');
+
+            if (!inputKey) {
+                showMsg("⚠️ Please enter your License Key!", "#ffd700");
+                return;
+            }
+
+            showMsg("🔄 Verifying License...", "#888");
+            authBtn.disabled = true;
+            authBtn.textContent = '⏳ VERIFYING...';
+
+            database.ref('keys/' + inputKey).once('value').then((snapshot) => {
+                authBtn.disabled = false;
+                authBtn.textContent = '✦ AUTHENTICATE ✦';
+
+                if (!snapshot.exists()) {
+                    showMsg("❌ Invalid License Key!", "#ff3333", true);
+                    return;
+                }
+
+                const keyData = snapshot.val();
+                const now = Date.now();
+
+                if (keyData.status === 'deactive') {
+                    showMsg("⛔ This Key is Deactivated!", "#ff3333", true);
+                    return;
+                }
+
+                if (keyData.isUsed && keyData.duration !== 'lifetime') {
+                    if (now > keyData.expiryTimestamp) {
+                        showMsg("⏰ Key Expired!", "#ff3333", true);
+                        return;
+                    }
+                }
+
+                if (!keyData.isUsed) {
+                    let updateData = { isUsed: true };
+                    if (keyData.duration === '1min') {
+                        updateData.expiryTimestamp = now + (1 * 60 * 1000);
+                    } else if (keyData.duration !== 'lifetime') {
+                        const days = parseInt(keyData.duration);
+                        updateData.expiryTimestamp = now + (days * 24 * 60 * 60 * 1000);
+                    }
+                    if (!keyData.registerDate) {
+                        updateData.registerDate = new Date().toLocaleString();
+                    }
+                    database.ref('keys/' + inputKey).update(updateData);
+                    keyData.registerDate = updateData.registerDate || keyData.registerDate;
+                    keyData.expiryTimestamp = updateData.expiryTimestamp || keyData.expiryTimestamp;
+                }
+
+                localStorage.setItem('x_core_logged_key', inputKey);
+                document.getElementById('uiLoggedKey').innerText = inputKey;
+                database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
+
+                // Show status bar
+                currentKeyData = keyData;
+                fetchKeyStatus(inputKey);
+
+                showMsg("✅ Login Successful! Launching...", "#00ff44");
+
+                // ==============================================
+                // 🔥 FLOATING WINDOW AUTO OPEN - শুধু CLOSE বাটন
+                // ==============================================
+                setTimeout(() => {
+                    // ফ্লোটিং উইন্ডোতে ডেটা পপুলেট করুন
+                    document.getElementById('floatKey').textContent = inputKey;
+                    document.getElementById('floatLoginDate').textContent = keyData.registerDate || new Date().toLocaleString();
+                    
+                    let expiryText = '—';
+                    let statusText = 'ACTIVE';
+                    let statusClass = 'green';
+                    
+                    if (keyData.duration === 'lifetime') {
+                        expiryText = '♾️ LIFETIME';
+                    } else if (keyData.expiryTimestamp) {
+                        const exp = new Date(keyData.expiryTimestamp);
+                        const now = Date.now();
+                        if (now > keyData.expiryTimestamp) {
+                            expiryText = exp.toLocaleDateString() + ' ⚠️ EXPIRED';
+                            statusText = 'EXPIRED';
+                            statusClass = 'red';
+                        } else {
+                            expiryText = exp.toLocaleDateString();
+                        }
+                    }
+                    
+                    document.getElementById('floatExpiry').textContent = expiryText;
+                    document.getElementById('floatStatus').textContent = statusText;
+                    document.getElementById('floatStatus').className = 'val ' + statusClass;
+                    document.getElementById('floatDevice').textContent = deviceId.substring(0, 10) + '...';
+
+                    // Android Floating Window Trigger
+                    if (window.AndroidBridge && window.AndroidBridge.openFloating) {
+                        console.log("📱 Opening Floating Window via AndroidBridge");
+                        window.AndroidBridge.openFloating();
+                    } else if (window.Android && window.Android.showCustomView) {
+                        console.log("📱 Opening Floating Window via Android");
+                        window.Android.showCustomView("success");
+                    } else if (window.AndroidFloating && window.AndroidFloating.open) {
+                        console.log("📱 Opening Floating Window via AndroidFloating");
+                        window.AndroidFloating.open();
+                    } else {
+                        // Web Fallback - CSS ফ্লোটিং দেখান
+                        console.log("🌐 Web fallback - showing CSS floating");
+                        document.getElementById('floatingOverlay').style.display = 'flex';
+                    }
+                }, 1200);
+
+            }).catch((error) => {
+                authBtn.disabled = false;
+                authBtn.textContent = '✦ AUTHENTICATE ✦';
+                showMsg("❌ Database Error: " + error.message, "#ff3333", true);
+            });
+        }
+
+        // ==============================================
+        // CLOSE FLOATING WINDOW
+        // ==============================================
+        function closeFloating() {
+            document.getElementById('floatingOverlay').style.display = 'none';
+            
+            // Android Close Call
+            if (window.AndroidBridge && window.AndroidBridge.closeFloating) {
+                window.AndroidBridge.closeFloating();
+            } else if (window.Android && window.Android.closeCustomView) {
+                window.Android.closeCustomView();
+            }
+        }
+
+        // ==============================================
+        // EXIT APP
+        // ==============================================
+        function exitApp() {
+            if (window.Android && window.Android.closeApp) {
+                window.Android.closeApp();
+            } else {
+                alert("Closing App...");
+            }
+        }
+
+        // ==============================================
+        // EMERGENCY FALLBACK
+        // ==============================================
+        setTimeout(() => {
+            if (document.getElementById('loadingView').style.display !== 'none') {
+                document.querySelector('#loadingView .load-sub').textContent = 'Emergency load...';
+                document.getElementById('loadingView').style.display = 'none';
+                document.getElementById('loginCard').style.display = 'flex';
+            }
+        }, 8000);
+
+        // ==============================================
+        // START
+        // ==============================================
+        window.onload = initSystem;
+    </script>
+</body>
+</html>
