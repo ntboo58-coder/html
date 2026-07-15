@@ -34,7 +34,7 @@
         }
         
         /* ==============================================
-           ANIMATED BACKGROUND
+           ANIMATED BACKGROUND - আপগ্রেড
            ============================================== */
         .bg-container {
             position: fixed;
@@ -54,10 +54,10 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 245, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 245, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(rgba(0, 245, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.015) 1px, transparent 1px);
             background-size: 40px 40px;
-            animation: gridMove 20s linear infinite;
+            animation: gridMove 25s linear infinite;
         }
         @keyframes gridMove {
             0% { transform: translate(0, 0); }
@@ -67,33 +67,43 @@
         .cyber-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.08;
-            animation: orbFloat 15s ease-in-out infinite alternate;
+            filter: blur(120px);
+            opacity: 0.06;
+            animation: orbFloat 20s ease-in-out infinite alternate;
         }
         .cyber-orb.orb1 {
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             background: #00f5ff;
-            top: -150px;
-            right: -150px;
+            top: -200px;
+            right: -200px;
             animation-delay: 0s;
         }
         .cyber-orb.orb2 {
-            width: 400px;
-            height: 400px;
-            background: #00f5ff;
-            bottom: -100px;
-            left: -100px;
-            animation-delay: -5s;
-            opacity: 0.05;
+            width: 500px;
+            height: 500px;
+            background: #0088ff;
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -7s;
+            opacity: 0.04;
+        }
+        .cyber-orb.orb3 {
+            width: 300px;
+            height: 300px;
+            background: #9b59b6;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+            opacity: 0.03;
         }
         
         @keyframes orbFloat {
             0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(80px, -60px) scale(1.1); }
-            66% { transform: translate(-50px, 70px) scale(0.9); }
-            100% { transform: translate(60px, -30px) scale(1.05); }
+            33% { transform: translate(100px, -80px) scale(1.1); }
+            66% { transform: translate(-70px, 90px) scale(0.9); }
+            100% { transform: translate(80px, -40px) scale(1.05); }
         }
         
         .scan-line {
@@ -102,9 +112,9 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.15), rgba(0, 245, 255, 0.3), rgba(0, 245, 255, 0.15), transparent);
-            animation: scanDown 6s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(0, 245, 255, 0.05);
+            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.1), rgba(0, 245, 255, 0.2), rgba(0, 245, 255, 0.1), transparent);
+            animation: scanDown 8s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.03);
         }
         @keyframes scanDown {
             0% { top: -2px; opacity: 0; }
@@ -127,10 +137,10 @@
             position: absolute;
             width: 2px;
             height: 2px;
-            background: rgba(0, 245, 255, 0.2);
+            background: rgba(0, 245, 255, 0.15);
             border-radius: 50%;
             animation: floatParticle linear infinite;
-            box-shadow: 0 0 8px rgba(0, 245, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.03);
         }
         @keyframes floatParticle {
             0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
@@ -151,35 +161,36 @@
         }
         
         /* ==============================================
-           LOGIN CARD - বড়, ক্লিয়ার, ফ্যাট বাটন
+           LOGIN CARD - প্রিমিয়াম ডিজাইন
            ============================================== */
         .login-card {
             width: 100%;
             max-width: 400px;
             max-height: 92vh;
-            background: linear-gradient(145deg, rgba(8, 8, 8, 0.96), rgba(5, 5, 5, 0.98));
-            border: 1px solid rgba(0, 245, 255, 0.06);
-            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(8, 8, 8, 0.95), rgba(3, 3, 3, 0.98));
+            border: 1px solid rgba(0, 245, 255, 0.04);
+            border-radius: 28px;
             padding: 32px 24px 20px;
             text-align: center;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
             box-shadow: 
-                0 0 80px rgba(0, 245, 255, 0.02),
-                0 0 40px rgba(0, 245, 255, 0.01),
-                inset 0 1px 0 rgba(0, 245, 255, 0.04);
+                0 0 100px rgba(0, 245, 255, 0.01),
+                0 0 50px rgba(0, 245, 255, 0.005),
+                inset 0 1px 0 rgba(0, 245, 255, 0.03);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            animation: cardFadeIn 0.4s ease-out;
+            animation: cardFadeIn 0.5s ease-out;
         }
         
         @keyframes cardFadeIn {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: scale(0.95) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
         
+        /* নিওন বর্ডার গ্লো */
         .login-card::before {
             content: '';
             position: absolute;
@@ -187,8 +198,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.02), transparent 70%);
-            animation: bgPulse 8s ease-in-out infinite;
+            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.015), transparent 70%);
+            animation: bgPulse 10s ease-in-out infinite;
             pointer-events: none;
         }
         
@@ -199,22 +210,22 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.04), transparent, rgba(0, 245, 255, 0.02), transparent);
-            border-radius: 25px;
+            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.03), transparent, rgba(0, 245, 255, 0.02), transparent);
+            border-radius: 29px;
             z-index: -1;
-            animation: borderGlow 4s ease-in-out infinite;
+            animation: borderGlow 5s ease-in-out infinite;
             background-size: 300% 300%;
         }
         
         @keyframes borderGlow {
-            0% { opacity: 0.2; background-position: 0% 50%; }
-            50% { opacity: 0.6; background-position: 100% 50%; }
-            100% { opacity: 0.2; background-position: 0% 50%; }
+            0% { opacity: 0.15; background-position: 0% 50%; }
+            50% { opacity: 0.4; background-position: 100% 50%; }
+            100% { opacity: 0.15; background-position: 0% 50%; }
         }
         
         @keyframes bgPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.3); opacity: 0.7; }
         }
         
         /* Brand Section */
@@ -224,27 +235,32 @@
             z-index: 1;
         }
         .brand-icon {
-            font-size: 28px;
+            font-size: 32px;
             color: #00f5ff;
             margin-bottom: 4px;
-            text-shadow: 0 0 40px rgba(0, 245, 255, 0.1);
+            text-shadow: 0 0 60px rgba(0, 245, 255, 0.08);
+            animation: iconGlow 3s ease-in-out infinite;
+        }
+        @keyframes iconGlow {
+            0%, 100% { text-shadow: 0 0 40px rgba(0,245,255,0.05); }
+            50% { text-shadow: 0 0 80px rgba(0,245,255,0.12); }
         }
         .brand-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: #ffffff;
             margin-bottom: 2px;
-            text-shadow: 0 0 30px rgba(0, 245, 255, 0.05);
+            text-shadow: 0 0 40px rgba(0, 245, 255, 0.03);
         }
         .brand-title .highlight {
             color: #00f5ff;
-            text-shadow: 0 0 30px rgba(0, 245, 255, 0.15);
+            text-shadow: 0 0 40px rgba(0, 245, 255, 0.1);
         }
         .brand-sub {
             font-size: 9px;
             color: #444;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             margin-bottom: 20px;
             position: relative;
@@ -252,7 +268,7 @@
         }
         .brand-sub span {
             color: #00f5ff;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
         .status-indicator {
@@ -273,15 +289,15 @@
             border-radius: 50%;
             background: #00f5ff;
             animation: dotPulse 2s ease-in-out infinite;
-            box-shadow: 0 0 15px rgba(0, 245, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.1);
         }
         @keyframes dotPulse {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            0%, 100% { opacity: 0.2; transform: scale(0.7); }
             50% { opacity: 1; transform: scale(1.2); }
         }
         
         /* ==============================================
-           ইনপুট ফিল্ড - বড় এবং ক্লিয়ার
+           ইনপুট ফিল্ড - প্রিমিয়াম
            ============================================== */
         .input-group {
             position: relative;
@@ -296,8 +312,8 @@
             transform: translateY(-50%);
             color: #00f5ff;
             font-size: 16px;
-            opacity: 0.4;
-            transition: 0.3s;
+            opacity: 0.3;
+            transition: 0.4s;
         }
         .input-group input {
             width: 100%;
@@ -314,12 +330,12 @@
             height: 56px;
         }
         .input-group input:focus {
-            border-color: rgba(0, 245, 255, 0.15);
-            box-shadow: 0 0 40px rgba(0, 245, 255, 0.03), inset 0 0 20px rgba(0, 245, 255, 0.01);
+            border-color: rgba(0, 245, 255, 0.12);
+            box-shadow: 0 0 50px rgba(0, 245, 255, 0.02), inset 0 0 30px rgba(0, 245, 255, 0.01);
             background: rgba(0, 245, 255, 0.02);
         }
         .input-group input:focus + i {
-            opacity: 0.8;
+            opacity: 0.7;
         }
         .input-group input::placeholder {
             color: #2a2a2a;
@@ -328,34 +344,47 @@
         }
         
         /* ==============================================
-           লগইন বাটন - ফ্যাট / মোটা এবং ক্লিয়ার
+           লগইন বাটন - প্রিমিয়াম ফ্যাট
            ============================================== */
         .btn-login {
             width: 100%;
             background: transparent;
             color: #00f5ff;
-            border: 2px solid rgba(0, 245, 255, 0.12);
+            border: 2px solid rgba(0, 245, 255, 0.08);
             padding: 18px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 900;
             border-radius: 14px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             transition: 0.4s;
             font-family: 'Orbitron', sans-serif;
             position: relative;
             z-index: 1;
-            height: 60px;
+            height: 62px;
             overflow: hidden;
-            /* 🔥 বাটন ফ্যাট এবং স্পষ্ট */
-            font-weight: 900;
-            text-shadow: 0 0 20px rgba(0, 245, 255, 0.05);
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.03);
+        }
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.03), transparent 60%);
+            animation: btnShine 4s ease-in-out infinite;
+        }
+        @keyframes btnShine {
+            0% { transform: translate(-30%, -30%) scale(0.5); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translate(30%, 30%) scale(0.5); opacity: 0; }
         }
         .btn-login:hover {
-            background: rgba(0, 245, 255, 0.03);
-            border-color: rgba(0, 245, 255, 0.2);
-            box-shadow: 0 0 50px rgba(0, 245, 255, 0.05);
+            background: rgba(0, 245, 255, 0.02);
+            border-color: rgba(0, 245, 255, 0.15);
+            box-shadow: 0 0 60px rgba(0, 245, 255, 0.03);
         }
         .btn-login:active { transform: scale(0.97); }
         .btn-login:disabled {
@@ -363,15 +392,12 @@
             cursor: not-allowed;
         }
         
-        /* ==============================================
-           প্যানেল স্টোর বাটন - ফ্যাট
-           ============================================== */
         .btn-store {
             display: inline-block;
             width: 100%;
             background: transparent;
             color: #444;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.02);
             padding: 14px;
             font-size: 11px;
             font-weight: 700;
@@ -394,23 +420,18 @@
         }
         .btn-store:hover {
             color: #00f5ff;
-            border-color: rgba(0, 245, 255, 0.05);
+            border-color: rgba(0, 245, 255, 0.03);
         }
-        .btn-store:active {
-            transform: scale(0.97);
-        }
-        .btn-store i {
-            color: #00f5ff;
-            opacity: 0.3;
-        }
+        .btn-store:active { transform: scale(0.97); }
+        .btn-store i { color: #00f5ff; opacity: 0.2; }
         
         .device-info-box {
             margin-top: 14px;
             padding-top: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.015);
             text-align: left;
             font-size: 8px;
-            color: #2a2a2a;
+            color: #222;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
@@ -427,13 +448,13 @@
             color: #00f5ff;
             font-weight: 700;
             font-size: 7px;
-            opacity: 0.4;
+            opacity: 0.3;
         }
         .device-info-box span.key-text {
             color: #00f5ff;
             font-family: monospace;
             font-size: 8px;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
         .status-msg {
@@ -457,7 +478,7 @@
         .status-msg.info { color: #00f5ff; opacity: 0.6; }
         
         /* ==============================================
-           লোডিং স্ক্রিন - দ্রুত ফেড আউট
+           LOADING SCREEN - প্রিমিয়াম
            ============================================== */
         .loading-screen {
             position: fixed;
@@ -471,7 +492,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            animation: loadingFadeOut 0.3s ease-in forwards;
+            animation: loadingFadeOut 0.4s ease-in forwards;
             animation-delay: 1.5s;
         }
         @keyframes loadingFadeOut {
@@ -479,41 +500,41 @@
             100% { opacity: 0; visibility: hidden; }
         }
         .loading-screen .loader-icon {
-            font-size: 32px;
+            font-size: 36px;
             color: #00f5ff;
             margin-bottom: 16px;
-            text-shadow: 0 0 60px rgba(0, 245, 255, 0.05);
+            text-shadow: 0 0 80px rgba(0, 245, 255, 0.05);
             animation: iconPulse 2s ease-in-out infinite;
         }
         @keyframes iconPulse {
-            0%, 100% { opacity: 0.5; transform: scale(0.9); }
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
             50% { opacity: 1; transform: scale(1.1); }
         }
         .loading-screen .loader-ring {
-            width: 50px;
-            height: 50px;
-            border: 2px solid rgba(0, 245, 255, 0.03);
+            width: 55px;
+            height: 55px;
+            border: 2px solid rgba(0, 245, 255, 0.02);
             border-top: 2px solid #00f5ff;
             border-radius: 50%;
             animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             margin-bottom: 16px;
-            box-shadow: 0 0 40px rgba(0, 245, 255, 0.02);
+            box-shadow: 0 0 50px rgba(0, 245, 255, 0.01);
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .loading-screen .load-title {
             color: #ffffff;
-            font-size: 14px;
-            letter-spacing: 4px;
+            font-size: 15px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
-            opacity: 0.8;
+            opacity: 0.7;
         }
         .loading-screen .load-sub {
-            color: #2a2a2a;
+            color: #222;
             font-size: 9px;
             margin-top: 6px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-family: 'Orbitron', sans-serif;
         }
         
@@ -527,7 +548,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.94);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(30px);
             z-index: 99999;
             justify-content: center;
@@ -535,14 +556,14 @@
             animation: fadeIn 0.3s ease-out;
         }
         .premium-popup .popup-box {
-            background: linear-gradient(145deg, rgba(8, 8, 8, 0.98), rgba(5, 5, 5, 0.99));
-            border: 1px solid rgba(0, 245, 255, 0.04);
+            background: linear-gradient(145deg, rgba(8, 8, 8, 0.98), rgba(3, 3, 3, 0.99));
+            border: 1px solid rgba(0, 245, 255, 0.03);
             border-radius: 24px;
             padding: 28px 24px 22px;
             max-width: 340px;
             width: 88%;
             text-align: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 80px rgba(0, 245, 255, 0.01);
+            box-shadow: 0 40px 120px rgba(0,0,0,0.9), 0 0 100px rgba(0, 245, 255, 0.005);
             animation: floatPop 0.4s ease-out;
             position: relative;
             overflow: hidden;
@@ -554,8 +575,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.02), transparent 70%);
-            animation: bgPulse 8s ease-in-out infinite;
+            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.015), transparent 70%);
+            animation: bgPulse 10s ease-in-out infinite;
             pointer-events: none;
         }
         .premium-popup .popup-box::after {
@@ -565,10 +586,10 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.04), transparent);
+            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.03), transparent);
             border-radius: 25px;
             z-index: -1;
-            animation: borderGlow 4s ease-in-out infinite;
+            animation: borderGlow 5s ease-in-out infinite;
             background-size: 300% 300%;
         }
         
@@ -582,12 +603,12 @@
         }
         
         .premium-popup .popup-box .p-icon {
-            font-size: 28px;
+            font-size: 30px;
             color: #00f5ff;
             margin-bottom: 4px;
             position: relative;
             z-index: 1;
-            opacity: 0.8;
+            opacity: 0.7;
         }
         .premium-popup .popup-box .p-title {
             font-family: 'Orbitron', sans-serif;
@@ -601,7 +622,7 @@
         .premium-popup .popup-box .p-title.success { color: #00f5ff; }
         .premium-popup .popup-box .p-title.error { color: #ff4444; }
         .premium-popup .popup-box .p-title.warning { color: #ffaa00; }
-        .premium-popup .popup-box .p-title.info { color: #00f5ff; opacity: 0.7; }
+        .premium-popup .popup-box .p-title.info { color: #00f5ff; opacity: 0.6; }
         
         .premium-popup .popup-box .p-msg {
             color: #444;
@@ -615,7 +636,7 @@
         
         .premium-popup .popup-box .p-details {
             background: rgba(0, 245, 255, 0.01);
-            border: 1px solid rgba(0, 245, 255, 0.02);
+            border: 1px solid rgba(0, 245, 255, 0.015);
             border-radius: 12px;
             padding: 10px 12px;
             margin-bottom: 14px;
@@ -631,14 +652,14 @@
             font-family: 'Orbitron', sans-serif;
         }
         .premium-popup .popup-box .p-details .row .lbl { color: #333; }
-        .premium-popup .popup-box .p-details .row .val { color: #00f5ff; font-weight: 700; opacity: 0.7; }
+        .premium-popup .popup-box .p-details .row .val { color: #00f5ff; font-weight: 700; opacity: 0.6; }
         .premium-popup .popup-box .p-details .row .val.green { color: #00f5ff; opacity: 1; }
         .premium-popup .popup-box .p-details .row .val.red { color: #ff4444; }
         
         .premium-popup .popup-box .p-btn {
             background: transparent;
             color: #00f5ff;
-            border: 1px solid rgba(0, 245, 255, 0.04);
+            border: 1px solid rgba(0, 245, 255, 0.03);
             padding: 11px;
             font-size: 11px;
             font-weight: 900;
@@ -653,17 +674,17 @@
             transition: 0.3s;
         }
         .premium-popup .popup-box .p-btn:hover {
-            background: rgba(0, 245, 255, 0.02);
-            border-color: rgba(0, 245, 255, 0.08);
+            background: rgba(0, 245, 255, 0.015);
+            border-color: rgba(0, 245, 255, 0.06);
         }
         .premium-popup .popup-box .p-btn:active { transform: scale(0.97); }
         .premium-popup .popup-box .p-btn.danger {
             color: #ff4444;
-            border-color: rgba(255, 68, 68, 0.04);
+            border-color: rgba(255, 68, 68, 0.03);
         }
         .premium-popup .popup-box .p-btn.danger:hover {
-            background: rgba(255, 68, 68, 0.02);
-            border-color: rgba(255, 68, 68, 0.08);
+            background: rgba(255, 68, 68, 0.015);
+            border-color: rgba(255, 68, 68, 0.06);
         }
         
         .premium-popup .popup-box .p-close {
@@ -688,20 +709,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.94);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 10000;
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(20px);
         }
         .popup-box-system {
-            background: linear-gradient(145deg, rgba(8, 8, 8, 0.98), rgba(5, 5, 5, 0.99));
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: linear-gradient(145deg, rgba(8, 8, 8, 0.98), rgba(3, 3, 3, 0.99));
+            border: 1px solid rgba(255, 255, 255, 0.015);
             padding: 30px 24px;
             border-radius: 20px;
             max-width: 340px;
             width: 85%;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+            box-shadow: 0 30px 100px rgba(0,0,0,0.9);
             text-align: center;
         }
         .popup-box-system h1 {
@@ -735,20 +756,20 @@
         .exit-btn {
             background: transparent;
             color: #ff4444;
-            border: 1px solid rgba(255, 68, 68, 0.04);
+            border: 1px solid rgba(255, 68, 68, 0.03);
         }
         .dismiss-btn {
             background: transparent;
             color: #00f5ff;
-            border: 1px solid rgba(0, 245, 255, 0.04);
+            border: 1px solid rgba(0, 245, 255, 0.03);
         }
         
         @media (max-width: 380px) {
             .login-card { padding: 24px 16px 16px; }
-            .brand-title { font-size: 17px; }
+            .brand-title { font-size: 18px; }
             .brand-sub { font-size: 8px; margin-bottom: 14px; }
             .input-group input { font-size: 13px; height: 50px; padding: 14px 16px 14px 44px; }
-            .btn-login { font-size: 13px; height: 54px; padding: 16px; }
+            .btn-login { font-size: 14px; height: 56px; padding: 16px; }
             .btn-store { font-size: 10px; height: 44px; padding: 12px; }
             .device-info-box p { font-size: 6px; }
             .premium-popup .popup-box { padding: 22px 18px 18px; }
@@ -758,19 +779,19 @@
         
         @media (max-height: 650px) {
             .login-card { padding: 18px 14px 12px; }
-            .brand-title { font-size: 16px; }
+            .brand-title { font-size: 17px; }
             .brand-sub { font-size: 7px; margin-bottom: 10px; }
-            .brand-icon { font-size: 22px; }
+            .brand-icon { font-size: 26px; }
             .input-group { margin-bottom: 10px; }
-            .input-group input { font-size: 13px; height: 44px; padding: 12px 14px 12px 40px; }
-            .btn-login { font-size: 13px; height: 48px; padding: 14px; }
+            .input-group input { font-size: 13px; height: 46px; padding: 12px 14px 12px 40px; }
+            .btn-login { font-size: 14px; height: 50px; padding: 14px; }
             .btn-store { font-size: 10px; height: 40px; padding: 10px; margin-top: 6px; }
             .device-info-box { margin-top: 8px; padding-top: 8px; }
             .device-info-box p { font-size: 6px; padding: 1px 0; }
             .status-indicator { font-size: 8px; margin-bottom: 10px; }
             .premium-popup .popup-box { padding: 18px 16px 14px; }
-            .premium-popup .popup-box .p-icon { font-size: 22px; }
-            .premium-popup .popup-box .p-title { font-size: 12px; }
+            .premium-popup .popup-box .p-icon { font-size: 24px; }
+            .premium-popup .popup-box .p-title { font-size: 13px; }
         }
     </style>
 </head>
@@ -780,12 +801,13 @@
         <div class="grid-overlay"></div>
         <div class="cyber-orb orb1"></div>
         <div class="cyber-orb orb2"></div>
+        <div class="cyber-orb orb3"></div>
         <div class="scan-line"></div>
     </div>
 
     <div class="particles" id="particles"></div>
 
-    <!-- Loading Screen - দ্রুত ফেড আউট -->
+    <!-- Loading Screen -->
     <div id="loadingView" class="loading-screen">
         <div class="loader-icon">🔒</div>
         <div class="loader-ring"></div>
@@ -836,7 +858,6 @@
                 </div>
                 <div class="status-msg" id="statusMsg"></div>
                 
-                <!-- 🔥 ফ্যাট লগইন বাটন -->
                 <button type="button" class="btn-login" id="authBtn" onclick="verifyKey()">✦ LOGIN ✦</button>
                 
                 <a href="https://ghostxstore.netlify.app/" target="_blank" class="btn-store">
@@ -924,7 +945,7 @@
         let isInitialized = false;
 
         // ==============================================
-        // SYSTEM INIT - লোডিং দ্রুত ফেড আউট
+        // SYSTEM INIT
         // ==============================================
         function initSystem() {
             let modelName = (result.device.vendor ? result.device.vendor + " " : "") + (result.device.model || "Web Emulator");
@@ -940,7 +961,6 @@
                 document.getElementById('accessKey').value = savedKey;
             }
 
-            // লোডিং ১.৫ সেকেন্ড পর অটো লুকাবে (CSS এনিমেশনে)
             setTimeout(() => {
                 document.getElementById('loadingView').style.display = 'none';
             }, 1500);
@@ -959,7 +979,6 @@
                     listenForAdminMessages();
                 });
 
-            // লগইন কার্ড দেখান (লোডিং শেষ হলে)
             setTimeout(() => {
                 document.getElementById('loginCard').style.display = 'flex';
                 showMsg('✅ System ready', '#00f5ff');
@@ -995,9 +1014,7 @@
             } catch(e) {}
 
             database.ref('notifications/' + deviceId).once('value', (snapshot) => {
-                if (!snapshot.exists()) {
-                    // লগইন কার্ড ইতিমধ্যেই দেখানো হয়েছে
-                }
+                if (!snapshot.exists()) {}
             });
         }
 
@@ -1015,7 +1032,7 @@
         }
 
         // ==============================================
-        // 🚀 VERIFY KEY - 1 Second Support
+        // 🚀 VERIFY KEY - ফিক্সড (এক্সপায়ার চেক)
         // ==============================================
         function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
@@ -1042,17 +1059,22 @@
                 const keyData = snapshot.val();
                 const now = Date.now();
 
-                // ✅ এক্সপায়ার চেক (সবার আগে)
-                if (keyData.durationRaw === '1sec' || keyData.duration === '1 Second (Test)') {
+                // ==============================================
+                // 🔥 STEP 1: এক্সপায়ার চেক (সবার আগে)
+                // ==============================================
+                
+                // 1 Minute (Test) চেক
+                if (keyData.durationRaw === '1min' || keyData.duration === '1 Min') {
                     if (keyData.isUsed && keyData.expiryTimestamp) {
                         if (now > keyData.expiryTimestamp) {
-                            showMsg("⏰ Test Key Expired! (1 Second)", "#ff3333");
+                            showMsg("⏰ Test Key Expired! (1 Minute)", "#ff3333");
                             database.ref('keys/' + inputKey).update({ status: 'deactive' });
                             return;
                         }
                     }
                 }
                 
+                // নরমাল ডিউরেশন চেক
                 if (keyData.duration !== 'lifetime') {
                     if (keyData.isUsed && keyData.expiryTimestamp) {
                         if (now > keyData.expiryTimestamp) {
@@ -1063,20 +1085,22 @@
                     }
                 }
 
-                // ✅ স্ট্যাটাস চেক
+                // ==============================================
+                // 🔥 STEP 2: স্ট্যাটাস চেক
+                // ==============================================
                 if (keyData.status === 'deactive') {
                     showMsg("⛔ This Key is Deactivated!", "#ff3333");
                     return;
                 }
 
-                // ✅ কী ইউজড আপডেট
+                // ==============================================
+                // 🔥 STEP 3: কী ইউজড আপডেট
+                // ==============================================
                 if (!keyData.isUsed) {
                     let updateData = { isUsed: true };
 
-                    if (keyData.duration === '1min') {
-                        updateData.expiryTimestamp = now + (1 * 60 * 1000);
-                    } else if (keyData.durationRaw === '1sec' || keyData.duration === '1 Second (Test)') {
-                        updateData.expiryTimestamp = now + (1 * 1000);
+                    if (keyData.duration === '1min' || keyData.durationRaw === '1min') {
+                        updateData.expiryTimestamp = now + (1 * 60 * 1000); // 1 মিনিট
                     } else if (keyData.duration !== 'lifetime') {
                         const days = parseInt(keyData.duration);
                         if (!isNaN(days)) {
@@ -1087,7 +1111,9 @@
                     database.ref('keys/' + inputKey).update(updateData);
                 }
 
-                // ✅ লগইন সফল
+                // ==============================================
+                // ✅ STEP 4: লগইন সফল
+                // ==============================================
                 localStorage.setItem('x_core_logged_key', inputKey);
                 document.getElementById('uiLoggedKey').innerText = inputKey;
                 database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
