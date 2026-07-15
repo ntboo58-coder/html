@@ -48,7 +48,7 @@
             position: absolute;
             width: 2px;
             height: 2px;
-            background: rgba(155, 89, 182, 0.3);
+            background: rgba(155, 89, 182, 0.25);
             border-radius: 50%;
             animation: float linear infinite;
         }
@@ -77,7 +77,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.06) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.05), transparent 70%);
             animation: bgPulse 8s ease-in-out infinite;
             z-index: 0;
         }
@@ -87,18 +87,18 @@
             50% { transform: scale(1.2); opacity: 1; }
         }
         
-        /* Login Card - Purple Theme */
+        /* Login Card - Midnight Blue + Neon Purple */
         .login-card {
             width: 100%;
             max-width: 400px;
             max-height: 92vh;
-            background: linear-gradient(145deg, rgba(15, 15, 20, 0.97), rgba(5, 5, 10, 0.99));
-            border: 1px solid rgba(155, 89, 182, 0.2);
+            background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
+            border: 1px solid rgba(155, 89, 182, 0.15);
             border-radius: 28px;
             padding: 28px 24px 20px;
             text-align: center;
             backdrop-filter: blur(20px);
-            box-shadow: 0 0 60px rgba(155, 89, 182, 0.05), inset 0 1px 0 rgba(155, 89, 182, 0.1);
+            box-shadow: 0 0 60px rgba(155, 89, 182, 0.05), inset 0 1px 0 rgba(155, 89, 182, 0.08);
             position: relative;
             z-index: 1;
             overflow: hidden;
@@ -132,7 +132,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.15), transparent);
+            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.12), transparent);
             border-radius: 29px;
             z-index: -1;
             animation: borderGlow 3s ease-in-out infinite;
@@ -163,7 +163,7 @@
         }
         .brand-sub {
             font-size: 9px;
-            color: #555;
+            color: #666;
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 16px;
@@ -193,7 +193,7 @@
         .input-group input {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(155, 89, 182, 0.15);
+            border: 1px solid rgba(155, 89, 182, 0.12);
             padding: 14px 16px 14px 46px;
             border-radius: 14px;
             color: #fff;
@@ -217,7 +217,7 @@
         
         .btn-auth {
             width: 100%;
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            background: linear-gradient(135deg, #9b59b6, #7d3c98);
             color: #fff;
             border: none;
             padding: 14px;
@@ -245,7 +245,7 @@
             width: 100%;
             background: transparent;
             color: #9b59b6;
-            border: 1px solid rgba(155, 89, 182, 0.15);
+            border: 1px solid rgba(155, 89, 182, 0.12);
             padding: 12px;
             font-size: 10px;
             font-weight: 700;
@@ -348,8 +348,10 @@
             font-family: 'Orbitron', sans-serif;
         }
         
-        /* Premium Popup - Purple Theme */
-        .premium-popup-overlay {
+        /* ==============================================
+           PREMIUM CENTER POPUP - স্ক্রিনের মাঝখানে
+           ============================================== */
+        .center-popup-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -357,14 +359,14 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
             z-index: 99999;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.4s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
-        .premium-popup-box {
-            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
+        .center-popup-box {
+            background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
             border: 1px solid rgba(155, 89, 182, 0.2);
             border-radius: 28px;
             padding: 30px 25px 25px;
@@ -376,7 +378,7 @@
             position: relative;
             overflow: hidden;
         }
-        .premium-popup-box::before {
+        .center-popup-box::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -387,14 +389,14 @@
             animation: bgPulse 8s ease-in-out infinite;
             pointer-events: none;
         }
-        .premium-popup-box::after {
+        .center-popup-box::after {
             content: '';
             position: absolute;
             top: -2px;
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.15), transparent);
+            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.12), transparent);
             border-radius: 29px;
             z-index: -1;
             animation: borderGlow 3s ease-in-out infinite;
@@ -405,23 +407,27 @@
             to { transform: scale(1) translateY(0); opacity: 1; }
         }
         
-        .premium-popup-box .p-icon {
+        .center-popup-box .popup-icon {
             font-size: 50px;
             margin-bottom: 4px;
             position: relative;
             z-index: 1;
         }
-        .premium-popup-box .p-title {
-            color: #9b59b6;
+        .center-popup-box .popup-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 16px;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 2px;
             position: relative;
             z-index: 1;
         }
-        .premium-popup-box .p-sub {
+        .center-popup-box .popup-title.success { color: #2ecc71; }
+        .center-popup-box .popup-title.error { color: #e74c3c; }
+        .center-popup-box .popup-title.warning { color: #f39c12; }
+        .center-popup-box .popup-title.info { color: #9b59b6; }
+        
+        .center-popup-box .popup-sub {
             color: #666;
             font-family: 'Orbitron', sans-serif;
             font-size: 9px;
@@ -431,9 +437,9 @@
             z-index: 1;
         }
         
-        .premium-popup-box .p-details {
+        .center-popup-box .popup-details {
             background: rgba(155, 89, 182, 0.04);
-            border: 1px solid rgba(155, 89, 182, 0.08);
+            border: 1px solid rgba(155, 89, 182, 0.06);
             border-radius: 14px;
             padding: 12px 14px;
             margin-bottom: 16px;
@@ -441,42 +447,38 @@
             position: relative;
             z-index: 1;
         }
-        .premium-popup-box .p-details .row {
+        .center-popup-box .popup-details .row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 4px 0;
+            padding: 3px 0;
             border-bottom: 1px solid rgba(155, 89, 182, 0.04);
         }
-        .premium-popup-box .p-details .row:last-child {
+        .center-popup-box .popup-details .row:last-child {
             border-bottom: none;
         }
-        .premium-popup-box .p-details .row .lbl {
+        .center-popup-box .popup-details .row .lbl {
             color: #666;
             font-family: 'Orbitron', sans-serif;
             font-size: 9px;
             letter-spacing: 0.5px;
         }
-        .premium-popup-box .p-details .row .val {
+        .center-popup-box .popup-details .row .val {
             color: #c39bd3;
             font-family: 'Orbitron', sans-serif;
             font-size: 10px;
             font-weight: 700;
         }
-        .premium-popup-box .p-details .row .val.green {
-            color: #2ecc71;
-        }
-        .premium-popup-box .p-details .row .val.red {
-            color: #e74c3c;
-        }
-        .premium-popup-box .p-details .row .val.mono {
+        .center-popup-box .popup-details .row .val.green { color: #2ecc71; }
+        .center-popup-box .popup-details .row .val.red { color: #e74c3c; }
+        .center-popup-box .popup-details .row .val.mono {
             font-family: monospace;
             font-size: 11px;
             color: #c39bd3;
         }
         
-        .premium-popup-box .p-btn-open {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        .center-popup-box .popup-btn {
+            background: linear-gradient(135deg, #9b59b6, #7d3c98);
             color: #fff;
             border: none;
             padding: 13px;
@@ -493,11 +495,11 @@
             transition: 0.3s;
             box-shadow: 0 4px 30px rgba(155, 89, 182, 0.2);
         }
-        .premium-popup-box .p-btn-open:active {
-            transform: scale(0.97);
-        }
+        .center-popup-box .popup-btn:active { transform: scale(0.97); }
+        .center-popup-box .popup-btn.danger { background: linear-gradient(135deg, #e74c3c, #c0392b); box-shadow: 0 4px 30px rgba(231, 76, 60, 0.2); }
+        .center-popup-box .popup-btn.success-btn { background: linear-gradient(135deg, #2ecc71, #27ae60); box-shadow: 0 4px 30px rgba(46, 204, 113, 0.2); }
         
-        .premium-popup-box .p-close-icon {
+        .center-popup-box .popup-close {
             position: absolute;
             top: 12px;
             right: 16px;
@@ -510,99 +512,9 @@
             border: none;
             font-family: 'Orbitron', sans-serif;
         }
-        .premium-popup-box .p-close-icon:hover {
-            color: #e74c3c;
-        }
+        .center-popup-box .popup-close:hover { color: #e74c3c; }
         
-        /* ==============================================
-           PREMIUM TOAST MESSAGE - Purple Theme
-           ============================================== */
-        .toast-container {
-            position: fixed;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 99998;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            width: 90%;
-            max-width: 400px;
-            pointer-events: none;
-        }
-        .toast-container .toast {
-            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
-            border: 1px solid rgba(155, 89, 182, 0.15);
-            border-radius: 16px;
-            padding: 14px 20px;
-            width: 100%;
-            text-align: center;
-            pointer-events: auto;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-            animation: toastSlide 0.5s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-        .toast-container .toast::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            border-radius: 16px 0 0 16px;
-        }
-        .toast-container .toast.success::before {
-            background: #2ecc71;
-        }
-        .toast-container .toast.error::before {
-            background: #e74c3c;
-        }
-        .toast-container .toast.warning::before {
-            background: #f39c12;
-        }
-        .toast-container .toast.info::before {
-            background: #9b59b6;
-        }
-        
-        .toast-container .toast .toast-icon {
-            font-size: 22px;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .toast-container .toast .toast-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-        .toast-container .toast .toast-msg {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 9px;
-            color: #888;
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
-        .toast-container .toast .toast-close {
-            position: absolute;
-            top: 6px;
-            right: 12px;
-            color: #555;
-            font-size: 14px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        @keyframes toastSlide {
-            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        
-        /* Popup Overlay (Block/Notice) */
+        /* Block Popup */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -617,7 +529,7 @@
             backdrop-filter: blur(10px);
         }
         .popup-box {
-            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
+            background: linear-gradient(145deg, #1a1a2e, #0d0d1a);
             border: 1px solid rgba(155, 89, 182, 0.15);
             padding: 30px 24px;
             border-radius: 20px;
@@ -659,7 +571,7 @@
             color: white;
         }
         .dismiss-btn {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            background: linear-gradient(135deg, #9b59b6, #7d3c98);
             color: white;
         }
         
@@ -671,10 +583,10 @@
             .btn-auth { font-size: 11px; height: 44px; padding: 12px; }
             .btn-buy { font-size: 9px; height: 38px; padding: 10px; }
             .device-info-box p { font-size: 7px; }
-            .premium-popup-box { padding: 24px 18px 20px; }
-            .premium-popup-box .p-details .row .lbl { font-size: 8px; }
-            .premium-popup-box .p-details .row .val { font-size: 9px; }
-            .premium-popup-box .p-title { font-size: 14px; }
+            .center-popup-box { padding: 24px 18px 20px; }
+            .center-popup-box .popup-details .row .lbl { font-size: 8px; }
+            .center-popup-box .popup-details .row .val { font-size: 9px; }
+            .center-popup-box .popup-title { font-size: 14px; }
         }
         
         @media (max-height: 650px) {
@@ -687,11 +599,11 @@
             .btn-buy { font-size: 9px; height: 34px; padding: 8px; margin-top: 6px; }
             .device-info-box { margin-top: 8px; padding-top: 8px; }
             .device-info-box p { font-size: 7px; padding: 1px 0; }
-            .premium-popup-box { padding: 20px 16px 16px; }
-            .premium-popup-box .p-details { padding: 8px 10px; }
-            .premium-popup-box .p-details .row { padding: 2px 0; }
-            .premium-popup-box .p-icon { font-size: 36px; }
-            .premium-popup-box .p-title { font-size: 13px; }
+            .center-popup-box { padding: 20px 16px 16px; }
+            .center-popup-box .popup-details { padding: 8px 10px; }
+            .center-popup-box .popup-details .row { padding: 2px 0; }
+            .center-popup-box .popup-icon { font-size: 36px; }
+            .center-popup-box .popup-title { font-size: 13px; }
         }
     </style>
 </head>
@@ -699,11 +611,6 @@
 
     <!-- Particles -->
     <div class="particles" id="particles"></div>
-
-    <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer">
-        <!-- Toasts will be dynamically added here -->
-    </div>
 
     <!-- Loading Screen -->
     <div id="loadingView" class="loading-screen">
@@ -713,7 +620,7 @@
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
-    <!-- Block Popup -->
+    <!-- Block Popup (System Level) -->
     <div id="blockPopup" class="popup-overlay">
         <div class="popup-box">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
@@ -732,40 +639,40 @@
     </div>
 
     <!-- ==============================================
-         PREMIUM POPUP (FLOATING CARD)
+         PREMIUM CENTER POPUP - সব মেসেজ এখানে দেখাবে
          ============================================== -->
-    <div class="premium-popup-overlay" id="premiumPopup">
-        <div class="premium-popup-box">
-            <button class="p-close-icon" onclick="closePremiumPopup()">✕</button>
+    <div class="center-popup-overlay" id="centerPopup">
+        <div class="center-popup-box">
+            <button class="popup-close" onclick="closeCenterPopup()">✕</button>
             
-            <div class="p-icon">👻</div>
-            <div class="p-title">✦ FLOATING WINDOW ✦</div>
-            <div class="p-sub">Premium Access Activated</div>
+            <div class="popup-icon" id="popupIcon">👻</div>
+            <div class="popup-title success" id="popupTitle">✦ SUCCESS ✦</div>
+            <div class="popup-sub" id="popupSub">Premium Access Activated</div>
             
-            <div class="p-details">
+            <div class="popup-details" id="popupDetails">
                 <div class="row">
                     <span class="lbl">🔑 LICENSE KEY</span>
-                    <span class="val mono" id="pKey">—</span>
+                    <span class="val mono" id="popupKey">—</span>
                 </div>
                 <div class="row">
                     <span class="lbl">📅 REGISTERED</span>
-                    <span class="val" id="pRegister">—</span>
+                    <span class="val" id="popupRegister">—</span>
                 </div>
                 <div class="row">
                     <span class="lbl">⏳ EXPIRY DATE</span>
-                    <span class="val" id="pExpiry">—</span>
+                    <span class="val" id="popupExpiry">—</span>
                 </div>
                 <div class="row">
                     <span class="lbl">📊 STATUS</span>
-                    <span class="val green" id="pStatus">ACTIVE</span>
+                    <span class="val green" id="popupStatus">ACTIVE</span>
                 </div>
                 <div class="row">
                     <span class="lbl">⚡ DEVICE</span>
-                    <span class="val" id="pDevice" style="font-size:9px;color:#888;">—</span>
+                    <span class="val" id="popupDevice" style="font-size:9px;color:#888;">—</span>
                 </div>
             </div>
             
-            <button class="p-btn-open" onclick="openAndroidFloating()">✦ OPEN ✦</button>
+            <button class="popup-btn" id="popupBtn" onclick="closeCenterPopup()">✦ CLOSE ✦</button>
         </div>
     </div>
 
@@ -773,7 +680,6 @@
     <div class="app-container">
         <div class="login-card" id="loginCard">
             
-            <!-- Brand -->
             <div class="brand-section">
                 <div class="brand-title">
                     <span class="ghost-icon">👻</span> 𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋
@@ -781,7 +687,6 @@
                 <div class="brand-sub">Premium <span>VIP</span> Security</div>
             </div>
 
-            <!-- Login Form -->
             <div id="loginForm" style="flex-shrink:0;">
                 <div class="input-group">
                     <i class="fa-solid fa-key"></i>
@@ -791,7 +696,6 @@
                 <a href="https://panelstorexcore.netlify.app" target="_blank" class="btn-buy">🛒 PANEL STORE</a>
             </div>
 
-            <!-- Device Info -->
             <div class="device-info-box">
                 <p>Device: <span id="uiDeviceModel">Detecting...</span></p>
                 <p>OS: <span id="uiDeviceOS">Detecting...</span></p>
@@ -836,44 +740,75 @@
         })();
 
         // ==============================================
-        // TOAST SYSTEM - Premium Popup Messages
+        // PREMIUM CENTER POPUP SYSTEM
         // ==============================================
-        function showToast(type, title, message, duration = 4000) {
-            const container = document.getElementById('toastContainer');
-            container.style.display = 'flex';
+        function showCenterPopup(type, title, sub, details, btnText, btnAction) {
+            const overlay = document.getElementById('centerPopup');
+            const icon = document.getElementById('popupIcon');
+            const titleEl = document.getElementById('popupTitle');
+            const subEl = document.getElementById('popupSub');
+            const detailsEl = document.getElementById('popupDetails');
+            const btn = document.getElementById('popupBtn');
             
             const icons = {
                 success: '✅',
                 error: '❌',
                 warning: '⚠️',
-                info: 'ℹ️'
+                info: '👻'
             };
             
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.innerHTML = `
-                <button class="toast-close" onclick="this.parentElement.remove(); checkEmptyToast();">✕</button>
-                <div class="toast-icon">${icons[type] || 'ℹ️'}</div>
-                <div class="toast-title">${title}</div>
-                <div class="toast-msg">${message}</div>
-            `;
+            icon.textContent = icons[type] || '👻';
+            titleEl.textContent = title;
+            titleEl.className = 'popup-title ' + type;
+            subEl.textContent = sub || '';
             
-            container.appendChild(toast);
-            
-            // Auto remove after duration
-            setTimeout(() => {
-                if (toast.parentElement) {
-                    toast.remove();
-                    checkEmptyToast();
+            // Details
+            if (details) {
+                let html = '';
+                for (const key in details) {
+                    const val = details[key];
+                    const isKey = key === 'KEY';
+                    const isStatus = key === 'STATUS';
+                    const isExpiry = key === 'EXPIRY';
+                    let valClass = 'val';
+                    if (isStatus && val === 'ACTIVE') valClass += ' green';
+                    if (isStatus && val === 'EXPIRED') valClass += ' red';
+                    if (isKey) valClass += ' mono';
+                    if (isExpiry && val.includes('EXPIRED')) valClass += ' red';
+                    html += `
+                        <div class="row">
+                            <span class="lbl">${key}</span>
+                            <span class="${valClass}">${val}</span>
+                        </div>
+                    `;
                 }
-            }, duration);
+                detailsEl.innerHTML = html;
+                detailsEl.style.display = 'block';
+            } else {
+                detailsEl.style.display = 'none';
+            }
+            
+            // Button
+            btn.textContent = btnText || '✦ CLOSE ✦';
+            btn.className = 'popup-btn';
+            if (type === 'error') btn.classList.add('danger');
+            if (type === 'success') btn.classList.add('success-btn');
+            
+            // Remove old click listeners
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+            newBtn.addEventListener('click', function() {
+                if (btnAction && typeof btnAction === 'function') {
+                    btnAction();
+                }
+                closeCenterPopup();
+            });
+            
+            overlay.style.display = 'flex';
         }
         
-        function checkEmptyToast() {
-            const container = document.getElementById('toastContainer');
-            if (container.children.length === 0) {
-                container.style.display = 'none';
-            }
+        function closeCenterPopup() {
+            document.getElementById('centerPopup').style.display = 'none';
         }
 
         // ==============================================
@@ -909,7 +844,6 @@
                     if (snapshot.exists() && snapshot.val().isBlocked === true) {
                         document.getElementById('loadingView').style.display = 'none';
                         document.getElementById('blockPopup').style.display = 'flex';
-                        showToast('error', 'ACCESS DENIED', 'Your device is blacklisted!');
                     } else {
                         trackDeviceAndRegion(modelName);
                         listenForAdminMessages();
@@ -974,7 +908,8 @@
                     document.getElementById('loadingView').style.display = 'none';
                     document.getElementById('loginCard').style.display = 'none';
                     document.getElementById('notifPopup').style.display = 'flex';
-                    showToast('info', 'SYSTEM NOTICE', data.message);
+                    
+                    showCenterPopup('info', '📢 SYSTEM NOTICE', data.message, null, '✦ ACKNOWLEDGE ✦');
                 }
             });
         }
@@ -988,7 +923,11 @@
             isInitialized = true;
             document.getElementById('loadingView').style.display = 'none';
             document.getElementById('loginCard').style.display = 'flex';
-            showToast('success', 'CONNECTION ESTABLISHED', 'Welcome to Ghost X Panel VIP');
+            
+            showCenterPopup('success', '✦ CONNECTION ESTABLISHED ✦', 'Welcome to Ghost X Panel VIP', {
+                '🔑 STATUS': '✅ READY',
+                '⚡ DEVICE': deviceId.substring(0, 10) + '...'
+            }, '✦ CONTINUE ✦');
         }
 
         // ==============================================
@@ -999,38 +938,57 @@
             const authBtn = document.getElementById('authBtn');
 
             if (!inputKey) {
-                showToast('warning', '⚠️ EMPTY FIELD', 'Please enter your License Key!');
+                showCenterPopup('warning', '⚠️ EMPTY FIELD', 'Please enter your License Key!', null, '✦ OK ✦');
                 return;
             }
 
-            showToast('info', '🔄 VERIFYING', 'Checking license key validity...');
+            showCenterPopup('info', '🔄 VERIFYING', 'Checking license key validity...', {
+                '🔑 KEY': inputKey,
+                '⏳ STATUS': 'Verifying...'
+            }, '⏳ WAIT...');
+
             authBtn.disabled = true;
             authBtn.textContent = '⏳ VERIFYING...';
 
             database.ref('keys/' + inputKey).once('value').then((snapshot) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ AUTHENTICATE ✦';
+                closeCenterPopup();
 
                 if (!snapshot.exists()) {
-                    showToast('error', '❌ INVALID KEY', 'License key not found in database!');
+                    showCenterPopup('error', '❌ INVALID KEY', 'License key not found in database!', {
+                        '🔑 KEY': inputKey,
+                        '📊 STATUS': '❌ NOT FOUND'
+                    }, '✦ CLOSE ✦');
                     return;
                 }
 
                 const keyData = snapshot.val();
                 const now = Date.now();
 
+                // Check Deactivated
                 if (keyData.status === 'deactive') {
-                    showToast('error', '⛔ DEACTIVATED', 'This key has been deactivated by admin!');
+                    showCenterPopup('error', '⛔ DEACTIVATED', 'This key has been deactivated by admin!', {
+                        '🔑 KEY': inputKey,
+                        '📊 STATUS': '⛔ DEACTIVATED'
+                    }, '✦ CLOSE ✦');
                     return;
                 }
 
+                // Check Expired
                 if (keyData.isUsed && keyData.duration !== 'lifetime') {
                     if (now > keyData.expiryTimestamp) {
-                        showToast('error', '⏰ EXPIRED', 'Your license key has expired!');
+                        const exp = new Date(keyData.expiryTimestamp);
+                        showCenterPopup('error', '⏰ KEY EXPIRED', 'Your license key has expired!', {
+                            '🔑 KEY': inputKey,
+                            '📅 EXPIRY': exp.toLocaleDateString(),
+                            '📊 STATUS': '❌ EXPIRED'
+                        }, '✦ CLOSE ✦');
                         return;
                     }
                 }
 
+                // Update key if not used
                 if (!keyData.isUsed) {
                     let updateData = { isUsed: true };
                     if (keyData.duration === '1min') {
@@ -1051,85 +1009,50 @@
                 document.getElementById('uiLoggedKey').innerText = inputKey;
                 database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
 
-                // Save data
                 currentKey = inputKey;
                 currentKeyData = keyData;
 
-                let expiryMsg = '';
+                // Show Success Popup
+                let expiryText = '—';
+                let statusText = '✅ ACTIVE';
+                let statusClass = 'green';
+                
                 if (keyData.duration === 'lifetime') {
-                    expiryMsg = '♾️ LIFETIME ACCESS';
+                    expiryText = '♾️ LIFETIME';
                 } else if (keyData.expiryTimestamp) {
                     const exp = new Date(keyData.expiryTimestamp);
                     const now = Date.now();
                     if (now > keyData.expiryTimestamp) {
-                        expiryMsg = '⚠️ EXPIRED ON ' + exp.toLocaleDateString();
+                        expiryText = exp.toLocaleDateString() + ' ⚠️ EXPIRED';
+                        statusText = '❌ EXPIRED';
+                        statusClass = 'red';
                     } else {
-                        expiryMsg = '✅ EXPIRES ON ' + exp.toLocaleDateString();
+                        expiryText = exp.toLocaleDateString();
                     }
                 }
-                
-                showToast('success', '✅ LOGIN SUCCESSFUL', 
-                    `Key: ${inputKey}\n${expiryMsg}\nDevice: ${deviceId.substring(0, 10)}...`);
 
-                // ==============================================
-                // 🔥 PREMIUM POPUP শো করুন
-                // ==============================================
-                setTimeout(() => {
-                    showPremiumPopup(inputKey, keyData);
-                }, 1000);
+                showCenterPopup('success', '✅ LOGIN SUCCESSFUL', 'Premium access activated successfully!', {
+                    '🔑 KEY': inputKey,
+                    '📅 REGISTERED': keyData.registerDate || new Date().toLocaleString(),
+                    '⏳ EXPIRY': expiryText,
+                    '📊 STATUS': statusText,
+                    '⚡ DEVICE': deviceId.substring(0, 10) + '...'
+                }, '✦ OPEN FLOATING ✦', function() {
+                    openAndroidFloating();
+                });
 
             }).catch((error) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ AUTHENTICATE ✦';
-                showToast('error', '❌ DATABASE ERROR', error.message);
+                showCenterPopup('error', '❌ DATABASE ERROR', error.message, null, '✦ CLOSE ✦');
             });
-        }
-
-        // ==============================================
-        // 🔥 PREMIUM POPUP SHOW
-        // ==============================================
-        function showPremiumPopup(key, data) {
-            document.getElementById('pKey').textContent = key;
-            document.getElementById('pRegister').textContent = data.registerDate || new Date().toLocaleString();
-            
-            let expiryText = '—';
-            let statusText = 'ACTIVE';
-            let statusClass = 'green';
-            
-            if (data.duration === 'lifetime') {
-                expiryText = '♾️ LIFETIME';
-            } else if (data.expiryTimestamp) {
-                const exp = new Date(data.expiryTimestamp);
-                const now = Date.now();
-                if (now > data.expiryTimestamp) {
-                    expiryText = exp.toLocaleDateString() + ' ⚠️ EXPIRED';
-                    statusText = 'EXPIRED';
-                    statusClass = 'red';
-                } else {
-                    expiryText = exp.toLocaleDateString();
-                }
-            }
-            
-            document.getElementById('pExpiry').textContent = expiryText;
-            document.getElementById('pStatus').textContent = statusText;
-            document.getElementById('pStatus').className = 'val ' + statusClass;
-            document.getElementById('pDevice').textContent = deviceId.substring(0, 10) + '...';
-
-            document.getElementById('premiumPopup').style.display = 'flex';
-        }
-
-        // ==============================================
-        // CLOSE PREMIUM POPUP
-        // ==============================================
-        function closePremiumPopup() {
-            document.getElementById('premiumPopup').style.display = 'none';
         }
 
         // ==============================================
         // 🚀 OPEN ANDROID FLOATING WINDOW
         // ==============================================
         function openAndroidFloating() {
-            document.getElementById('premiumPopup').style.display = 'none';
+            closeCenterPopup();
 
             if (window.AndroidBridge && window.AndroidBridge.openFloating) {
                 console.log("📱 Opening Floating Window via AndroidBridge");
@@ -1141,15 +1064,12 @@
                 console.log("📱 Opening Floating Window via AndroidFloating");
                 window.AndroidFloating.open();
             } else {
-                showToast('info', '🌐 WEB MODE', 'Android bridge not found. Using web fallback.');
-                alert(
-                    '👻 ANDROID FLOATING WINDOW\n\n' +
-                    '🔑 Key: ' + (currentKey || '—') + '\n' +
-                    '📅 Registered: ' + (currentKeyData?.registerDate || '—') + '\n' +
-                    '⏳ Expiry: ' + (document.getElementById('pExpiry').textContent || '—') + '\n' +
-                    '📊 Status: ACTIVE\n' +
-                    '⚡ Device: ' + deviceId.substring(0, 10) + '...'
-                );
+                showCenterPopup('info', '🌐 WEB MODE', 'Android bridge not found. Using web fallback.', {
+                    '🔑 KEY': currentKey || '—',
+                    '📅 REGISTERED': currentKeyData?.registerDate || '—',
+                    '📊 STATUS': '✅ ACTIVE',
+                    '⚡ DEVICE': deviceId.substring(0, 10) + '...'
+                }, '✦ CLOSE ✦');
             }
         }
 
@@ -1181,4 +1101,4 @@
         window.onload = initSystem;
     </script>
 </body>
-    </html>
+                </html>
