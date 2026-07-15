@@ -33,6 +33,32 @@
             touch-action: none;
         }
         
+        /* Particles - Purple */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(155, 89, 182, 0.3);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+        
         .app-container {
             width: 100%;
             height: 100%;
@@ -51,7 +77,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.04) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.06) 0%, transparent 70%);
             animation: bgPulse 8s ease-in-out infinite;
             z-index: 0;
         }
@@ -61,42 +87,18 @@
             50% { transform: scale(1.2); opacity: 1; }
         }
         
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 215, 0, 0.2);
-            border-radius: 50%;
-            animation: float linear infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
-        }
-        
+        /* Login Card - Purple Theme */
         .login-card {
             width: 100%;
             max-width: 400px;
             max-height: 92vh;
             background: linear-gradient(145deg, rgba(15, 15, 20, 0.97), rgba(5, 5, 10, 0.99));
-            border: 1px solid rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(155, 89, 182, 0.2);
             border-radius: 28px;
             padding: 28px 24px 20px;
             text-align: center;
             backdrop-filter: blur(20px);
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.04), inset 0 1px 0 rgba(255, 215, 0, 0.08);
+            box-shadow: 0 0 60px rgba(155, 89, 182, 0.05), inset 0 1px 0 rgba(155, 89, 182, 0.1);
             position: relative;
             z-index: 1;
             overflow: hidden;
@@ -118,7 +120,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.02), transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.03), transparent 70%);
             animation: bgPulse 8s ease-in-out infinite;
             pointer-events: none;
         }
@@ -130,7 +132,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.08), transparent);
+            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.15), transparent);
             border-radius: 29px;
             z-index: -1;
             animation: borderGlow 3s ease-in-out infinite;
@@ -149,7 +151,7 @@
             font-size: 18px;
             font-weight: 900;
             letter-spacing: 2px;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            background: linear-gradient(135deg, #9b59b6, #c39bd3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 2px;
@@ -157,7 +159,7 @@
         .brand-title .ghost-icon {
             font-size: 22px;
             -webkit-text-fill-color: initial;
-            color: #ffd700;
+            color: #9b59b6;
         }
         .brand-sub {
             font-size: 9px;
@@ -169,8 +171,8 @@
             z-index: 1;
         }
         .brand-sub span {
-            color: #ffd700;
-            -webkit-text-fill-color: #ffd700;
+            color: #9b59b6;
+            -webkit-text-fill-color: #9b59b6;
         }
         
         .input-group {
@@ -184,14 +186,14 @@
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #ffd700;
+            color: #9b59b6;
             font-size: 14px;
-            opacity: 0.5;
+            opacity: 0.6;
         }
         .input-group input {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(155, 89, 182, 0.15);
             padding: 14px 16px 14px 46px;
             border-radius: 14px;
             color: #fff;
@@ -203,8 +205,8 @@
             height: 50px;
         }
         .input-group input:focus {
-            border-color: #ffd700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
+            border-color: #9b59b6;
+            box-shadow: 0 0 30px rgba(155, 89, 182, 0.08);
             background: rgba(255, 255, 255, 0.05);
         }
         .input-group input::placeholder {
@@ -215,8 +217,8 @@
         
         .btn-auth {
             width: 100%;
-            background: linear-gradient(135deg, #ffd700, #f0a500);
-            color: #0a0a0a;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: #fff;
             border: none;
             padding: 14px;
             font-size: 13px;
@@ -229,7 +231,7 @@
             font-family: 'Orbitron', sans-serif;
             position: relative;
             z-index: 1;
-            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.12);
+            box-shadow: 0 4px 30px rgba(155, 89, 182, 0.2);
             height: 50px;
         }
         .btn-auth:active { transform: scale(0.97); }
@@ -242,8 +244,8 @@
             display: inline-block;
             width: 100%;
             background: transparent;
-            color: #ffd700;
-            border: 1px solid rgba(255, 215, 0, 0.12);
+            color: #9b59b6;
+            border: 1px solid rgba(155, 89, 182, 0.15);
             padding: 12px;
             font-size: 10px;
             font-weight: 700;
@@ -264,32 +266,13 @@
             justify-content: center;
         }
         .btn-buy:active {
-            background: rgba(255, 215, 0, 0.05);
-        }
-        
-        .status-msg {
-            font-size: 11px;
-            margin-bottom: 12px;
-            display: none;
-            font-weight: 700;
-            padding: 8px 12px;
-            border-radius: 10px;
-            background: rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
-            letter-spacing: 0.5px;
-            min-height: 36px;
-            align-items: center;
-            justify-content: center;
-        }
-        .status-msg.show {
-            display: flex;
+            background: rgba(155, 89, 182, 0.05);
         }
         
         .device-info-box {
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255, 215, 0, 0.05);
+            border-top: 1px solid rgba(155, 89, 182, 0.05);
             text-align: left;
             font-size: 9px;
             color: #444;
@@ -305,16 +288,17 @@
             font-size: 8px;
         }
         .device-info-box span {
-            color: #ffd700;
+            color: #9b59b6;
             font-weight: 700;
             font-size: 8px;
         }
         .device-info-box span.key-text {
-            color: #00ff44;
+            color: #c39bd3;
             font-family: monospace;
             font-size: 9px;
         }
         
+        /* Loading Screen */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -330,7 +314,7 @@
         }
         .loading-screen .ghost-big {
             font-size: 50px;
-            color: #ffd700;
+            color: #9b59b6;
             margin-bottom: 16px;
             animation: ghostFloat 2s ease-in-out infinite;
         }
@@ -341,15 +325,15 @@
         .loading-screen .loader-ring {
             width: 50px;
             height: 50px;
-            border: 3px solid rgba(255, 215, 0, 0.08);
-            border-top: 3px solid #ffd700;
+            border: 3px solid rgba(155, 89, 182, 0.08);
+            border-top: 3px solid #9b59b6;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 16px;
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .loading-screen .load-title {
-            color: #ffd700;
+            color: #9b59b6;
             font-size: 14px;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -364,6 +348,261 @@
             font-family: 'Orbitron', sans-serif;
         }
         
+        /* Premium Popup - Purple Theme */
+        .premium-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(25px);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .premium-popup-box {
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
+            border: 1px solid rgba(155, 89, 182, 0.2);
+            border-radius: 28px;
+            padding: 30px 25px 25px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(155, 89, 182, 0.05);
+            animation: floatPop 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-popup-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(155, 89, 182, 0.04), transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .premium-popup-box::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.15), transparent);
+            border-radius: 29px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatPop {
+            from { transform: scale(0.85) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
+        .premium-popup-box .p-icon {
+            font-size: 50px;
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-popup-box .p-title {
+            color: #9b59b6;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 2px;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-popup-box .p-sub {
+            color: #666;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .premium-popup-box .p-details {
+            background: rgba(155, 89, 182, 0.04);
+            border: 1px solid rgba(155, 89, 182, 0.08);
+            border-radius: 14px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-popup-box .p-details .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(155, 89, 182, 0.04);
+        }
+        .premium-popup-box .p-details .row:last-child {
+            border-bottom: none;
+        }
+        .premium-popup-box .p-details .row .lbl {
+            color: #666;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.5px;
+        }
+        .premium-popup-box .p-details .row .val {
+            color: #c39bd3;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .premium-popup-box .p-details .row .val.green {
+            color: #2ecc71;
+        }
+        .premium-popup-box .p-details .row .val.red {
+            color: #e74c3c;
+        }
+        .premium-popup-box .p-details .row .val.mono {
+            font-family: monospace;
+            font-size: 11px;
+            color: #c39bd3;
+        }
+        
+        .premium-popup-box .p-btn-open {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: #fff;
+            border: none;
+            padding: 13px;
+            font-size: 13px;
+            font-weight: 900;
+            border-radius: 14px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            z-index: 1;
+            transition: 0.3s;
+            box-shadow: 0 4px 30px rgba(155, 89, 182, 0.2);
+        }
+        .premium-popup-box .p-btn-open:active {
+            transform: scale(0.97);
+        }
+        
+        .premium-popup-box .p-close-icon {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            color: #555;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 2;
+            transition: 0.3s;
+            background: none;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .premium-popup-box .p-close-icon:hover {
+            color: #e74c3c;
+        }
+        
+        /* ==============================================
+           PREMIUM TOAST MESSAGE - Purple Theme
+           ============================================== */
+        .toast-container {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 99998;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 90%;
+            max-width: 400px;
+            pointer-events: none;
+        }
+        .toast-container .toast {
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
+            border: 1px solid rgba(155, 89, 182, 0.15);
+            border-radius: 16px;
+            padding: 14px 20px;
+            width: 100%;
+            text-align: center;
+            pointer-events: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            animation: toastSlide 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .toast-container .toast::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            border-radius: 16px 0 0 16px;
+        }
+        .toast-container .toast.success::before {
+            background: #2ecc71;
+        }
+        .toast-container .toast.error::before {
+            background: #e74c3c;
+        }
+        .toast-container .toast.warning::before {
+            background: #f39c12;
+        }
+        .toast-container .toast.info::before {
+            background: #9b59b6;
+        }
+        
+        .toast-container .toast .toast-icon {
+            font-size: 22px;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .toast-container .toast .toast-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .toast-container .toast .toast-msg {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            color: #888;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        .toast-container .toast .toast-close {
+            position: absolute;
+            top: 6px;
+            right: 12px;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        @keyframes toastSlide {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        /* Popup Overlay (Block/Notice) */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -379,7 +618,7 @@
         }
         .popup-box {
             background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
-            border: 1px solid rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(155, 89, 182, 0.15);
             padding: 30px 24px;
             border-radius: 20px;
             max-width: 340px;
@@ -394,8 +633,8 @@
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 10px;
         }
-        .popup-box h1 .gold { color: #ffd700; }
-        .popup-box h1 .red { color: #ff3333; }
+        .popup-box h1 .purple { color: #9b59b6; }
+        .popup-box h1 .red { color: #e74c3c; }
         .popup-box p {
             color: #888;
             font-size: 12px;
@@ -416,180 +655,12 @@
             font-family: 'Orbitron', sans-serif;
         }
         .exit-btn {
-            background: linear-gradient(135deg, #ff3333, #cc0000);
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
             color: white;
         }
         .dismiss-btn {
-            background: linear-gradient(135deg, #ffd700, #f0a500);
-            color: #0a0a0a;
-        }
-
-        /* ==============================================
-           PREMIUM FLOATING CARD (স্ক্রিনের মাঝখানে)
-           ============================================== */
-        .premium-float-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(25px);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.5s ease-out;
-        }
-        .premium-float-box {
-            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 28px;
-            padding: 30px 25px 25px;
-            max-width: 380px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(255, 215, 0, 0.03);
-            animation: floatPop 0.5s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-        .premium-float-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.03), transparent 70%);
-            animation: bgPulse 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-        .premium-float-box::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            border-radius: 29px;
-            z-index: -1;
-            animation: borderGlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes floatPop {
-            from { transform: scale(0.85) translateY(20px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        
-        .premium-float-box .p-icon {
-            font-size: 50px;
-            margin-bottom: 6px;
-            position: relative;
-            z-index: 1;
-        }
-        .premium-float-box .p-title {
-            color: #ffd700;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            margin-bottom: 2px;
-            position: relative;
-            z-index: 1;
-        }
-        .premium-float-box .p-sub {
-            color: #666;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 9px;
-            letter-spacing: 2px;
-            margin-bottom: 14px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .premium-float-box .p-details {
-            background: rgba(255, 215, 0, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.06);
-            border-radius: 14px;
-            padding: 12px 14px;
-            margin-bottom: 16px;
-            text-align: left;
-            position: relative;
-            z-index: 1;
-        }
-        .premium-float-box .p-details .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 4px 0;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.03);
-        }
-        .premium-float-box .p-details .row:last-child {
-            border-bottom: none;
-        }
-        .premium-float-box .p-details .row .lbl {
-            color: #555;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 9px;
-            letter-spacing: 0.5px;
-        }
-        .premium-float-box .p-details .row .val {
-            color: #ffd700;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-        }
-        .premium-float-box .p-details .row .val.green {
-            color: #00ff44;
-        }
-        .premium-float-box .p-details .row .val.red {
-            color: #ff3333;
-        }
-        .premium-float-box .p-details .row .val.mono {
-            font-family: monospace;
-            font-size: 11px;
-            color: #ffd700;
-        }
-        
-        .premium-float-box .p-btn-open {
-            background: linear-gradient(135deg, #ffd700, #f0a500);
-            color: #0a0a0a;
-            border: none;
-            padding: 13px;
-            font-size: 13px;
-            font-weight: 900;
-            border-radius: 14px;
-            cursor: pointer;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-family: 'Orbitron', sans-serif;
-            position: relative;
-            z-index: 1;
-            transition: 0.3s;
-            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.15);
-        }
-        .premium-float-box .p-btn-open:active {
-            transform: scale(0.97);
-        }
-        
-        .premium-float-box .p-close-icon {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            color: #555;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 2;
-            transition: 0.3s;
-            background: none;
-            border: none;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .premium-float-box .p-close-icon:hover {
-            color: #ff3333;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
         }
         
         @media (max-width: 380px) {
@@ -600,11 +671,10 @@
             .btn-auth { font-size: 11px; height: 44px; padding: 12px; }
             .btn-buy { font-size: 9px; height: 38px; padding: 10px; }
             .device-info-box p { font-size: 7px; }
-            .status-msg { font-size: 10px; min-height: 30px; }
-            .premium-float-box { padding: 24px 18px 20px; }
-            .premium-float-box .p-details .row .lbl { font-size: 8px; }
-            .premium-float-box .p-details .row .val { font-size: 9px; }
-            .premium-float-box .p-title { font-size: 14px; }
+            .premium-popup-box { padding: 24px 18px 20px; }
+            .premium-popup-box .p-details .row .lbl { font-size: 8px; }
+            .premium-popup-box .p-details .row .val { font-size: 9px; }
+            .premium-popup-box .p-title { font-size: 14px; }
         }
         
         @media (max-height: 650px) {
@@ -617,12 +687,11 @@
             .btn-buy { font-size: 9px; height: 34px; padding: 8px; margin-top: 6px; }
             .device-info-box { margin-top: 8px; padding-top: 8px; }
             .device-info-box p { font-size: 7px; padding: 1px 0; }
-            .status-msg { font-size: 9px; min-height: 26px; margin-bottom: 8px; padding: 4px 10px; }
-            .premium-float-box { padding: 20px 16px 16px; }
-            .premium-float-box .p-details { padding: 8px 10px; }
-            .premium-float-box .p-details .row { padding: 2px 0; }
-            .premium-float-box .p-icon { font-size: 36px; }
-            .premium-float-box .p-title { font-size: 13px; }
+            .premium-popup-box { padding: 20px 16px 16px; }
+            .premium-popup-box .p-details { padding: 8px 10px; }
+            .premium-popup-box .p-details .row { padding: 2px 0; }
+            .premium-popup-box .p-icon { font-size: 36px; }
+            .premium-popup-box .p-title { font-size: 13px; }
         }
     </style>
 </head>
@@ -630,6 +699,11 @@
 
     <!-- Particles -->
     <div class="particles" id="particles"></div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer">
+        <!-- Toasts will be dynamically added here -->
+    </div>
 
     <!-- Loading Screen -->
     <div id="loadingView" class="loading-screen">
@@ -651,18 +725,18 @@
     <!-- Notification Popup -->
     <div id="notifPopup" class="popup-overlay">
         <div class="popup-box">
-            <h1><span class="gold"><i class="fa-solid fa-circle-bell"></i> SYSTEM NOTICE</span></h1>
+            <h1><span class="purple"><i class="fa-solid fa-circle-bell"></i> SYSTEM NOTICE</span></h1>
             <p id="notifMessageText">App temporary server maintenance state me hai.</p>
             <button class="dismiss-btn" onclick="closeNotification()">Acknowledge</button>
         </div>
     </div>
 
     <!-- ==============================================
-         PREMIUM FLOATING CARD (স্ক্রিনের মাঝখানে)
+         PREMIUM POPUP (FLOATING CARD)
          ============================================== -->
-    <div class="premium-float-overlay" id="premiumFloat">
-        <div class="premium-float-box">
-            <button class="p-close-icon" onclick="closePremiumFloat()">✕</button>
+    <div class="premium-popup-overlay" id="premiumPopup">
+        <div class="premium-popup-box">
+            <button class="p-close-icon" onclick="closePremiumPopup()">✕</button>
             
             <div class="p-icon">👻</div>
             <div class="p-title">✦ FLOATING WINDOW ✦</div>
@@ -691,7 +765,6 @@
                 </div>
             </div>
             
-            <!-- OPEN বাটন - Android ফ্লোটিং কল করবে -->
             <button class="p-btn-open" onclick="openAndroidFloating()">✦ OPEN ✦</button>
         </div>
     </div>
@@ -714,7 +787,6 @@
                     <i class="fa-solid fa-key"></i>
                     <input type="text" id="accessKey" placeholder="ENTER LICENSE KEY" autocomplete="off">
                 </div>
-                <div class="status-msg" id="statusText"></div>
                 <button type="button" class="btn-auth" id="authBtn" onclick="verifyKey()">✦ AUTHENTICATE ✦</button>
                 <a href="https://panelstorexcore.netlify.app" target="_blank" class="btn-buy">🛒 PANEL STORE</a>
             </div>
@@ -764,6 +836,47 @@
         })();
 
         // ==============================================
+        // TOAST SYSTEM - Premium Popup Messages
+        // ==============================================
+        function showToast(type, title, message, duration = 4000) {
+            const container = document.getElementById('toastContainer');
+            container.style.display = 'flex';
+            
+            const icons = {
+                success: '✅',
+                error: '❌',
+                warning: '⚠️',
+                info: 'ℹ️'
+            };
+            
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <button class="toast-close" onclick="this.parentElement.remove(); checkEmptyToast();">✕</button>
+                <div class="toast-icon">${icons[type] || 'ℹ️'}</div>
+                <div class="toast-title">${title}</div>
+                <div class="toast-msg">${message}</div>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Auto remove after duration
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                    checkEmptyToast();
+                }
+            }, duration);
+        }
+        
+        function checkEmptyToast() {
+            const container = document.getElementById('toastContainer');
+            if (container.children.length === 0) {
+                container.style.display = 'none';
+            }
+        }
+
+        // ==============================================
         // DEVICE INFO
         // ==============================================
         let parser = new UAParser();
@@ -796,6 +909,7 @@
                     if (snapshot.exists() && snapshot.val().isBlocked === true) {
                         document.getElementById('loadingView').style.display = 'none';
                         document.getElementById('blockPopup').style.display = 'flex';
+                        showToast('error', 'ACCESS DENIED', 'Your device is blacklisted!');
                     } else {
                         trackDeviceAndRegion(modelName);
                         listenForAdminMessages();
@@ -860,6 +974,7 @@
                     document.getElementById('loadingView').style.display = 'none';
                     document.getElementById('loginCard').style.display = 'none';
                     document.getElementById('notifPopup').style.display = 'flex';
+                    showToast('info', 'SYSTEM NOTICE', data.message);
                 }
             });
         }
@@ -873,21 +988,7 @@
             isInitialized = true;
             document.getElementById('loadingView').style.display = 'none';
             document.getElementById('loginCard').style.display = 'flex';
-        }
-
-        // ==============================================
-        // SHOW MESSAGE
-        // ==============================================
-        function showMsg(msg, color, isError = false) {
-            const el = document.getElementById('statusText');
-            el.innerText = msg;
-            el.style.color = color;
-            el.className = 'status-msg show';
-            if (isError) {
-                el.style.borderLeft = '3px solid ' + color;
-            } else {
-                el.style.borderLeft = 'none';
-            }
+            showToast('success', 'CONNECTION ESTABLISHED', 'Welcome to Ghost X Panel VIP');
         }
 
         // ==============================================
@@ -898,11 +999,11 @@
             const authBtn = document.getElementById('authBtn');
 
             if (!inputKey) {
-                showMsg("⚠️ Please enter your License Key!", "#ffd700");
+                showToast('warning', '⚠️ EMPTY FIELD', 'Please enter your License Key!');
                 return;
             }
 
-            showMsg("🔄 Verifying License...", "#888");
+            showToast('info', '🔄 VERIFYING', 'Checking license key validity...');
             authBtn.disabled = true;
             authBtn.textContent = '⏳ VERIFYING...';
 
@@ -911,7 +1012,7 @@
                 authBtn.textContent = '✦ AUTHENTICATE ✦';
 
                 if (!snapshot.exists()) {
-                    showMsg("❌ Invalid License Key!", "#ff3333", true);
+                    showToast('error', '❌ INVALID KEY', 'License key not found in database!');
                     return;
                 }
 
@@ -919,13 +1020,13 @@
                 const now = Date.now();
 
                 if (keyData.status === 'deactive') {
-                    showMsg("⛔ This Key is Deactivated!", "#ff3333", true);
+                    showToast('error', '⛔ DEACTIVATED', 'This key has been deactivated by admin!');
                     return;
                 }
 
                 if (keyData.isUsed && keyData.duration !== 'lifetime') {
                     if (now > keyData.expiryTimestamp) {
-                        showMsg("⏰ Key Expired!", "#ff3333", true);
+                        showToast('error', '⏰ EXPIRED', 'Your license key has expired!');
                         return;
                     }
                 }
@@ -954,27 +1055,40 @@
                 currentKey = inputKey;
                 currentKeyData = keyData;
 
-                showMsg("✅ Login Successful!", "#00ff44");
+                let expiryMsg = '';
+                if (keyData.duration === 'lifetime') {
+                    expiryMsg = '♾️ LIFETIME ACCESS';
+                } else if (keyData.expiryTimestamp) {
+                    const exp = new Date(keyData.expiryTimestamp);
+                    const now = Date.now();
+                    if (now > keyData.expiryTimestamp) {
+                        expiryMsg = '⚠️ EXPIRED ON ' + exp.toLocaleDateString();
+                    } else {
+                        expiryMsg = '✅ EXPIRES ON ' + exp.toLocaleDateString();
+                    }
+                }
+                
+                showToast('success', '✅ LOGIN SUCCESSFUL', 
+                    `Key: ${inputKey}\n${expiryMsg}\nDevice: ${deviceId.substring(0, 10)}...`);
 
                 // ==============================================
-                // 🔥 PREMIUM FLOATING CARD শো করুন
+                // 🔥 PREMIUM POPUP শো করুন
                 // ==============================================
                 setTimeout(() => {
-                    showPremiumFloat(inputKey, keyData);
-                }, 600);
+                    showPremiumPopup(inputKey, keyData);
+                }, 1000);
 
             }).catch((error) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ AUTHENTICATE ✦';
-                showMsg("❌ Database Error: " + error.message, "#ff3333", true);
+                showToast('error', '❌ DATABASE ERROR', error.message);
             });
         }
 
         // ==============================================
-        // 🔥 PREMIUM FLOATING CARD SHOW
+        // 🔥 PREMIUM POPUP SHOW
         // ==============================================
-        function showPremiumFloat(key, data) {
-            // ডেটা পপুলেট
+        function showPremiumPopup(key, data) {
             document.getElementById('pKey').textContent = key;
             document.getElementById('pRegister').textContent = data.registerDate || new Date().toLocaleString();
             
@@ -1001,27 +1115,22 @@
             document.getElementById('pStatus').className = 'val ' + statusClass;
             document.getElementById('pDevice').textContent = deviceId.substring(0, 10) + '...';
 
-            // শো
-            document.getElementById('premiumFloat').style.display = 'flex';
+            document.getElementById('premiumPopup').style.display = 'flex';
         }
 
         // ==============================================
-        // CLOSE PREMIUM FLOATING CARD
+        // CLOSE PREMIUM POPUP
         // ==============================================
-        function closePremiumFloat() {
-            document.getElementById('premiumFloat').style.display = 'none';
+        function closePremiumPopup() {
+            document.getElementById('premiumPopup').style.display = 'none';
         }
 
         // ==============================================
         // 🚀 OPEN ANDROID FLOATING WINDOW
         // ==============================================
         function openAndroidFloating() {
-            // প্রিমিয়াম ফ্লোটিং বন্ধ করুন
-            document.getElementById('premiumFloat').style.display = 'none';
+            document.getElementById('premiumPopup').style.display = 'none';
 
-            // ==============================================
-            // 📱 ANDROID FLOATING WINDOW TRIGGER
-            // ==============================================
             if (window.AndroidBridge && window.AndroidBridge.openFloating) {
                 console.log("📱 Opening Floating Window via AndroidBridge");
                 window.AndroidBridge.openFloating();
@@ -1032,16 +1141,14 @@
                 console.log("📱 Opening Floating Window via AndroidFloating");
                 window.AndroidFloating.open();
             } else {
-                // Web Fallback
-                console.log("🌐 Web fallback - showing alert");
+                showToast('info', '🌐 WEB MODE', 'Android bridge not found. Using web fallback.');
                 alert(
                     '👻 ANDROID FLOATING WINDOW\n\n' +
                     '🔑 Key: ' + (currentKey || '—') + '\n' +
                     '📅 Registered: ' + (currentKeyData?.registerDate || '—') + '\n' +
                     '⏳ Expiry: ' + (document.getElementById('pExpiry').textContent || '—') + '\n' +
                     '📊 Status: ACTIVE\n' +
-                    '⚡ Device: ' + deviceId.substring(0, 10) + '...\n\n' +
-                    '✅ Click OK to close'
+                    '⚡ Device: ' + deviceId.substring(0, 10) + '...'
                 );
             }
         }
@@ -1074,4 +1181,4 @@
         window.onload = initSystem;
     </script>
 </body>
-</html>
+        </html>
