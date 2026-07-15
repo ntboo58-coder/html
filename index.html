@@ -34,7 +34,7 @@
         }
         
         /* ==============================================
-           ANIMATED BACKGROUND - Cyber
+           ANIMATED BACKGROUND
            ============================================== */
         .bg-container {
             position: fixed;
@@ -151,7 +151,7 @@
         }
         
         /* ==============================================
-           LOGIN CARD - Premium Cyber Security
+           LOGIN CARD
            ============================================== */
         .login-card {
             width: 100%;
@@ -323,9 +323,6 @@
             font-size: 10px;
         }
         
-        /* ==============================================
-           LOGIN BUTTON - নাম পরিবর্তন করা হয়েছে
-           ============================================== */
         .btn-login {
             width: 100%;
             background: transparent;
@@ -499,7 +496,7 @@
         }
         
         /* ==============================================
-           PREMIUM POPUP
+           PREMIUM POPUP - শুধু এই ১টা থাকবে
            ============================================== */
         .premium-popup {
             display: none;
@@ -662,7 +659,7 @@
         }
         .premium-popup .popup-box .p-close:hover { color: #ff4444; }
         
-        /* System Popup */
+        /* Block Popup (System) */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -779,7 +776,7 @@
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
-    <!-- Block Popup -->
+    <!-- Block Popup (System) - ব্লক ডিভাইসের জন্য -->
     <div id="blockPopup" class="popup-overlay">
         <div class="popup-box-system">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
@@ -788,28 +785,17 @@
         </div>
     </div>
 
-    <!-- Notification Popup -->
-    <div id="notifPopup" class="popup-overlay">
-        <div class="popup-box-system">
-            <h1><span class="cyan"><i class="fa-solid fa-circle-bell"></i> SYSTEM NOTICE</span></h1>
-            <p id="notifMessageText">App temporary server maintenance state me hai.</p>
-            <button class="dismiss-btn" onclick="closeNotification()">Acknowledge</button>
-        </div>
-    </div>
-
-    <!-- Premium Popup -->
+    <!-- ==============================================
+         PREMIUM POPUP - শুধু এডমিন মেসেজের জন্য
+         ============================================== -->
     <div class="premium-popup" id="premiumPopup">
         <div class="popup-box">
             <button class="p-close" onclick="closePremiumPopup()">✕</button>
-            <div class="p-icon" id="pIcon">🔒</div>
-            <div class="p-title success" id="pTitle">✦ SUCCESS ✦</div>
-            <div class="p-msg" id="pMsg">Premium access activated!</div>
-            <div class="p-details" id="pDetails">
-                <div class="row"><span class="lbl">🔑 KEY</span><span class="val" id="pKey">—</span></div>
-                <div class="row"><span class="lbl">📅 EXPIRY</span><span class="val" id="pExpiry">—</span></div>
-                <div class="row"><span class="lbl">📊 STATUS</span><span class="val green" id="pStatus">ACTIVE</span></div>
-            </div>
-            <button class="p-btn" id="pBtn" onclick="closePremiumPopup()">✦ CLOSE ✦</button>
+            <div class="p-icon" id="pIcon">📢</div>
+            <div class="p-title info" id="pTitle">✦ ADMIN NOTICE ✦</div>
+            <div class="p-msg" id="pMsg">Message from admin</div>
+            <div class="p-details" id="pDetails" style="display:none;"></div>
+            <button class="p-btn" id="pBtn" onclick="closePremiumPopup()">✦ OK ✦</button>
         </div>
     </div>
 
@@ -835,7 +821,6 @@
                 </div>
                 <div class="status-msg" id="statusMsg"></div>
                 
-                <!-- LOGIN BUTTON - নাম পরিবর্তন করা হয়েছে -->
                 <button type="button" class="btn-login" id="authBtn" onclick="verifyKey()">✦ LOGIN ✦</button>
                 
                 <a href="https://ghostxstore.netlify.app/" target="_blank" class="btn-store">
@@ -887,56 +872,15 @@
         })();
 
         // ==============================================
-        // PREMIUM POPUP
+        // PREMIUM POPUP - শুধু এডমিন মেসেজের জন্য
         // ==============================================
-        function showPremiumPopup(type, title, msg, details, btnText, btnAction) {
+        function showAdminPopup(msg) {
             const popup = document.getElementById('premiumPopup');
-            const icon = document.getElementById('pIcon');
-            const titleEl = document.getElementById('pTitle');
-            const msgEl = document.getElementById('pMsg');
-            const detailsEl = document.getElementById('pDetails');
-            const btn = document.getElementById('pBtn');
-            
-            const icons = {
-                success: '🔓',
-                error: '🔒',
-                warning: '⚠️',
-                info: 'ℹ️'
-            };
-            
-            icon.textContent = icons[type] || '🔒';
-            titleEl.textContent = title;
-            titleEl.className = 'p-title ' + type;
-            msgEl.textContent = msg || '';
-            
-            if (details) {
-                let html = '';
-                for (const key in details) {
-                    const val = details[key];
-                    let valClass = 'val';
-                    if (val === 'ACTIVE' || val === 'LIFETIME') valClass += ' green';
-                    if (val.includes('EXPIRED') || val === 'DEACTIVATED') valClass += ' red';
-                    html += `<div class="row"><span class="lbl">${key}</span><span class="${valClass}">${val}</span></div>`;
-                }
-                detailsEl.innerHTML = html;
-                detailsEl.style.display = 'block';
-            } else {
-                detailsEl.style.display = 'none';
-            }
-            
-            btn.textContent = btnText || '✦ CLOSE ✦';
-            btn.className = 'p-btn';
-            if (type === 'error') btn.classList.add('danger');
-            
-            const newBtn = btn.cloneNode(true);
-            btn.parentNode.replaceChild(newBtn, btn);
-            newBtn.addEventListener('click', function() {
-                if (btnAction && typeof btnAction === 'function') {
-                    btnAction();
-                }
-                closePremiumPopup();
-            });
-            
+            document.getElementById('pIcon').textContent = '📢';
+            document.getElementById('pTitle').textContent = '✦ ADMIN NOTICE ✦';
+            document.getElementById('pTitle').className = 'p-title info';
+            document.getElementById('pMsg').textContent = msg || 'Message from admin';
+            document.getElementById('pDetails').style.display = 'none';
             popup.style.display = 'flex';
         }
         
@@ -951,10 +895,6 @@
             const el = document.getElementById('statusMsg');
             el.textContent = msg;
             el.className = 'status-msg show ' + type;
-        }
-        
-        function hideStatus() {
-            document.getElementById('statusMsg').className = 'status-msg';
         }
 
         // ==============================================
@@ -985,6 +925,7 @@
                 document.getElementById('accessKey').value = savedKey;
             }
 
+            // Check blocked
             database.ref('blockedDevices/' + deviceId).once('value')
                 .then((snapshot) => {
                     if (snapshot.exists() && snapshot.val().isBlocked === true) {
@@ -1044,25 +985,21 @@
         }
 
         // ==============================================
-        // LISTEN NOTIFICATIONS
+        // 🚀 LISTEN ADMIN MESSAGES - শুধু এডমিন পপআপ
         // ==============================================
         function listenForAdminMessages() {
             database.ref('notifications/' + deviceId).on('value', (snapshot) => {
                 if (snapshot.exists()) {
                     let data = snapshot.val();
-                    document.getElementById('notifMessageText').innerText = data.message;
+                    
+                    // লোডিং ও লগইন কার্ড লুকান
                     document.getElementById('loadingView').style.display = 'none';
                     document.getElementById('loginCard').style.display = 'none';
-                    document.getElementById('notifPopup').style.display = 'flex';
                     
-                    showPremiumPopup('info', '📢 ADMIN NOTICE', data.message, null, '✦ OK ✦');
+                    // শুধু এডমিন পপআপ দেখান
+                    showAdminPopup(data.message);
                 }
             });
-        }
-
-        function closeNotification() {
-            document.getElementById('notifPopup').style.display = 'none';
-            showLoginScreen();
         }
 
         function showLoginScreen() {
@@ -1073,7 +1010,7 @@
         }
 
         // ==============================================
-        // 🚀 VERIFY KEY - LOGIN FUNCTION
+        // 🚀 VERIFY KEY
         // ==============================================
         function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
@@ -1100,31 +1037,19 @@
                 const keyData = snapshot.val();
                 const now = Date.now();
 
-                // ❌ Deactivated Check
                 if (keyData.status === 'deactive') {
-                    showPremiumPopup('error', '⛔ KEY DEACTIVATED', 'This key has been deactivated by admin!', {
-                        '🔑 KEY': inputKey,
-                        '📊 STATUS': 'DEACTIVATED'
-                    }, '✦ CLOSE ✦');
                     showStatus('⛔ Key deactivated by admin', 'error');
                     return;
                 }
 
-                // ⏰ Expiry Check
                 if (keyData.isUsed && keyData.duration !== 'lifetime') {
                     if (now > keyData.expiryTimestamp) {
                         const exp = new Date(keyData.expiryTimestamp);
-                        showPremiumPopup('error', '⏰ KEY EXPIRED', 'Your license key has expired!', {
-                            '🔑 KEY': inputKey,
-                            '📅 EXPIRY': exp.toLocaleDateString(),
-                            '📊 STATUS': 'EXPIRED'
-                        }, '✦ CLOSE ✦');
                         showStatus('⏰ Key expired on ' + exp.toLocaleDateString(), 'error');
                         return;
                     }
                 }
 
-                // Update key
                 if (!keyData.isUsed) {
                     let updateData = { isUsed: true };
                     if (keyData.duration === '1min') {
@@ -1148,55 +1073,26 @@
                 currentKey = inputKey;
                 currentKeyData = keyData;
 
-                // ✅ Login Success
-                let expiryText = '—';
-                let statusText = '✅ ACTIVE';
-                
-                if (keyData.duration === 'lifetime') {
-                    expiryText = '♾️ LIFETIME';
-                } else if (keyData.expiryTimestamp) {
-                    const exp = new Date(keyData.expiryTimestamp);
-                    const now = Date.now();
-                    if (now > keyData.expiryTimestamp) {
-                        expiryText = exp.toLocaleDateString() + ' EXPIRED';
-                        statusText = '❌ EXPIRED';
-                    } else {
-                        expiryText = exp.toLocaleDateString();
-                    }
-                }
-
-                showPremiumPopup('success', '✅ LOGIN SUCCESSFUL', 'Premium access activated!', {
-                    '🔑 KEY': inputKey,
-                    '📅 EXPIRY': expiryText,
-                    '📊 STATUS': statusText
-                }, '✦ OPEN FLOATING ✦', function() {
-                    openAndroidFloating();
-                });
-
                 showStatus('✅ Login successful!', 'success');
+
+                // Android Floating Window
+                setTimeout(() => {
+                    if (window.AndroidBridge && window.AndroidBridge.openFloating) {
+                        window.AndroidBridge.openFloating();
+                    } else if (window.Android && window.Android.showCustomView) {
+                        window.Android.showCustomView("success");
+                    } else if (window.AndroidFloating && window.AndroidFloating.open) {
+                        window.AndroidFloating.open();
+                    } else {
+                        alert('🔒 FLOATING WINDOW\n\n✅ Click OK to close');
+                    }
+                }, 1000);
 
             }).catch((error) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ LOGIN ✦';
                 showStatus('❌ Database error: ' + error.message, 'error');
             });
-        }
-
-        // ==============================================
-        // 🚀 OPEN ANDROID FLOATING
-        // ==============================================
-        function openAndroidFloating() {
-            closePremiumPopup();
-
-            if (window.AndroidBridge && window.AndroidBridge.openFloating) {
-                window.AndroidBridge.openFloating();
-            } else if (window.Android && window.Android.showCustomView) {
-                window.Android.showCustomView("success");
-            } else if (window.AndroidFloating && window.AndroidFloating.open) {
-                window.AndroidFloating.open();
-            } else {
-                alert('🔒 FLOATING WINDOW\n\n✅ Click OK to close');
-            }
         }
 
         // ==============================================
