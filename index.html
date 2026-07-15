@@ -461,7 +461,78 @@
         }
 
         /* ==============================================
-           FLOATING WINDOW - শুধু CLOSE বাটন
+           SUCCESS NOTIFICATION - "OPEN" বাটন সহ
+           ============================================== */
+        .success-notification {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            padding: 16px 20px;
+            max-width: 380px;
+            width: 90%;
+            z-index: 99998;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            animation: slideUp 0.5s ease-out;
+            text-align: center;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .success-notification .notif-icon {
+            font-size: 30px;
+            margin-bottom: 4px;
+        }
+        .success-notification .notif-title {
+            color: #00ff44;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .success-notification .notif-sub {
+            color: #888;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            margin-bottom: 10px;
+        }
+        .success-notification .notif-key {
+            color: #ffd700;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(255, 215, 0, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .success-notification .btn-open {
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0a0a;
+            border: none;
+            padding: 10px 30px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .success-notification .btn-open:active {
+            transform: scale(0.97);
+        }
+
+        /* ==============================================
+           ANDROID FLOATING WINDOW (Web Fallback)
            ============================================== */
         .floating-overlay {
             display: none;
@@ -571,6 +642,7 @@
             .status-msg { font-size: 10px; min-height: 30px; }
             .floating-box { padding: 24px 18px; }
             .floating-box .float-details .row { font-size: 9px; }
+            .success-notification { padding: 14px 16px; }
         }
         
         @media (max-height: 650px) {
@@ -621,7 +693,18 @@
     </div>
 
     <!-- ==============================================
-         FLOATING WINDOW - শুধু CLOSE বাটন
+         SUCCESS NOTIFICATION - "OPEN" বাটন সহ
+         ============================================== -->
+    <div class="success-notification" id="successNotification">
+        <div class="notif-icon">👻</div>
+        <div class="notif-title">✦ LOGIN SUCCESSFUL ✦</div>
+        <div class="notif-sub">Premium access activated! Click OPEN to launch floating window</div>
+        <div class="notif-key" id="notifKey">XCORE-XXXX</div>
+        <button class="btn-open" onclick="openFloatingWindow()">✦ OPEN ✦</button>
+    </div>
+
+    <!-- ==============================================
+         ANDROID FLOATING WINDOW (Web Fallback)
          ============================================== -->
     <div class="floating-overlay" id="floatingOverlay">
         <div class="floating-box">
@@ -635,7 +718,6 @@
                 <div class="row"><span class="lbl">📊 Status</span><span class="val green" id="floatStatus">ACTIVE</span></div>
                 <div class="row"><span class="lbl">⚡ Device</span><span class="val" id="floatDevice" style="font-size:9px;color:#888;">—</span></div>
             </div>
-            <!-- শুধু CLOSE বাটন -->
             <button class="float-close" onclick="closeFloating()">✕ CLOSE</button>
         </div>
     </div>
@@ -736,6 +818,7 @@
         const deviceId = btoa(rawSpecs).replace(/[/+=]/g, "").substring(0, 24);
         let isInitialized = false;
         let currentKeyData = null;
+        let currentKey = null;
 
         // ==============================================
         // SYSTEM INIT
@@ -894,7 +977,7 @@
         }
 
         // ==============================================
-        // 🚀 VERIFY KEY - FLOATING WINDOW AUTO OPEN
+        // 🚀 VERIFY KEY
         // ==============================================
         function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
@@ -953,65 +1036,81 @@
                 document.getElementById('uiLoggedKey').innerText = inputKey;
                 database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
 
-                // Show status bar
+                // Save data for floating window
+                currentKey = inputKey;
                 currentKeyData = keyData;
+
+                // Show status bar
                 fetchKeyStatus(inputKey);
 
-                showMsg("✅ Login Successful! Launching...", "#00ff44");
+                showMsg("✅ Login Successful!", "#00ff44");
 
                 // ==============================================
-                // 🔥 FLOATING WINDOW AUTO OPEN - শুধু CLOSE বাটন
+                // 🔥 SHOW SUCCESS NOTIFICATION WITH "OPEN" BUTTON
                 // ==============================================
                 setTimeout(() => {
-                    // ফ্লোটিং উইন্ডোতে ডেটা পপুলেট করুন
-                    document.getElementById('floatKey').textContent = inputKey;
-                    document.getElementById('floatLoginDate').textContent = keyData.registerDate || new Date().toLocaleString();
-                    
-                    let expiryText = '—';
-                    let statusText = 'ACTIVE';
-                    let statusClass = 'green';
-                    
-                    if (keyData.duration === 'lifetime') {
-                        expiryText = '♾️ LIFETIME';
-                    } else if (keyData.expiryTimestamp) {
-                        const exp = new Date(keyData.expiryTimestamp);
-                        const now = Date.now();
-                        if (now > keyData.expiryTimestamp) {
-                            expiryText = exp.toLocaleDateString() + ' ⚠️ EXPIRED';
-                            statusText = 'EXPIRED';
-                            statusClass = 'red';
-                        } else {
-                            expiryText = exp.toLocaleDateString();
-                        }
-                    }
-                    
-                    document.getElementById('floatExpiry').textContent = expiryText;
-                    document.getElementById('floatStatus').textContent = statusText;
-                    document.getElementById('floatStatus').className = 'val ' + statusClass;
-                    document.getElementById('floatDevice').textContent = deviceId.substring(0, 10) + '...';
-
-                    // Android Floating Window Trigger
-                    if (window.AndroidBridge && window.AndroidBridge.openFloating) {
-                        console.log("📱 Opening Floating Window via AndroidBridge");
-                        window.AndroidBridge.openFloating();
-                    } else if (window.Android && window.Android.showCustomView) {
-                        console.log("📱 Opening Floating Window via Android");
-                        window.Android.showCustomView("success");
-                    } else if (window.AndroidFloating && window.AndroidFloating.open) {
-                        console.log("📱 Opening Floating Window via AndroidFloating");
-                        window.AndroidFloating.open();
-                    } else {
-                        // Web Fallback - CSS ফ্লোটিং দেখান
-                        console.log("🌐 Web fallback - showing CSS floating");
-                        document.getElementById('floatingOverlay').style.display = 'flex';
-                    }
-                }, 1200);
+                    document.getElementById('notifKey').textContent = inputKey;
+                    document.getElementById('successNotification').style.display = 'block';
+                }, 500);
 
             }).catch((error) => {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ AUTHENTICATE ✦';
                 showMsg("❌ Database Error: " + error.message, "#ff3333", true);
             });
+        }
+
+        // ==============================================
+        // 🚀 OPEN FLOATING WINDOW - "OPEN" বাটন কল করবে
+        // ==============================================
+        function openFloatingWindow() {
+            // নোটিফিকেশন লুকান
+            document.getElementById('successNotification').style.display = 'none';
+
+            // ফ্লোটিং উইন্ডোতে ডেটা পপুলেট করুন
+            document.getElementById('floatKey').textContent = currentKey || '—';
+            document.getElementById('floatLoginDate').textContent = currentKeyData?.registerDate || new Date().toLocaleString();
+            
+            let expiryText = '—';
+            let statusText = 'ACTIVE';
+            let statusClass = 'green';
+            
+            if (currentKeyData?.duration === 'lifetime') {
+                expiryText = '♾️ LIFETIME';
+            } else if (currentKeyData?.expiryTimestamp) {
+                const exp = new Date(currentKeyData.expiryTimestamp);
+                const now = Date.now();
+                if (now > currentKeyData.expiryTimestamp) {
+                    expiryText = exp.toLocaleDateString() + ' ⚠️ EXPIRED';
+                    statusText = 'EXPIRED';
+                    statusClass = 'red';
+                } else {
+                    expiryText = exp.toLocaleDateString();
+                }
+            }
+            
+            document.getElementById('floatExpiry').textContent = expiryText;
+            document.getElementById('floatStatus').textContent = statusText;
+            document.getElementById('floatStatus').className = 'val ' + statusClass;
+            document.getElementById('floatDevice').textContent = deviceId.substring(0, 10) + '...';
+
+            // ==============================================
+            // 📱 ANDROID FLOATING WINDOW TRIGGER
+            // ==============================================
+            if (window.AndroidBridge && window.AndroidBridge.openFloating) {
+                console.log("📱 Opening Floating Window via AndroidBridge");
+                window.AndroidBridge.openFloating();
+            } else if (window.Android && window.Android.showCustomView) {
+                console.log("📱 Opening Floating Window via Android");
+                window.Android.showCustomView("success");
+            } else if (window.AndroidFloating && window.AndroidFloating.open) {
+                console.log("📱 Opening Floating Window via AndroidFloating");
+                window.AndroidFloating.open();
+            } else {
+                // Web Fallback - CSS ফ্লোটিং দেখান
+                console.log("🌐 Web fallback - showing CSS floating");
+                document.getElementById('floatingOverlay').style.display = 'flex';
+            }
         }
 
         // ==============================================
@@ -1056,4 +1155,4 @@
         window.onload = initSystem;
     </script>
 </body>
-</html>
+    </html>
