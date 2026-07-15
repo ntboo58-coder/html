@@ -173,42 +173,6 @@
             -webkit-text-fill-color: #ffd700;
         }
         
-        .status-bar {
-            background: rgba(255, 215, 0, 0.04);
-            border: 1px solid rgba(255, 215, 0, 0.08);
-            border-radius: 12px;
-            padding: 10px 14px;
-            margin-bottom: 14px;
-            display: none;
-            position: relative;
-            z-index: 1;
-            flex-shrink: 0;
-        }
-        .status-bar .status-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 9px;
-            color: #666;
-            padding: 2px 0;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .status-bar .status-row .label {
-            color: #555;
-            font-size: 8px;
-            letter-spacing: 0.5px;
-        }
-        .status-bar .status-row .value {
-            color: #ffd700;
-            font-weight: 700;
-            font-size: 9px;
-        }
-        .status-bar .status-row .value.expired {
-            color: #ff3333;
-        }
-        .status-bar .status-row .value.active {
-            color: #00ff44;
-        }
-        
         .input-group {
             position: relative;
             margin-bottom: 14px;
@@ -461,80 +425,9 @@
         }
 
         /* ==============================================
-           SUCCESS NOTIFICATION - "OPEN" বাটন সহ
+           PREMIUM FLOATING CARD - স্ক্রিনের মাঝখানে
            ============================================== */
-        .success-notification {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 16px;
-            padding: 16px 20px;
-            max-width: 380px;
-            width: 90%;
-            z-index: 99998;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-            animation: slideUp 0.5s ease-out;
-            text-align: center;
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateX(-50%) translateY(30px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-        .success-notification .notif-icon {
-            font-size: 30px;
-            margin-bottom: 4px;
-        }
-        .success-notification .notif-title {
-            color: #00ff44;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        .success-notification .notif-sub {
-            color: #888;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 9px;
-            margin-bottom: 10px;
-        }
-        .success-notification .notif-key {
-            color: #ffd700;
-            font-family: monospace;
-            font-size: 12px;
-            font-weight: 700;
-            background: rgba(255, 215, 0, 0.05);
-            padding: 4px 10px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        .success-notification .btn-open {
-            background: linear-gradient(135deg, #ffd700, #f0a500);
-            color: #0a0a0a;
-            border: none;
-            padding: 10px 30px;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: 'Orbitron', sans-serif;
-            width: 100%;
-            transition: 0.3s;
-        }
-        .success-notification .btn-open:active {
-            transform: scale(0.97);
-        }
-
-        /* ==============================================
-           ANDROID FLOATING WINDOW (Web Fallback)
-           ============================================== */
-        .floating-overlay {
+        .premium-float-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -542,92 +435,161 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
             z-index: 99999;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.4s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
-        .floating-box {
+        .premium-float-box {
             background: linear-gradient(145deg, rgba(15, 15, 20, 0.98), rgba(5, 5, 10, 0.99));
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 24px;
-            padding: 30px 25px;
-            max-width: 360px;
-            width: 88%;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 28px;
+            padding: 30px 25px 25px;
+            max-width: 380px;
+            width: 90%;
             text-align: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(255, 215, 0, 0.03);
             animation: floatPop 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
         }
+        .premium-float-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.03), transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .premium-float-box::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            border-radius: 29px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
         @keyframes floatPop {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from { transform: scale(0.85) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
         }
-        .floating-box .float-icon {
+        
+        .premium-float-box .p-icon {
             font-size: 50px;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
         }
-        .floating-box .float-title {
+        .premium-float-box .p-title {
             color: #ffd700;
             font-family: 'Orbitron', sans-serif;
             font-size: 16px;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 2px;
+            position: relative;
+            z-index: 1;
         }
-        .floating-box .float-sub {
+        .premium-float-box .p-sub {
             color: #666;
             font-family: 'Orbitron', sans-serif;
-            font-size: 10px;
+            font-size: 9px;
+            letter-spacing: 2px;
             margin-bottom: 14px;
-            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
         }
-        .floating-box .float-details {
-            background: rgba(255, 215, 0, 0.04);
-            border: 1px solid rgba(255, 215, 0, 0.08);
-            border-radius: 12px;
+        
+        .premium-float-box .p-details {
+            background: rgba(255, 215, 0, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            border-radius: 14px;
             padding: 12px 14px;
             margin-bottom: 16px;
             text-align: left;
+            position: relative;
+            z-index: 1;
         }
-        .floating-box .float-details .row {
+        .premium-float-box .p-details .row {
             display: flex;
             justify-content: space-between;
-            font-size: 10px;
-            color: #666;
-            font-family: 'Orbitron', sans-serif;
-            padding: 3px 0;
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.03);
         }
-        .floating-box .float-details .row .lbl {
+        .premium-float-box .p-details .row:last-child {
+            border-bottom: none;
+        }
+        .premium-float-box .p-details .row .lbl {
             color: #555;
+            font-family: 'Orbitron', sans-serif;
             font-size: 9px;
+            letter-spacing: 0.5px;
         }
-        .floating-box .float-details .row .val {
+        .premium-float-box .p-details .row .val {
             color: #ffd700;
-            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
             font-size: 10px;
+            font-weight: 700;
         }
-        .floating-box .float-details .row .val.green {
+        .premium-float-box .p-details .row .val.green {
             color: #00ff44;
         }
-        .floating-box .float-details .row .val.red {
+        .premium-float-box .p-details .row .val.red {
             color: #ff3333;
         }
-        .floating-box .float-close {
+        .premium-float-box .p-details .row .val.mono {
+            font-family: monospace;
+            font-size: 11px;
+            color: #ffd700;
+        }
+        
+        .premium-float-box .p-btn-open {
             background: linear-gradient(135deg, #ffd700, #f0a500);
             color: #0a0a0a;
             border: none;
             padding: 13px;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 900;
+            border-radius: 14px;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            z-index: 1;
+            transition: 0.3s;
+            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.15);
+        }
+        .premium-float-box .p-btn-open:active {
+            transform: scale(0.97);
+        }
+        
+        .premium-float-box .p-close-icon {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            color: #555;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 2;
+            transition: 0.3s;
+            background: none;
+            border: none;
             font-family: 'Orbitron', sans-serif;
         }
-        .floating-box .float-close:active {
-            transform: scale(0.97);
+        .premium-float-box .p-close-icon:hover {
+            color: #ff3333;
         }
         
         @media (max-width: 380px) {
@@ -637,20 +599,18 @@
             .input-group input { font-size: 11px; height: 44px; padding: 12px 14px 12px 40px; }
             .btn-auth { font-size: 11px; height: 44px; padding: 12px; }
             .btn-buy { font-size: 9px; height: 38px; padding: 10px; }
-            .status-bar .status-row { font-size: 8px; }
             .device-info-box p { font-size: 7px; }
             .status-msg { font-size: 10px; min-height: 30px; }
-            .floating-box { padding: 24px 18px; }
-            .floating-box .float-details .row { font-size: 9px; }
-            .success-notification { padding: 14px 16px; }
+            .premium-float-box { padding: 24px 18px 20px; }
+            .premium-float-box .p-details .row .lbl { font-size: 8px; }
+            .premium-float-box .p-details .row .val { font-size: 9px; }
+            .premium-float-box .p-title { font-size: 14px; }
         }
         
         @media (max-height: 650px) {
             .login-card { padding: 16px 14px 12px; }
             .brand-title { font-size: 14px; }
             .brand-sub { font-size: 7px; margin-bottom: 10px; }
-            .status-bar { padding: 6px 10px; margin-bottom: 10px; }
-            .status-bar .status-row { font-size: 7px; padding: 1px 0; }
             .input-group { margin-bottom: 10px; }
             .input-group input { font-size: 11px; height: 38px; padding: 10px 12px 10px 36px; }
             .btn-auth { font-size: 11px; height: 38px; padding: 10px; }
@@ -658,6 +618,11 @@
             .device-info-box { margin-top: 8px; padding-top: 8px; }
             .device-info-box p { font-size: 7px; padding: 1px 0; }
             .status-msg { font-size: 9px; min-height: 26px; margin-bottom: 8px; padding: 4px 10px; }
+            .premium-float-box { padding: 20px 16px 16px; }
+            .premium-float-box .p-details { padding: 8px 10px; }
+            .premium-float-box .p-details .row { padding: 2px 0; }
+            .premium-float-box .p-icon { font-size: 36px; }
+            .premium-float-box .p-title { font-size: 13px; }
         }
     </style>
 </head>
@@ -693,32 +658,41 @@
     </div>
 
     <!-- ==============================================
-         SUCCESS NOTIFICATION - "OPEN" বাটন সহ
+         PREMIUM FLOATING CARD - স্ক্রিনের মাঝখানে
          ============================================== -->
-    <div class="success-notification" id="successNotification">
-        <div class="notif-icon">👻</div>
-        <div class="notif-title">✦ LOGIN SUCCESSFUL ✦</div>
-        <div class="notif-sub">Premium access activated! Click OPEN to launch floating window</div>
-        <div class="notif-key" id="notifKey">XCORE-XXXX</div>
-        <button class="btn-open" onclick="openFloatingWindow()">✦ OPEN ✦</button>
-    </div>
-
-    <!-- ==============================================
-         ANDROID FLOATING WINDOW (Web Fallback)
-         ============================================== -->
-    <div class="floating-overlay" id="floatingOverlay">
-        <div class="floating-box">
-            <div class="float-icon">👻</div>
-            <div class="float-title">✦ FLOATING WINDOW ✦</div>
-            <div class="float-sub">Premium access activated successfully!</div>
-            <div class="float-details" id="floatDetails">
-                <div class="row"><span class="lbl">🔑 License Key</span><span class="val" id="floatKey">—</span></div>
-                <div class="row"><span class="lbl">📅 Login Date</span><span class="val" id="floatLoginDate">—</span></div>
-                <div class="row"><span class="lbl">⏳ Expiry Date</span><span class="val" id="floatExpiry">—</span></div>
-                <div class="row"><span class="lbl">📊 Status</span><span class="val green" id="floatStatus">ACTIVE</span></div>
-                <div class="row"><span class="lbl">⚡ Device</span><span class="val" id="floatDevice" style="font-size:9px;color:#888;">—</span></div>
+    <div class="premium-float-overlay" id="premiumFloat">
+        <div class="premium-float-box">
+            <button class="p-close-icon" onclick="closePremiumFloat()">✕</button>
+            
+            <div class="p-icon">👻</div>
+            <div class="p-title">✦ FLOATING WINDOW ✦</div>
+            <div class="p-sub">Premium Access Activated</div>
+            
+            <div class="p-details">
+                <div class="row">
+                    <span class="lbl">🔑 LICENSE KEY</span>
+                    <span class="val mono" id="pKey">—</span>
+                </div>
+                <div class="row">
+                    <span class="lbl">📅 REGISTERED</span>
+                    <span class="val" id="pRegister">—</span>
+                </div>
+                <div class="row">
+                    <span class="lbl">⏳ EXPIRY DATE</span>
+                    <span class="val" id="pExpiry">—</span>
+                </div>
+                <div class="row">
+                    <span class="lbl">📊 STATUS</span>
+                    <span class="val green" id="pStatus">ACTIVE</span>
+                </div>
+                <div class="row">
+                    <span class="lbl">⚡ DEVICE</span>
+                    <span class="val" id="pDevice" style="font-size:9px;color:#888;">—</span>
+                </div>
             </div>
-            <button class="float-close" onclick="closeFloating()">✕ CLOSE</button>
+            
+            <!-- OPEN বাটন - Android ফ্লোটিং কল করবে -->
+            <button class="p-btn-open" onclick="openAndroidFloating()">✦ OPEN ✦</button>
         </div>
     </div>
 
@@ -732,26 +706,6 @@
                     <span class="ghost-icon">👻</span> 𝐆𝐇𝐎𝐒𝐓 𝐗 𝐏𝐀𝐍𝐄𝐋
                 </div>
                 <div class="brand-sub">Premium <span>VIP</span> Security</div>
-            </div>
-
-            <!-- Status Bar -->
-            <div class="status-bar" id="statusBar">
-                <div class="status-row">
-                    <span class="label">📅 LOGIN DATE</span>
-                    <span class="value" id="loginDate">—</span>
-                </div>
-                <div class="status-row">
-                    <span class="label">⏳ EXPIRY DATE</span>
-                    <span class="value" id="expiryDate">—</span>
-                </div>
-                <div class="status-row">
-                    <span class="label">📊 STATUS</span>
-                    <span class="value" id="licenseStatus">—</span>
-                </div>
-                <div class="status-row">
-                    <span class="label">⚡ DEVICE</span>
-                    <span class="value" id="deviceStatus" style="font-size:8px;color:#666;">—</span>
-                </div>
             </div>
 
             <!-- Login Form -->
@@ -835,7 +789,6 @@
             if (savedKey) {
                 document.getElementById('uiLoggedKey').innerText = savedKey;
                 document.getElementById('accessKey').value = savedKey;
-                fetchKeyStatus(savedKey);
             }
 
             database.ref('blockedDevices/' + deviceId).once('value')
@@ -859,45 +812,6 @@
                     setTimeout(() => showLoginScreen(), 800);
                 }
             }, 5000);
-        }
-
-        // ==============================================
-        // FETCH KEY STATUS
-        // ==============================================
-        function fetchKeyStatus(key) {
-            database.ref('keys/' + key).once('value').then((snapshot) => {
-                if (snapshot.exists()) {
-                    const data = snapshot.val();
-                    currentKeyData = data;
-                    const statusBar = document.getElementById('statusBar');
-                    statusBar.style.display = 'block';
-                    
-                    document.getElementById('loginDate').textContent = data.registerDate || '—';
-                    
-                    if (data.duration === 'lifetime') {
-                        document.getElementById('expiryDate').textContent = '♾️ LIFETIME';
-                        document.getElementById('expiryDate').className = 'value active';
-                    } else if (data.expiryTimestamp) {
-                        const exp = new Date(data.expiryTimestamp);
-                        const now = Date.now();
-                        if (now > data.expiryTimestamp) {
-                            document.getElementById('expiryDate').textContent = exp.toLocaleDateString() + ' ⚠️';
-                            document.getElementById('expiryDate').className = 'value expired';
-                        } else {
-                            document.getElementById('expiryDate').textContent = exp.toLocaleDateString();
-                            document.getElementById('expiryDate').className = 'value';
-                        }
-                    } else {
-                        document.getElementById('expiryDate').textContent = '—';
-                    }
-                    
-                    const status = data.status === 'active' ? '✅ ACTIVE' : '⛔ DEACTIVATED';
-                    document.getElementById('licenseStatus').textContent = status;
-                    document.getElementById('licenseStatus').className = data.status === 'active' ? 'value active' : 'value expired';
-                    
-                    document.getElementById('deviceStatus').textContent = deviceId.substring(0, 10) + '...';
-                }
-            });
         }
 
         // ==============================================
@@ -1036,22 +950,18 @@
                 document.getElementById('uiLoggedKey').innerText = inputKey;
                 database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
 
-                // Save data for floating window
+                // Save data
                 currentKey = inputKey;
                 currentKeyData = keyData;
-
-                // Show status bar
-                fetchKeyStatus(inputKey);
 
                 showMsg("✅ Login Successful!", "#00ff44");
 
                 // ==============================================
-                // 🔥 SHOW SUCCESS NOTIFICATION WITH "OPEN" BUTTON
+                // 🔥 PREMIUM FLOATING CARD - স্ক্রিনের মাঝখানে
                 // ==============================================
                 setTimeout(() => {
-                    document.getElementById('notifKey').textContent = inputKey;
-                    document.getElementById('successNotification').style.display = 'block';
-                }, 500);
+                    showPremiumFloat(inputKey, keyData);
+                }, 600);
 
             }).catch((error) => {
                 authBtn.disabled = false;
@@ -1061,26 +971,23 @@
         }
 
         // ==============================================
-        // 🚀 OPEN FLOATING WINDOW - "OPEN" বাটন কল করবে
+        // 🔥 PREMIUM FLOATING CARD SHOW
         // ==============================================
-        function openFloatingWindow() {
-            // নোটিফিকেশন লুকান
-            document.getElementById('successNotification').style.display = 'none';
-
-            // ফ্লোটিং উইন্ডোতে ডেটা পপুলেট করুন
-            document.getElementById('floatKey').textContent = currentKey || '—';
-            document.getElementById('floatLoginDate').textContent = currentKeyData?.registerDate || new Date().toLocaleString();
+        function showPremiumFloat(key, data) {
+            // ডেটা পপুলেট
+            document.getElementById('pKey').textContent = key;
+            document.getElementById('pRegister').textContent = data.registerDate || new Date().toLocaleString();
             
             let expiryText = '—';
             let statusText = 'ACTIVE';
             let statusClass = 'green';
             
-            if (currentKeyData?.duration === 'lifetime') {
+            if (data.duration === 'lifetime') {
                 expiryText = '♾️ LIFETIME';
-            } else if (currentKeyData?.expiryTimestamp) {
-                const exp = new Date(currentKeyData.expiryTimestamp);
+            } else if (data.expiryTimestamp) {
+                const exp = new Date(data.expiryTimestamp);
                 const now = Date.now();
-                if (now > currentKeyData.expiryTimestamp) {
+                if (now > data.expiryTimestamp) {
                     expiryText = exp.toLocaleDateString() + ' ⚠️ EXPIRED';
                     statusText = 'EXPIRED';
                     statusClass = 'red';
@@ -1089,10 +996,28 @@
                 }
             }
             
-            document.getElementById('floatExpiry').textContent = expiryText;
-            document.getElementById('floatStatus').textContent = statusText;
-            document.getElementById('floatStatus').className = 'val ' + statusClass;
-            document.getElementById('floatDevice').textContent = deviceId.substring(0, 10) + '...';
+            document.getElementById('pExpiry').textContent = expiryText;
+            document.getElementById('pStatus').textContent = statusText;
+            document.getElementById('pStatus').className = 'val ' + statusClass;
+            document.getElementById('pDevice').textContent = deviceId.substring(0, 10) + '...';
+
+            // শো
+            document.getElementById('premiumFloat').style.display = 'flex';
+        }
+
+        // ==============================================
+        // CLOSE PREMIUM FLOATING CARD
+        // ==============================================
+        function closePremiumFloat() {
+            document.getElementById('premiumFloat').style.display = 'none';
+        }
+
+        // ==============================================
+        // 🚀 OPEN ANDROID FLOATING WINDOW
+        // ==============================================
+        function openAndroidFloating() {
+            // প্রিমিয়াম ফ্লোটিং বন্ধ করুন
+            document.getElementById('premiumFloat').style.display = 'none';
 
             // ==============================================
             // 📱 ANDROID FLOATING WINDOW TRIGGER
@@ -1107,23 +1032,17 @@
                 console.log("📱 Opening Floating Window via AndroidFloating");
                 window.AndroidFloating.open();
             } else {
-                // Web Fallback - CSS ফ্লোটিং দেখান
-                console.log("🌐 Web fallback - showing CSS floating");
-                document.getElementById('floatingOverlay').style.display = 'flex';
-            }
-        }
-
-        // ==============================================
-        // CLOSE FLOATING WINDOW
-        // ==============================================
-        function closeFloating() {
-            document.getElementById('floatingOverlay').style.display = 'none';
-            
-            // Android Close Call
-            if (window.AndroidBridge && window.AndroidBridge.closeFloating) {
-                window.AndroidBridge.closeFloating();
-            } else if (window.Android && window.Android.closeCustomView) {
-                window.Android.closeCustomView();
+                // Web Fallback
+                console.log("🌐 Web fallback");
+                alert(
+                    '👻 ANDROID FLOATING WINDOW\n\n' +
+                    '🔑 Key: ' + (currentKey || '—') + '\n' +
+                    '📅 Registered: ' + (currentKeyData?.registerDate || '—') + '\n' +
+                    '⏳ Expiry: ' + (document.getElementById('pExpiry').textContent || '—') + '\n' +
+                    '📊 Status: ACTIVE\n' +
+                    '⚡ Device: ' + deviceId.substring(0, 10) + '...\n\n' +
+                    '✅ Click OK to close'
+                );
             }
         }
 
@@ -1155,4 +1074,4 @@
         window.onload = initSystem;
     </script>
 </body>
-    </html>
+                        </html>
