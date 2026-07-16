@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/1.0.35/ua-parser.min.js"></script>
     
     <style>
+        /* আপনার আগের স্টাইল এখানে রাখুন */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         
         * {
@@ -33,9 +34,6 @@
             touch-action: none;
         }
         
-        /* ==============================================
-           ANIMATED BACKGROUND - আপগ্রেড
-           ============================================== */
         .bg-container {
             position: fixed;
             top: 0;
@@ -160,9 +158,6 @@
             z-index: 1;
         }
         
-        /* ==============================================
-           LOGIN CARD - প্রিমিয়াম ডিজাইন
-           ============================================== */
         .login-card {
             width: 100%;
             max-width: 400px;
@@ -190,7 +185,6 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
         
-        /* নিওন বর্ডার গ্লো */
         .login-card::before {
             content: '';
             position: absolute;
@@ -228,7 +222,6 @@
             50% { transform: scale(1.3); opacity: 0.7; }
         }
         
-        /* Brand Section */
         .brand-section {
             flex-shrink: 0;
             position: relative;
@@ -296,9 +289,6 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
         
-        /* ==============================================
-           ইনপুট ফিল্ড - প্রিমিয়াম
-           ============================================== */
         .input-group {
             position: relative;
             margin-bottom: 16px;
@@ -343,9 +333,6 @@
             font-size: 11px;
         }
         
-        /* ==============================================
-           লগইন বাটন - প্রিমিয়াম ফ্যাট
-           ============================================== */
         .btn-login {
             width: 100%;
             background: transparent;
@@ -477,9 +464,6 @@
         .status-msg.warning { color: #ffaa00; }
         .status-msg.info { color: #00f5ff; opacity: 0.6; }
         
-        /* ==============================================
-           LOADING SCREEN - প্রিমিয়াম
-           ============================================== */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -538,9 +522,6 @@
             font-family: 'Orbitron', sans-serif;
         }
         
-        /* ==============================================
-           PREMIUM POPUP
-           ============================================== */
         .premium-popup {
             display: none;
             position: fixed;
@@ -807,7 +788,6 @@
 
     <div class="particles" id="particles"></div>
 
-    <!-- Loading Screen -->
     <div id="loadingView" class="loading-screen">
         <div class="loader-icon">🔒</div>
         <div class="loader-ring"></div>
@@ -815,7 +795,6 @@
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
-    <!-- Block Popup -->
     <div id="blockPopup" class="popup-overlay">
         <div class="popup-box-system">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
@@ -824,7 +803,6 @@
         </div>
     </div>
 
-    <!-- Premium Popup -->
     <div class="premium-popup" id="premiumPopup">
         <div class="popup-box">
             <button class="p-close" onclick="closePremiumPopup()">✕</button>
@@ -836,7 +814,6 @@
         </div>
     </div>
 
-    <!-- Main App -->
     <div class="app-container">
         <div class="login-card" id="loginCard">
             
@@ -1032,7 +1009,7 @@
         }
 
         // ==============================================
-        // 🚀 VERIFY KEY - ফিক্সড (এক্সপায়ার চেক)
+        // 🚀 VERIFY KEY - Device Limit Added
         // ==============================================
         function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
@@ -1058,13 +1035,11 @@
 
                 const keyData = snapshot.val();
                 const now = Date.now();
-
-                // ==============================================
-                // 🔥 STEP 1: এক্সপায়ার চেক (সবার আগে)
-                // ==============================================
                 
-                // 1 Minute (Test) চেক
-                if (keyData.durationRaw === '1min' || keyData.duration === '1 Min') {
+                // ==============================================
+                // ✅ STEP 1: এক্সপায়ার চেক
+                // ==============================================
+                if (keyData.durationRaw === '1min') {
                     if (keyData.isUsed && keyData.expiryTimestamp) {
                         if (now > keyData.expiryTimestamp) {
                             showMsg("⏰ Test Key Expired! (1 Minute)", "#ff3333");
@@ -1074,7 +1049,6 @@
                     }
                 }
                 
-                // নরমাল ডিউরেশন চেক
                 if (keyData.duration !== 'lifetime') {
                     if (keyData.isUsed && keyData.expiryTimestamp) {
                         if (now > keyData.expiryTimestamp) {
@@ -1086,7 +1060,7 @@
                 }
 
                 // ==============================================
-                // 🔥 STEP 2: স্ট্যাটাস চেক
+                // ✅ STEP 2: স্ট্যাটাস চেক
                 // ==============================================
                 if (keyData.status === 'deactive') {
                     showMsg("⛔ This Key is Deactivated!", "#ff3333");
@@ -1094,13 +1068,43 @@
                 }
 
                 // ==============================================
-                // 🔥 STEP 3: কী ইউজড আপডেট
+                // ✅ STEP 3: DEVICE LIMIT CHECK - NEW!
+                // ==============================================
+                // ডিভাইস লিমিট কত?
+                let limitCount = keyData.limitCount || 1; // ডিফল্ট 1
+                if (keyData.mode === 'unlimited') {
+                    limitCount = 999; // আনলিমিটেড
+                }
+
+                // এই কী এর সাথে কয়টা ডিভাইস রেজিস্টার্ড?
+                let deviceCount = 0;
+                let isDeviceRegistered = false;
+
+                // ডিভাইস লিস্ট পড়ুন
+                const deviceSnapshot = await database.ref('keys/' + inputKey + '/devices').once('value');
+                
+                if (deviceSnapshot.exists()) {
+                    // এই ডিভাইস আগে থেকে রেজিস্টার্ড কিনা
+                    if (deviceSnapshot.child(deviceId).exists()) {
+                        isDeviceRegistered = true;
+                    }
+                    deviceCount = deviceSnapshot.numChildren();
+                }
+
+                // চেক করুন: যদি ডিভাইস রেজিস্টার্ড না হয় এবং লিমিট পূর্ণ হয়ে থাকে
+                if (!isDeviceRegistered && deviceCount >= limitCount) {
+                    showMsg("⛔ Device limit exceeded! Maximum " + limitCount + " device(s) allowed.", "#ff3333");
+                    return;
+                }
+
+                // ==============================================
+                // ✅ STEP 4: কী ইউজড আপডেট
                 // ==============================================
                 if (!keyData.isUsed) {
                     let updateData = { isUsed: true };
 
                     if (keyData.duration === '1min' || keyData.durationRaw === '1min') {
-                        updateData.expiryTimestamp = now + (1 * 60 * 1000); // 1 মিনিট
+                        updateData.expiryTimestamp = now + (1 * 60 * 1000);
                     } else if (keyData.duration !== 'lifetime') {
                         const days = parseInt(keyData.duration);
                         if (!isNaN(days)) {
@@ -1112,7 +1116,20 @@
                 }
 
                 // ==============================================
-                // ✅ STEP 4: লগইন সফল
+                // ✅ STEP 5: ডিভাইস রেজিস্টার করুন (যদি নতুন হয়)
+                // ==============================================
+                if (!isDeviceRegistered) {
+                    const modelName = document.getElementById('uiDeviceModel').innerText || 'Unknown';
+                    database.ref('keys/' + inputKey + '/devices/' + deviceId).set({
+                        deviceName: modelName,
+                        deviceId: deviceId,
+                        loginTime: new Date().toLocaleString(),
+                        lastSeen: firebase.database.ServerValue.TIMESTAMP
+                    });
+                }
+
+                // ==============================================
+                // ✅ STEP 6: লগইন সফল
                 // ==============================================
                 localStorage.setItem('x_core_logged_key', inputKey);
                 document.getElementById('uiLoggedKey').innerText = inputKey;
