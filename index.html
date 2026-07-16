@@ -33,9 +33,6 @@
             touch-action: none;
         }
         
-        /* ==============================================
-           ANIMATED BACKGROUND
-           ============================================== */
         .bg-container {
             position: fixed;
             top: 0;
@@ -160,9 +157,6 @@
             z-index: 1;
         }
         
-        /* ==============================================
-           LOGIN CARD
-           ============================================== */
         .login-card {
             width: 100%;
             max-width: 400px;
@@ -449,9 +443,6 @@
             opacity: 0.5;
         }
         
-        /* ==============================================
-           STATUS MESSAGE
-           ============================================== */
         .status-msg {
             font-size: 10px;
             color: #444;
@@ -472,9 +463,6 @@
         .status-msg.warning { color: #ffaa00; }
         .status-msg.info { color: #00f5ff; opacity: 0.6; }
         
-        /* ==============================================
-           ADMIN NOTICE - Toast Style (উপর থেকে নিচে)
-           ============================================== */
         .admin-toast {
             position: fixed;
             top: -100px;
@@ -532,9 +520,6 @@
         }
         .admin-toast .toast-close:hover { color: #ff4444; }
         
-        /* ==============================================
-           LOADING SCREEN
-           ============================================== */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -593,9 +578,6 @@
             font-family: 'Orbitron', sans-serif;
         }
         
-        /* ==============================================
-           BLOCK POPUP
-           ============================================== */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -692,9 +674,6 @@
 </head>
 <body>
 
-    <!-- ==============================================
-         ANIMATED BACKGROUND
-         ============================================== -->
     <div class="bg-container">
         <div class="grid-overlay"></div>
         <div class="cyber-orb orb1"></div>
@@ -705,9 +684,6 @@
 
     <div class="particles" id="particles"></div>
 
-    <!-- ==============================================
-         LOADING SCREEN
-         ============================================== -->
     <div id="loadingView" class="loading-screen">
         <div class="loader-icon">🔒</div>
         <div class="loader-ring"></div>
@@ -715,9 +691,6 @@
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
-    <!-- ==============================================
-         BLOCK POPUP
-         ============================================== -->
     <div id="blockPopup" class="popup-overlay">
         <div class="popup-box-system">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
@@ -726,9 +699,6 @@
         </div>
     </div>
 
-    <!-- ==============================================
-         ADMIN NOTICE - Toast Style
-         ============================================== -->
     <div class="admin-toast" id="adminToast">
         <button class="toast-close" onclick="closeAdminToast()">✕</button>
         <div class="toast-icon">📢</div>
@@ -736,9 +706,6 @@
         <div class="toast-msg" id="adminToastMsg">Message from admin</div>
     </div>
 
-    <!-- ==============================================
-         MAIN LOGIN CARD
-         ============================================== -->
     <div class="app-container">
         <div class="login-card" id="loginCard">
             
@@ -811,14 +778,12 @@
         })();
 
         // ==============================================
-        // ADMIN TOAST - Show/Hide
+        // ADMIN TOAST
         // ==============================================
         function showAdminToast(msg) {
             const toast = document.getElementById('adminToast');
             document.getElementById('adminToastMsg').textContent = msg || 'Message from admin';
             toast.classList.add('show');
-            
-            // 5 সেকেন্ড পর অটো বন্ধ
             clearTimeout(window.toastTimeout);
             window.toastTimeout = setTimeout(() => {
                 closeAdminToast();
@@ -930,14 +895,13 @@
             database.ref('notifications/' + deviceId).on('value', (snapshot) => {
                 if (snapshot.exists()) {
                     let data = snapshot.val();
-                    // Toast দেখান (পপআপ না)
                     showAdminToast(data.message);
                 }
             });
         }
 
         // ==============================================
-        // 🚀 VERIFY KEY - Device Limit Added
+        // 🚀 VERIFY KEY - FULL KEY SYSTEM (Expiry + Device Limit)
         // ==============================================
         async function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
@@ -997,7 +961,7 @@
                 }
 
                 // ==============================================
-                // STEP 3: DEVICE LIMIT CHECK - FIXED!
+                // STEP 3: DEVICE LIMIT CHECK
                 // ==============================================
                 let limitCount = keyData.limitCount || 1;
                 if (keyData.mode === 'unlimited' || keyData.deviceLimit === '♾️ Unlimited') {
@@ -1016,9 +980,7 @@
                         }
                         deviceCount = deviceSnapshot.numChildren();
                     }
-                } catch (e) {
-                    // devices নোড না থাকলে কোন সমস্যা নেই
-                }
+                } catch (e) {}
 
                 if (!isDeviceRegistered && deviceCount >= limitCount) {
                     showMsg("⛔ Device limit exceeded! Maximum " + limitCount + " device(s) allowed.", "#ff3333");
@@ -1044,7 +1006,7 @@
                 }
 
                 // ==============================================
-                // STEP 5: ডিভাইস রেজিস্টার করুন
+                // STEP 5: ডিভাইস রেজিস্টার
                 // ==============================================
                 if (!isDeviceRegistered) {
                     const modelName = document.getElementById('uiDeviceModel').innerText || 'Unknown';
