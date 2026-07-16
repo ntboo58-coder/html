@@ -12,7 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/1.0.35/ua-parser.min.js"></script>
     
     <style>
-        /* আপনার আগের স্টাইল এখানে রাখুন */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         
         * {
@@ -34,6 +33,9 @@
             touch-action: none;
         }
         
+        /* ==============================================
+           ANIMATED BACKGROUND
+           ============================================== */
         .bg-container {
             position: fixed;
             top: 0;
@@ -158,6 +160,9 @@
             z-index: 1;
         }
         
+        /* ==============================================
+           LOGIN CARD
+           ============================================== */
         .login-card {
             width: 100%;
             max-width: 400px;
@@ -444,6 +449,9 @@
             opacity: 0.5;
         }
         
+        /* ==============================================
+           STATUS MESSAGE
+           ============================================== */
         .status-msg {
             font-size: 10px;
             color: #444;
@@ -464,6 +472,69 @@
         .status-msg.warning { color: #ffaa00; }
         .status-msg.info { color: #00f5ff; opacity: 0.6; }
         
+        /* ==============================================
+           ADMIN NOTICE - Toast Style (উপর থেকে নিচে)
+           ============================================== */
+        .admin-toast {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(145deg, rgba(10,10,10,0.98), rgba(5,5,5,0.99));
+            border: 1px solid rgba(0, 245, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px 24px;
+            max-width: 380px;
+            width: 90%;
+            z-index: 99998;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.8), 0 0 40px rgba(0,245,255,0.02);
+            text-align: center;
+            transition: top 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-toast.show {
+            top: 30px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .admin-toast .toast-icon {
+            font-size: 24px;
+            color: #00f5ff;
+            margin-bottom: 4px;
+        }
+        .admin-toast .toast-title {
+            color: #00f5ff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+        }
+        .admin-toast .toast-msg {
+            color: #888;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+        }
+        .admin-toast .toast-close {
+            position: absolute;
+            top: 6px;
+            right: 12px;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+        }
+        .admin-toast .toast-close:hover { color: #ff4444; }
+        
+        /* ==============================================
+           LOADING SCREEN
+           ============================================== */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -522,167 +593,9 @@
             font-family: 'Orbitron', sans-serif;
         }
         
-        .premium-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(30px);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease-out;
-        }
-        .premium-popup .popup-box {
-            background: linear-gradient(145deg, rgba(8, 8, 8, 0.98), rgba(3, 3, 3, 0.99));
-            border: 1px solid rgba(0, 245, 255, 0.03);
-            border-radius: 24px;
-            padding: 28px 24px 22px;
-            max-width: 340px;
-            width: 88%;
-            text-align: center;
-            box-shadow: 0 40px 120px rgba(0,0,0,0.9), 0 0 100px rgba(0, 245, 255, 0.005);
-            animation: floatPop 0.4s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-        .premium-popup .popup-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.015), transparent 70%);
-            animation: bgPulse 10s ease-in-out infinite;
-            pointer-events: none;
-        }
-        .premium-popup .popup-box::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.03), transparent);
-            border-radius: 25px;
-            z-index: -1;
-            animation: borderGlow 5s ease-in-out infinite;
-            background-size: 300% 300%;
-        }
-        
-        @keyframes floatPop {
-            from { transform: scale(0.85) translateY(20px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .premium-popup .popup-box .p-icon {
-            font-size: 30px;
-            color: #00f5ff;
-            margin-bottom: 4px;
-            position: relative;
-            z-index: 1;
-            opacity: 0.7;
-        }
-        .premium-popup .popup-box .p-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 14px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 1;
-            color: #ffffff;
-        }
-        .premium-popup .popup-box .p-title.success { color: #00f5ff; }
-        .premium-popup .popup-box .p-title.error { color: #ff4444; }
-        .premium-popup .popup-box .p-title.warning { color: #ffaa00; }
-        .premium-popup .popup-box .p-title.info { color: #00f5ff; opacity: 0.6; }
-        
-        .premium-popup .popup-box .p-msg {
-            color: #444;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 10px;
-            margin: 4px 0 12px 0;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .premium-popup .popup-box .p-details {
-            background: rgba(0, 245, 255, 0.01);
-            border: 1px solid rgba(0, 245, 255, 0.015);
-            border-radius: 12px;
-            padding: 10px 12px;
-            margin-bottom: 14px;
-            text-align: left;
-            position: relative;
-            z-index: 1;
-        }
-        .premium-popup .popup-box .p-details .row {
-            display: flex;
-            justify-content: space-between;
-            padding: 2px 0;
-            font-size: 9px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .premium-popup .popup-box .p-details .row .lbl { color: #333; }
-        .premium-popup .popup-box .p-details .row .val { color: #00f5ff; font-weight: 700; opacity: 0.6; }
-        .premium-popup .popup-box .p-details .row .val.green { color: #00f5ff; opacity: 1; }
-        .premium-popup .popup-box .p-details .row .val.red { color: #ff4444; }
-        
-        .premium-popup .popup-box .p-btn {
-            background: transparent;
-            color: #00f5ff;
-            border: 1px solid rgba(0, 245, 255, 0.03);
-            padding: 11px;
-            font-size: 11px;
-            font-weight: 900;
-            border-radius: 12px;
-            cursor: pointer;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-family: 'Orbitron', sans-serif;
-            position: relative;
-            z-index: 1;
-            transition: 0.3s;
-        }
-        .premium-popup .popup-box .p-btn:hover {
-            background: rgba(0, 245, 255, 0.015);
-            border-color: rgba(0, 245, 255, 0.06);
-        }
-        .premium-popup .popup-box .p-btn:active { transform: scale(0.97); }
-        .premium-popup .popup-box .p-btn.danger {
-            color: #ff4444;
-            border-color: rgba(255, 68, 68, 0.03);
-        }
-        .premium-popup .popup-box .p-btn.danger:hover {
-            background: rgba(255, 68, 68, 0.015);
-            border-color: rgba(255, 68, 68, 0.06);
-        }
-        
-        .premium-popup .popup-box .p-close {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            color: #333;
-            font-size: 16px;
-            cursor: pointer;
-            z-index: 2;
-            background: none;
-            border: none;
-            font-family: 'Orbitron', sans-serif;
-            transition: 0.3s;
-        }
-        .premium-popup .popup-box .p-close:hover { color: #ff4444; }
-        
+        /* ==============================================
+           BLOCK POPUP
+           ============================================== */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -753,9 +666,11 @@
             .btn-login { font-size: 14px; height: 56px; padding: 16px; }
             .btn-store { font-size: 10px; height: 44px; padding: 12px; }
             .device-info-box p { font-size: 6px; }
-            .premium-popup .popup-box { padding: 22px 18px 18px; }
             .cyber-orb.orb1 { width: 300px; height: 300px; }
             .cyber-orb.orb2 { width: 250px; height: 250px; }
+            .admin-toast { padding: 14px 18px; }
+            .admin-toast .toast-title { font-size: 10px; }
+            .admin-toast .toast-msg { font-size: 9px; }
         }
         
         @media (max-height: 650px) {
@@ -770,14 +685,16 @@
             .device-info-box { margin-top: 8px; padding-top: 8px; }
             .device-info-box p { font-size: 6px; padding: 1px 0; }
             .status-indicator { font-size: 8px; margin-bottom: 10px; }
-            .premium-popup .popup-box { padding: 18px 16px 14px; }
-            .premium-popup .popup-box .p-icon { font-size: 24px; }
-            .premium-popup .popup-box .p-title { font-size: 13px; }
+            .admin-toast { padding: 12px 16px; top: 20px; }
+            .admin-toast.show { top: 20px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ==============================================
+         ANIMATED BACKGROUND
+         ============================================== -->
     <div class="bg-container">
         <div class="grid-overlay"></div>
         <div class="cyber-orb orb1"></div>
@@ -788,6 +705,9 @@
 
     <div class="particles" id="particles"></div>
 
+    <!-- ==============================================
+         LOADING SCREEN
+         ============================================== -->
     <div id="loadingView" class="loading-screen">
         <div class="loader-icon">🔒</div>
         <div class="loader-ring"></div>
@@ -795,6 +715,9 @@
         <div class="load-sub">Initializing Secure Connection...</div>
     </div>
 
+    <!-- ==============================================
+         BLOCK POPUP
+         ============================================== -->
     <div id="blockPopup" class="popup-overlay">
         <div class="popup-box-system">
             <h1 class="red"><i class="fa-solid fa-ban"></i> ACCESS DENIED</h1>
@@ -803,17 +726,19 @@
         </div>
     </div>
 
-    <div class="premium-popup" id="premiumPopup">
-        <div class="popup-box">
-            <button class="p-close" onclick="closePremiumPopup()">✕</button>
-            <div class="p-icon" id="pIcon">📢</div>
-            <div class="p-title info" id="pTitle">✦ ADMIN NOTICE ✦</div>
-            <div class="p-msg" id="pMsg">Message from admin</div>
-            <div class="p-details" id="pDetails" style="display:none;"></div>
-            <button class="p-btn" id="pBtn" onclick="closePremiumPopup()">✦ OK ✦</button>
-        </div>
+    <!-- ==============================================
+         ADMIN NOTICE - Toast Style
+         ============================================== -->
+    <div class="admin-toast" id="adminToast">
+        <button class="toast-close" onclick="closeAdminToast()">✕</button>
+        <div class="toast-icon">📢</div>
+        <div class="toast-title">✦ ADMIN NOTICE ✦</div>
+        <div class="toast-msg" id="adminToastMsg">Message from admin</div>
     </div>
 
+    <!-- ==============================================
+         MAIN LOGIN CARD
+         ============================================== -->
     <div class="app-container">
         <div class="login-card" id="loginCard">
             
@@ -886,20 +811,23 @@
         })();
 
         // ==============================================
-        // PREMIUM POPUP
+        // ADMIN TOAST - Show/Hide
         // ==============================================
-        function showAdminPopup(msg) {
-            const popup = document.getElementById('premiumPopup');
-            document.getElementById('pIcon').textContent = '📢';
-            document.getElementById('pTitle').textContent = '✦ ADMIN NOTICE ✦';
-            document.getElementById('pTitle').className = 'p-title info';
-            document.getElementById('pMsg').textContent = msg || 'Message from admin';
-            document.getElementById('pDetails').style.display = 'none';
-            popup.style.display = 'flex';
+        function showAdminToast(msg) {
+            const toast = document.getElementById('adminToast');
+            document.getElementById('adminToastMsg').textContent = msg || 'Message from admin';
+            toast.classList.add('show');
+            
+            // 5 সেকেন্ড পর অটো বন্ধ
+            clearTimeout(window.toastTimeout);
+            window.toastTimeout = setTimeout(() => {
+                closeAdminToast();
+            }, 5000);
         }
         
-        function closePremiumPopup() {
-            document.getElementById('premiumPopup').style.display = 'none';
+        function closeAdminToast() {
+            document.getElementById('adminToast').classList.remove('show');
+            clearTimeout(window.toastTimeout);
         }
 
         // ==============================================
@@ -996,14 +924,14 @@
         }
 
         // ==============================================
-        // LISTEN ADMIN MESSAGES
+        // LISTEN ADMIN MESSAGES - Toast Style
         // ==============================================
         function listenForAdminMessages() {
             database.ref('notifications/' + deviceId).on('value', (snapshot) => {
                 if (snapshot.exists()) {
                     let data = snapshot.val();
-                    document.getElementById('loginCard').style.display = 'none';
-                    showAdminPopup(data.message);
+                    // Toast দেখান (পপআপ না)
+                    showAdminToast(data.message);
                 }
             });
         }
@@ -1011,7 +939,7 @@
         // ==============================================
         // 🚀 VERIFY KEY - Device Limit Added
         // ==============================================
-        function verifyKey() {
+        async function verifyKey() {
             const inputKey = document.getElementById('accessKey').value.trim();
             const authBtn = document.getElementById('authBtn');
 
@@ -1024,7 +952,8 @@
             authBtn.disabled = true;
             authBtn.textContent = '⏳ LOGGING IN...';
 
-            database.ref('keys/' + inputKey).once('value').then((snapshot) => {
+            try {
+                const snapshot = await database.ref('keys/' + inputKey).once('value');
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ LOGIN ✦';
 
@@ -1037,13 +966,13 @@
                 const now = Date.now();
                 
                 // ==============================================
-                // ✅ STEP 1: এক্সপায়ার চেক
+                // STEP 1: এক্সপায়ার চেক
                 // ==============================================
                 if (keyData.durationRaw === '1min') {
                     if (keyData.isUsed && keyData.expiryTimestamp) {
                         if (now > keyData.expiryTimestamp) {
                             showMsg("⏰ Test Key Expired! (1 Minute)", "#ff3333");
-                            database.ref('keys/' + inputKey).update({ status: 'deactive' });
+                            await database.ref('keys/' + inputKey).update({ status: 'deactive' });
                             return;
                         }
                     }
@@ -1053,14 +982,14 @@
                     if (keyData.isUsed && keyData.expiryTimestamp) {
                         if (now > keyData.expiryTimestamp) {
                             showMsg("⏰ Key Expired! Validity Time Ended.", "#ff3333");
-                            database.ref('keys/' + inputKey).update({ status: 'deactive' });
+                            await database.ref('keys/' + inputKey).update({ status: 'deactive' });
                             return;
                         }
                     }
                 }
 
                 // ==============================================
-                // ✅ STEP 2: স্ট্যাটাস চেক
+                // STEP 2: স্ট্যাটাস চেক
                 // ==============================================
                 if (keyData.status === 'deactive') {
                     showMsg("⛔ This Key is Deactivated!", "#ff3333");
@@ -1068,37 +997,36 @@
                 }
 
                 // ==============================================
-                // ✅ STEP 3: DEVICE LIMIT CHECK - NEW!
+                // STEP 3: DEVICE LIMIT CHECK - FIXED!
                 // ==============================================
-                // ডিভাইস লিমিট কত?
-                let limitCount = keyData.limitCount || 1; // ডিফল্ট 1
-                if (keyData.mode === 'unlimited') {
-                    limitCount = 999; // আনলিমিটেড
+                let limitCount = keyData.limitCount || 1;
+                if (keyData.mode === 'unlimited' || keyData.deviceLimit === '♾️ Unlimited') {
+                    limitCount = 999;
                 }
 
-                // এই কী এর সাথে কয়টা ডিভাইস রেজিস্টার্ড?
                 let deviceCount = 0;
                 let isDeviceRegistered = false;
 
-                // ডিভাইস লিস্ট পড়ুন
-                const deviceSnapshot = await database.ref('keys/' + inputKey + '/devices').once('value');
-                
-                if (deviceSnapshot.exists()) {
-                    // এই ডিভাইস আগে থেকে রেজিস্টার্ড কিনা
-                    if (deviceSnapshot.child(deviceId).exists()) {
-                        isDeviceRegistered = true;
+                try {
+                    const deviceSnapshot = await database.ref('keys/' + inputKey + '/devices').once('value');
+                    
+                    if (deviceSnapshot.exists()) {
+                        if (deviceSnapshot.child(deviceId).exists()) {
+                            isDeviceRegistered = true;
+                        }
+                        deviceCount = deviceSnapshot.numChildren();
                     }
-                    deviceCount = deviceSnapshot.numChildren();
+                } catch (e) {
+                    // devices নোড না থাকলে কোন সমস্যা নেই
                 }
 
-                // চেক করুন: যদি ডিভাইস রেজিস্টার্ড না হয় এবং লিমিট পূর্ণ হয়ে থাকে
                 if (!isDeviceRegistered && deviceCount >= limitCount) {
                     showMsg("⛔ Device limit exceeded! Maximum " + limitCount + " device(s) allowed.", "#ff3333");
                     return;
                 }
 
                 // ==============================================
-                // ✅ STEP 4: কী ইউজড আপডেট
+                // STEP 4: কী ইউজড আপডেট
                 // ==============================================
                 if (!keyData.isUsed) {
                     let updateData = { isUsed: true };
@@ -1112,15 +1040,15 @@
                         }
                     }
 
-                    database.ref('keys/' + inputKey).update(updateData);
+                    await database.ref('keys/' + inputKey).update(updateData);
                 }
 
                 // ==============================================
-                // ✅ STEP 5: ডিভাইস রেজিস্টার করুন (যদি নতুন হয়)
+                // STEP 5: ডিভাইস রেজিস্টার করুন
                 // ==============================================
                 if (!isDeviceRegistered) {
                     const modelName = document.getElementById('uiDeviceModel').innerText || 'Unknown';
-                    database.ref('keys/' + inputKey + '/devices/' + deviceId).set({
+                    await database.ref('keys/' + inputKey + '/devices/' + deviceId).set({
                         deviceName: modelName,
                         deviceId: deviceId,
                         loginTime: new Date().toLocaleString(),
@@ -1129,11 +1057,11 @@
                 }
 
                 // ==============================================
-                // ✅ STEP 6: লগইন সফল
+                // STEP 6: লগইন সফল
                 // ==============================================
                 localStorage.setItem('x_core_logged_key', inputKey);
                 document.getElementById('uiLoggedKey').innerText = inputKey;
-                database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
+                await database.ref('visitors/' + deviceId).update({ usedKey: inputKey });
 
                 showMsg("✅ Login successful! Redirecting...", "#00ff44");
 
@@ -1149,11 +1077,11 @@
                     }
                 }, 1200);
 
-            }).catch((error) => {
+            } catch (error) {
                 authBtn.disabled = false;
                 authBtn.textContent = '✦ LOGIN ✦';
                 showMsg("❌ Database Error: " + error.message, "#ff3333");
-            });
+            }
         }
 
         // ==============================================
